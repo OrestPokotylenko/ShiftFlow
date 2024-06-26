@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Model
 {
@@ -16,5 +18,13 @@ namespace Model
 
         private string _password = password;
         private byte[] _salt = salt;
+
+        public bool VerifyPassword(string enteredPassword)
+        {
+            using var hmac = new HMACSHA256(_salt);
+            byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(enteredPassword));
+
+            return Convert.ToBase64String(hash) == _password;
+        }
     }
 }
