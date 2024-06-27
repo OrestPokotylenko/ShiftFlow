@@ -17,6 +17,7 @@ namespace DAL
             builder.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(15);
             builder.Property(e => e.Occupation).IsRequired().HasMaxLength(25);
             builder.Property(e => e.EmployeeNumber).IsRequired().HasMaxLength(8);
+            builder.HasIndex(e => e.EmployeeNumber).IsUnique();
             
             builder.Property<string>("_password").HasColumnName("Password").IsRequired().HasMaxLength(64);
             builder.Property<byte[]>("_salt").HasColumnName("Salt").IsRequired().HasMaxLength(16);
