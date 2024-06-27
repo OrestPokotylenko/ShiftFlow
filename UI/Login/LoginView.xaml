@@ -7,7 +7,7 @@
              mc:Ignorable="d">
 
     <UserControl.Background>
-        <ImageBrush ImageSource="D:\coding\c#\ShiftFlow\UI\Resources\abstract-blur-supermarket-department-store.jpg"/>
+        <ImageBrush ImageSource="\Resources\abstract-blur-supermarket-department-store.jpg"/>
     </UserControl.Background>
 
     <Grid Background="Transparent">
@@ -18,15 +18,16 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Style="{StaticResource Header}" Text="Welkom to ShiftFlow" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Style="{StaticResource Header}" Text="Welcome to ShiftFlow" HorizontalAlignment="Center"/>
                 <StackPanel Grid.Row="1" Style="{StaticResource LoginStackpanelStyle}">
-                    <TextBlock Text="Username:" Margin="0,40,0,4"/>
-                    <TextBox Style="{StaticResource LoginTextBoxStyle}" x:Name="Username"/>
+                    <TextBlock x:Name="lblErrorMessage" Foreground="Red"/>
+                    <TextBlock Text="Username:" Margin="0,25,0,4"/>
+                    <TextBox x:Name="txtUsername" Style="{StaticResource LoginTextBoxStyle}" GotFocus="TextBox_GotFocus"/>
                     <TextBlock Text="Password:" Margin="0,40,0,4"/>
-                    <TextBox Style="{StaticResource LoginTextBoxStyle}" x:Name="Password"/>
+                    <TextBox x:Name="txtPassword" Style="{StaticResource LoginTextBoxStyle}" GotFocus="TextBox_GotFocus"/>
                     <Button Content="Forgot password?" Style="{StaticResource LoginForgotPasswordButtonStyle}"/>
                 </StackPanel>
-                <Button Grid.Row="2" Style="{StaticResource LoginButtonStyle}" Content="Login"/>
+                <Button Grid.Row="2" Style="{StaticResource LoginButtonStyle}" Content="Login" Click="LoginButton_Click"/>
             </Grid>
         </Border>
     </Grid>

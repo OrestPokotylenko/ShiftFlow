@@ -23,7 +23,12 @@ namespace Service
         {
             Employee employee = await _employeeDao.GetEmployeeByNumberAsync(employeeNumber);
 
-            if (employee == null && !employee.VerifyPassword(enteredPassword))
+            if (employee == null) 
+            {
+                return null;
+            }
+
+            if (!employee.VerifyPassword(enteredPassword))
             {
                 return null;
             }
