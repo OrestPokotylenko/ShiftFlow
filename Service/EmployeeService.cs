@@ -50,5 +50,16 @@ namespace Service
 
             return (Convert.ToBase64String(hash), salt);
         }
+
+        public async Task<Employee> GetEmployeeByEmailAsync(string email)
+        {
+            return await _employeeDao.GetEmployeeByEmailAsync(email);
+        }
+
+        public async Task UpdateEmployeePasswordAsync(string employeeNumber, string password)
+        {
+            (string encryptedPassword, byte[] salt) = EncryptPassword(password);
+            await _employeeDao.UpdateEmployeePasswordAsync(employeeNumber, encryptedPassword, salt);
+        }
     }
 }

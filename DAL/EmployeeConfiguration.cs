@@ -8,8 +8,8 @@ namespace DAL
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).ValueGeneratedOnAdd();
+            builder.HasKey(e => e.EmployeeId);
+            builder.Property(e => e.EmployeeId).ValueGeneratedOnAdd();
             builder.Property(e => e.FirstName).IsRequired().HasMaxLength(50);
             builder.Property(e => e.LastName).IsRequired().HasMaxLength(50);
             builder.Property(e => e.BirthDate).IsRequired();

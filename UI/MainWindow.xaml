@@ -10,7 +10,7 @@
         ResizeMode="CanResize">
 
     <Grid>
-        <ui:LoginView x:Name="Login" Visibility="Visible"/>
+        <ContentControl x:Name="MainWindowContent"/>
     </Grid>
     
 </Window>
