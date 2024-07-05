@@ -1,4 +1,4 @@
-﻿using ErrorMessages;
+﻿using Messages;
 using Microsoft.IdentityModel.Tokens;
 using Service;
 using System.Windows;
@@ -61,13 +61,13 @@ namespace UI.Login
 
             if (EmptyFields())
             {
-                SetErrorState(UIErrorMessages.EmptyFields);
+                SetErrorState(UIMessages.EmptyFields);
                 return false;
             }
 
             if (!ValidPassword())
             {
-                SetErrorState(UIErrorMessages.PasswordsDoNotMatch);
+                SetErrorState(UIMessages.PasswordsDoNotMatch);
                 return false;
             }
 

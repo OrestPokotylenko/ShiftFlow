@@ -21,7 +21,6 @@ namespace UI
             if (deepLink != null)
             {
                 ProcessDeepLink(deepLink);
-                ((App)Application.Current).StopListeningForDeepLinks();
             }
             else
             {

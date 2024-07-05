@@ -2,7 +2,7 @@
 using System.Windows;
 using Service;
 using Model;
-using ErrorMessages;
+using Messages;
 using Microsoft.IdentityModel.Tokens;
 
 namespace UI
@@ -52,7 +52,7 @@ namespace UI
 
             if (FieldsEmpty(username, password))
             {
-                SetErrorState(UIErrorMessages.EmptyFields);
+                SetErrorState(UIMessages.EmptyFields);
                 return null;
             }
 
@@ -60,7 +60,7 @@ namespace UI
 
             if (employee == null)
             {
-                SetErrorState(UIErrorMessages.InvalidCredentials);
+                SetErrorState(UIMessages.InvalidCredentials);
             }
 
             return employee;

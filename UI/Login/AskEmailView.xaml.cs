@@ -1,8 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Messages;
+using Microsoft.IdentityModel.Tokens;
 using Model;
 using Service;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace UI.Login
 {
@@ -55,7 +57,7 @@ namespace UI.Login
         {
             if (txtEmail.Text.IsNullOrEmpty())
             {
-                SetErrorState(ErrorMessages.UIErrorMessages.EmptyFields);
+                SetErrorState(UIMessages.EmptyFields);
                 return;
             }
 
@@ -63,18 +65,20 @@ namespace UI.Login
 
             if (employee == null)
             {
-                SetErrorState(ErrorMessages.UIErrorMessages.InvalidEmail);
+                SetErrorState(UIMessages.InvalidEmail);
             }
             else
             {
                 CreateDeepLink(employee);
                 ResetView();
+                DisplayEmailSentMessage();
             }
         }
 
         private void SetErrorState(string errorMessage)
         {
-            lblErrorMessage.Text = errorMessage;
+            lblMessage.Foreground = new SolidColorBrush(Colors.Red);
+            lblMessage.Text = errorMessage;
             txtEmail.Style = (Style)FindResource("LoginErrorTextBoxStyle");
         }
 
@@ -86,9 +90,15 @@ namespace UI.Login
 
         private void ResetView()
         {
-            lblErrorMessage.Text = string.Empty;
+            lblMessage.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtEmail.Style = (Style)FindResource("LoginTextBoxStyle");
+        }
+
+        private void DisplayEmailSentMessage()
+        {
+            lblMessage.Foreground = new SolidColorBrush(Colors.DarkGreen);
+            lblMessage.Text = UIMessages.EmailSent;
         }
     }
 }
