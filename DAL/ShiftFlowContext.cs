@@ -7,6 +7,7 @@ namespace DAL
     public class ShiftFlowContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<DeepLink> DeepLinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,6 +22,7 @@ namespace DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+            modelBuilder.ApplyConfiguration(new DeepLinkConfiguration());
         }
     }
 }

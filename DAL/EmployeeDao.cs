@@ -1,5 +1,5 @@
-﻿using Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Model;
 
 namespace DAL
 {
@@ -15,7 +15,7 @@ namespace DAL
 
         public async Task DeleteEmployeeAsync(Employee employee)
         {
-            var foundEmployee = await _context.Employees.FindAsync(employee.Id);
+            var foundEmployee = await _context.Employees.FindAsync(employee.EmployeeId);
 
             if (foundEmployee != null)
             {
@@ -27,6 +27,23 @@ namespace DAL
         public async Task<Employee> GetEmployeeByNumberAsync(string employeeNumber)
         {
             return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNumber == employeeNumber);
+        }
+
+        public async Task<Employee> GetEmployeeByEmailAsync(string email)
+        {
+            return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
+        }
+
+        public async Task UpdateEmployeePasswordAsync(string employeeNumber, string password, byte[] salt)
+        {
+            var employee = await GetEmployeeByNumberAsync(employeeNumber);
+
+            if (employee != null)
+            {
+                employee.SetPassword(password);
+                employee.SetSalt(salt);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
