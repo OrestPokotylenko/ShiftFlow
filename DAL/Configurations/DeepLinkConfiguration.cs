@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Model;
 
-namespace DAL
+namespace DAL.Configurations
 {
     internal class DeepLinkConfiguration : IEntityTypeConfiguration<DeepLink>
     {

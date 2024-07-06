@@ -1,7 +1,7 @@
 ﻿using DAL;
 using Model;
 
-namespace Service
+namespace Service.ModelServices
 {
     public class DeepLinkService
     {
