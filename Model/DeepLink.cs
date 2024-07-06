@@ -4,7 +4,7 @@
     {
         public int? DeepLinkId { get; private set; } = deepLinkId;
         public int EmployeeId { get; private set; } = employeeId;
-        public virtual Employee Employee { get; private set; }
+        public virtual Employee? Employee { get; private set; }
         public string Link { get; private set; } = link;
         public DateTime ExpirationDate { get; set; } = expirationDate;
     }

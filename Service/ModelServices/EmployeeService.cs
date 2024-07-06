@@ -3,7 +3,7 @@ using Model;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Service
+namespace Service.ModelServices
 {
     public class EmployeeService
     {
@@ -23,7 +23,7 @@ namespace Service
         {
             Employee employee = await _employeeDao.GetEmployeeByNumberAsync(employeeNumber);
 
-            if (employee == null) 
+            if (employee == null)
             {
                 return null;
             }
