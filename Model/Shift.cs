@@ -5,8 +5,8 @@
         public int? ShiftId { get; private set; } = shiftId;
         public int EmployeeId { get; private set; } = employeeId;
         public virtual Employee? Employee { get; private set; }
-        public DateTime StartTime { get; private set; } = startTime;
-        public DateTime EndTime { get; private set; } = endTime;
+        public DateTime StartTime { get; set; } = startTime;
+        public DateTime EndTime { get; set; } = endTime;
         public TimeSpan BreakDuration { get => CalculateBreak(); }
 
 

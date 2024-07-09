@@ -14,7 +14,7 @@
         <Border Style="{StaticResource LoginBorderStyle}">
             <Grid Style="{StaticResource LoginGridStyle}">
                 <StackPanel Grid.Row="1" Style="{StaticResource LoginStackpanelStyle}" Height="500">
-                    <TextBlock Style="{StaticResource Header}" Padding="0,60,0,50" Text="Reset your Password" HorizontalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource Header}" Padding="0,60,0,50" Text="Reset your password" HorizontalAlignment="Center"/>
                     <TextBlock x:Name="lblMessage" TextWrapping="Wrap" Width="290" Height="35"/>
                     <TextBlock Text="Enter your email address:" Margin="0,25,0,4"/>
                     <TextBox x:Name="txtEmail" Style="{StaticResource LoginTextBoxStyle}" Margin="0,0,0,65" GotFocus="TextBox_GotFocus"/>

@@ -14,8 +14,8 @@ namespace Model
         public string FullName { get => $"{FirstName} {LastName}"; }
         [Column(TypeName = "Date")]
         public DateTime BirthDate { get; private set; } = birthDate;
-        public string Email { get; private set; } = email;
-        public string PhoneNumber { get; private set; } = phoneNumber;
+        public string Email { get; set; } = email;
+        public string PhoneNumber { get; set; } = phoneNumber;
         public OccupationType Occupation { get; private set; } = occupation;
         [Required]
         public string EmployeeNumber { get; private set; } = employeeNumber;
