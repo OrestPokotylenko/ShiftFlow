@@ -1,5 +1,5 @@
 ﻿using Model;
-using Service;
+using Service.ModelServices;
 using System.IO;
 using System.IO.Pipes;
 using System.Windows;

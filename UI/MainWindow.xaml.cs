@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using UI.Login;
+using UI.MainViews;
 
 namespace UI
 {
@@ -8,11 +9,13 @@ namespace UI
         private LoginView? loginView;
         private AskEmailView? askEmailView;
         private ResetPasswordView? resetPasswordView;
+        private EmployeeMainView? employeeMainView;
 
         public MainWindow(string? deepLink = null)
         {
             InitializeComponent();
-            ProcessArgs(deepLink);
+            ShowEmployeeMainView();
+            //ProcessArgs(deepLink);
         }
 
 
@@ -58,7 +61,7 @@ namespace UI
 
         private void LoginView_Login(object sender, RoutedEventArgs e)
         {
-
+            ShowEmployeeMainView();
         }
 
         private void LoginView_ForgotPassword(object sender, RoutedEventArgs e)
@@ -82,6 +85,12 @@ namespace UI
             MainWindowContent.Content = resetPasswordView;
             resetPasswordView.ResetPasswordClick += ResetPasswordView_ResetPassword;
             resetPasswordView.BackToLoginReset += ResetPasswordView_BackToLogin;
+        }
+
+        private void ShowEmployeeMainView()
+        {
+            employeeMainView ??= new();
+            MainWindowContent.Content = employeeMainView;
         }
     }
 }

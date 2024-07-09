@@ -1,6 +1,6 @@
 ﻿using Messages;
 using Microsoft.IdentityModel.Tokens;
-using Service;
+using Service.ModelServices;
 using System.Windows;
 using System.Windows.Controls;
 

@@ -1,9 +1,9 @@
 ﻿using System.Windows.Controls;
 using System.Windows;
-using Service;
 using Model;
 using Messages;
 using Microsoft.IdentityModel.Tokens;
+using Service.ModelServices;
 
 namespace UI
 {

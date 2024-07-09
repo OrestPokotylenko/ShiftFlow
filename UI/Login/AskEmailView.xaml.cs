@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Model;
 using Service;
+using Service.ModelServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
