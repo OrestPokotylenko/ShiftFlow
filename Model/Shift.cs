@@ -1,6 +1,6 @@
 ﻿namespace Model
 {
-    public class Shift(int employeeId, DateTime startTime, DateTime endTime, int? shiftId = null)
+    public class Shift(int employeeId, DateTime startTime, DateTime endTime, DepartmentType departmentType, int? shiftId = null)
     {
         public int? ShiftId { get; private set; } = shiftId;
         public int EmployeeId { get; private set; } = employeeId;
@@ -9,7 +9,7 @@
         public DateTime EndTime { get; set; } = endTime;
         public string StartEndTime { get => $"{StartTime:HH:mm} - {EndTime:HH:mm}"; }
         public TimeSpan BreakDuration { get => CalculateBreak(); }
-        public DepartmentType DepartmentType { get; set; }
+        public DepartmentType DepartmentType { get; set; } = departmentType;
 
 
         private TimeSpan CalculateBreak()
