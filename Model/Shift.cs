@@ -7,7 +7,9 @@
         public virtual Employee? Employee { get; private set; }
         public DateTime StartTime { get; set; } = startTime;
         public DateTime EndTime { get; set; } = endTime;
+        public string StartEndTime { get => $"{StartTime:HH:mm} - {EndTime:HH:mm}"; }
         public TimeSpan BreakDuration { get => CalculateBreak(); }
+        public DepartmentType DepartmentType { get; set; }
 
 
         private TimeSpan CalculateBreak()
