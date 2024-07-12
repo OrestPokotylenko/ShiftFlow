@@ -14,13 +14,24 @@
     </UserControl.DataContext>
 
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="#ABC4FF" Width="Auto" Height="60">
-            <TextBlock Text="ShiftFlow" Style="{StaticResource Header}" Padding="0" Foreground="#EDF2FB" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Grid Grid.Row="0" 
+              Background="#ABC4FF"
+              Width="Auto"
+              Height="60">
+            
+            <TextBlock Text="ShiftFlow" 
+                       Style="{StaticResource Header}" 
+                       Padding="0" 
+                       Foreground="#EDF2FB" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" />
+            
         </Grid>
 
         <Grid Grid.Row="1">
@@ -29,7 +40,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <DockPanel Grid.Column="0" Background="#EDF2FB" LastChildFill="False">
+            <DockPanel Grid.Column="0" 
+                       Background="#EDF2FB" 
+                       LastChildFill="False">
 
                 <Menu:NavigationButton Style="{StaticResource NavigationButtonStyle}"
                                        DockPanel.Dock="Top"
@@ -139,7 +152,9 @@
                                Style="{StaticResource ImageStyle}"/>
 
                         <TextBlock Text="Logout"
-                                   Style="{StaticResource NavigationButtonTextStyle}" HorizontalAlignment="Left" Margin="48,0,0,0"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" 
+                                   HorizontalAlignment="Left" 
+                                   Margin="48,0,0,0"/>
 
                     </Grid>
 
@@ -148,13 +163,16 @@
             </DockPanel>
 
 
-            <Grid Grid.Column="1" Background="#D7E3FC">
+            <Grid Grid.Column="1" 
+                  Background="#D7E3FC">
 
-                <ContentControl Content="{Binding CurrentView}" />
+                <ContentControl x:Name="ViewControl" 
+                                Content="{Binding CurrentView}" />
 
             </Grid>
 
         </Grid>
 
     </Grid>
+
 </UserControl>

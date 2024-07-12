@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="Styles/Main.xaml" />
                 <ResourceDictionary Source="Resources/Icons.xaml" />
                 <ResourceDictionary Source="Utilities/DataTemplate.xaml" />
+                <ResourceDictionary Source="Styles/HomeView.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary> 
     </Application.Resources>

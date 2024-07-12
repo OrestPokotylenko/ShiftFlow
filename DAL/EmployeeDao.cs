@@ -50,5 +50,10 @@ namespace DAL
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task WarmUp()
+        {
+            await _context.Employees.FirstOrDefaultAsync();
+        }
     }
 }

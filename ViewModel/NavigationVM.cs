@@ -5,7 +5,6 @@ namespace ViewModel
 {
     public class NavigationVM : BaseVM
     {
-        EmployeeService employeeService = new EmployeeService();
         private object _currentView;
         public object CurrentView
         {
