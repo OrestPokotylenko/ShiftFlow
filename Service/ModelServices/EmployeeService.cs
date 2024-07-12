@@ -36,6 +36,11 @@ namespace Service.ModelServices
             return employee;
         }
 
+        public Employee GetEmployeeByNumber(string employeeNumber)
+        {
+            return _employeeDao.GetEmployeeByNumber(employeeNumber);
+        }
+
         public (string encryptedPassword, byte[] salt) EncryptPassword(string password)
         {
             byte[] salt;
@@ -60,6 +65,11 @@ namespace Service.ModelServices
         {
             (string encryptedPassword, byte[] salt) = EncryptPassword(password);
             await _employeeDao.UpdateEmployeePasswordAsync(employeeNumber, encryptedPassword, salt);
+        }
+
+        public async Task WarmUp()
+        {
+            await _employeeDao.WarmUp();
         }
     }
 }

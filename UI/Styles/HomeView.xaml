@@ -1,0 +1,208 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="HomeViewBorderStyle" 
+           TargetType="Border">
+
+        <Setter Property="BorderBrush" 
+                Value="Black" />
+
+        <Setter Property="BorderThickness"
+                Value="1" />
+
+        <Setter Property="CornerRadius"
+                Value="10" />
+
+        <Setter Property="Margin"
+                Value="0,0,0,35" />
+
+    </Style>
+
+    <Style x:Key="HomeViewStackPanelStyle" 
+           TargetType="StackPanel">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+
+        <Setter Property="Margin"
+                Value="50,0,0,0" />
+
+    </Style>
+
+    <Style x:Key="HomeViewSecondHeaderStyle" 
+           TargetType="TextBlock" 
+           BasedOn="{StaticResource SecondHeader}">
+
+        <Setter Property="Margin"
+                Value="0,10,0,25" />
+
+    </Style>
+
+    <Style x:Key="HomeViewGridStyle"
+           TargetType="Grid">
+
+        <Setter Property="Width"
+                Value="950" />
+
+        <Setter Property="Height"
+                Value="90" />
+
+    </Style>
+
+    <Style x:Key="HomeViewBorderTemplateStyle"
+           TargetType="Border">
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Setter Property="BorderBrush"
+                 Value="Black" />
+
+        <Setter Property="BorderThickness"
+                 Value="1" />
+
+        <Setter Property="CornerRadius"
+                 Value="10" />
+
+    </Style>
+
+    <Style x:Key="SeeAllButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="Content"
+                Value="See all >" />
+
+        <Setter Property="HorizontalAlignment" 
+                Value="Right" />
+        
+        <Setter Property="Margin" 
+                Value="0,10,0,15" />
+        
+        <Setter Property="Background" 
+                Value="Transparent" />
+
+        <Setter Property="BorderThickness"
+                Value="0" />
+
+        <Setter Property="Template">
+            
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="Button">
+                    
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" 
+                                          RecognizesAccessKey="True" />
+                        
+                    </Border>
+                    
+                </ControlTemplate>
+                
+            </Setter.Value>
+            
+        </Setter>
+
+        <Style.Triggers>
+            
+            <Trigger Property="IsMouseOver" 
+                     Value="True">
+                
+                <Setter Property="Foreground" 
+                        Value="Gray" />
+            </Trigger>
+            
+            <MultiTrigger>
+                
+                <MultiTrigger.Conditions>
+                    
+                    <Condition Property="IsMouseOver"
+                               Value="True" />
+                    
+                    <Condition Property="IsPressed"
+                               Value="True" />
+                    
+                </MultiTrigger.Conditions>
+                
+                <Setter Property="Foreground" 
+                        Value="{StaticResource Color7}"/>
+                
+            </MultiTrigger>
+            
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="CountTextBlockStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource StandardHeader}">
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Margin"
+                Value="0,0,50,0" />
+
+    </Style>
+
+    <Style x:Key="HomeViewLeftStandardHeaderStyle" 
+           TargetType="TextBlock" 
+           BasedOn="{StaticResource StandardHeader}">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+
+        <Setter Property="Padding"
+                Value="50,0,0,0" />
+
+    </Style>
+
+    <Style x:Key="HomeViewRightStandardHeaderStyle" 
+           TargetType="TextBlock" 
+           BasedOn="{StaticResource StandardHeader}">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Padding"
+                Value="0,0,50,0" />
+
+    </Style>
+
+    <Style x:Key="HomeViewLeftSecondHederStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource SecondHeader}">
+
+        <Setter Property="Margin"
+                Value="50,35,0,0" />
+
+    </Style>
+
+    <Style x:Key="HomeViewEmptyStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource StandardHeader}">
+
+        <Setter Property="Visibility"
+                Value="Hidden" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" 
+                         Value="True"
+>
+                <Setter Property="Visibility" 
+                        Value="Visible" />
+
+            </DataTrigger>            
+            
+        </Style.Triggers>
+        
+    </Style>
+
+</ResourceDictionary>

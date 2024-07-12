@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Service.ModelServices;
+using System.Windows;
 using UI.Login;
 using UI.MainViews;
 
@@ -10,10 +11,12 @@ namespace UI
         private AskEmailView? askEmailView;
         private ResetPasswordView? resetPasswordView;
         private EmployeeMainView? employeeMainView;
+        private EmployeeService employeeService = new();
 
         public MainWindow(string? deepLink = null)
         {
             InitializeComponent();
+            Task.Run(employeeService.WarmUp);
             ShowEmployeeMainView();
             //ProcessArgs(deepLink);
         }

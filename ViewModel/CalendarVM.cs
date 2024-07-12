@@ -25,7 +25,6 @@ namespace ViewModel
 
         public CalendarVM()
         {
-            shift = new Shift(1, new DateTime(1991,6,2), new DateTime(1992,6,2), 1);
         }
     }
 }

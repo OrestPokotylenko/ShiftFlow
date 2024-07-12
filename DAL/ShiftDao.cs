@@ -7,27 +7,37 @@ namespace DAL
     {
         private ShiftFlowContext _context = new();
 
-        public async Task<Shift?> GetShiftForTodayAsync(Employee employee, DateTime today)
+        private static Func<ShiftFlowContext, int, DateTime, DateTime, Shift?> CompiledShiftForToday =
+            EF.CompileQuery((
+                ShiftFlowContext context, int id, DateTime startDate, DateTime endDate) => context
+                    .Shifts.AsNoTracking()
+                        .FirstOrDefault(s => s.EmployeeId == id && s.StartTime >= startDate && s.StartTime < endDate));
+
+        public Shift? GetShiftForToday(int employeeId, DateTime today)
         {
-            return await _context.Shifts
-                .Where(s => s.EmployeeId == employee.EmployeeId && s.StartTime.Date == today.Date)
-                .FirstOrDefaultAsync();
+            DateTime startDate = today.Date;
+            DateTime endDate = startDate.AddDays(1);
+
+            return CompiledShiftForToday(_context, employeeId, startDate, endDate);
         }
 
-        public Shift? GetShiftForToday(Employee employee, DateTime today)
-        {
-            return _context.Shifts
-                .Where(s => s.EmployeeId == employee.EmployeeId && s.StartTime.Date == today.Date)
-                .FirstOrDefault();
-        }
+        private static Func<ShiftFlowContext, int, DateTime, DateTime, IEnumerable<Shift>> CompiledShiftsForWeek =
+            EF.CompileQuery((
+                ShiftFlowContext context, int id, DateTime weekStart, DateTime weekEnd) => context
+                    .Shifts.AsNoTracking()
+                        .Where(s => s.EmployeeId == id && s.StartTime.Date >= weekStart.Date && s.StartTime.Date <= weekEnd.Date));
 
-        public async Task<List<Shift>> GetShiftsForWeekAsync(Employee employee, DateTime weekStart)
+        public List<Shift>? GetShiftsForWeek(int employeeId, DateTime weekStart)
         {
             DateTime weekEnd = weekStart.AddDays(6);
+            var shiftsForWeek = new List<Shift>();
 
-            return await _context.Shifts
-                .Where(s => s.EmployeeId == employee.EmployeeId && s.StartTime.Date >= weekStart.Date && s.StartTime.Date <= weekEnd.Date)
-                .AsNoTracking().ToListAsync();
+            foreach (Shift shift in CompiledShiftsForWeek(_context, employeeId, weekStart, weekEnd))
+            {
+                shiftsForWeek.Add(shift);
+            }
+
+            return shiftsForWeek;
         }
     }
 }
