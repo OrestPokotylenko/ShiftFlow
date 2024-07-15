@@ -31,83 +31,89 @@
     </Style>
 
     <Style x:Key="DropDownButtonStyle"
-           TargetType="Button">
+           TargetType="ToggleButton">
 
         <Setter Property="Template">
 
             <Setter.Value>
 
-                <ControlTemplate TargetType="Button">
+                <ControlTemplate TargetType="ToggleButton">
 
-                    <StackPanel VerticalAlignment="Center">
+                    <Border Background="Transparent"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}">
+                        
+                        <StackPanel VerticalAlignment="Center">
+                            
+                            <Image x:Name="ArrowIcon"
+                                   Source="{StaticResource ArrowDownIcon}" 
+                                   Width="25"
+                                   Height="25"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
 
-                        <Image Name="ArrowImage"
-                               Source="{StaticResource ArrowDownIcon}" />
-
-                        <ContentPresenter HorizontalAlignment="Center" 
-                                          VerticalAlignment="Center" />
-
-                    </StackPanel>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center" />
+                            
+                        </StackPanel>
+                        
+                    </Border>
 
                     <ControlTemplate.Triggers>
 
-                        <Trigger Property="IsMouseOver" 
-                                 Value="True">
+                        <MultiTrigger>
+                            
+                            <MultiTrigger.Conditions>
+                                
+                                <Condition Property="IsMouseOver" 
+                                           Value="True" />
+                                
+                                <Condition Property="IsChecked" 
+                                           Value="True" />
+                                
+                            </MultiTrigger.Conditions>
+                            
+                            <Setter TargetName="ArrowIcon" 
+                                    Property="Source" 
+                                    Value="{StaticResource ArrowUpHoverIcon}"/>
+                            
+                        </MultiTrigger>
 
-                            <Setter TargetName="ArrowImage" 
-                                    Property="Source">
+                        <MultiTrigger>
+                            
+                            <MultiTrigger.Conditions>
+                                
+                                <Condition Property="IsMouseOver" 
+                                           Value="True" />
+                                
+                                <Condition Property="IsChecked" 
+                                           Value="False" />
+                                
+                            </MultiTrigger.Conditions>
+                            
+                            <Setter TargetName="ArrowIcon" 
+                                    Property="Source" 
+                                    Value="{StaticResource ArrowDownHoverIcon}" />
+                            
+                        </MultiTrigger>
 
-                                <Setter.Value>
-
-                                    <DrawingImage>
-
-                                        <DrawingImage.Drawing>
-
-                                            <DrawingGroup>
-
-                                                <GeometryDrawing Brush="{StaticResource Color7}" 
-                                                                 Geometry="M164.292308,6524.36583 L164.292308,6524.36583 C163.902564,6524.77071 163.902564,6525.42619 164.292308,6525.83004 L172.555873,6534.39267 C173.33636,6535.20244 174.602528,6535.20244 175.383014,6534.39267 L183.70754,6525.76791 C184.093286,6525.36716 184.098283,6524.71997 183.717533,6524.31405 C183.328789,6523.89985 182.68821,6523.89467 182.29347,6524.30266 L174.676479,6532.19636 C174.285736,6532.60124 173.653152,6532.60124 173.262409,6532.19636 L165.705379,6524.36583 C165.315635,6523.96094 164.683051,6523.96094 164.292308,6524.36583" />
-
-                                            </DrawingGroup>
-
-                                        </DrawingImage.Drawing>
-
-                                    </DrawingImage>
-
-                                </Setter.Value>
-
-                            </Setter>
-
-                        </Trigger>
-
-                        <Trigger Property="IsPressed" 
-                                 Value="True">
-
-                            <Setter TargetName="ArrowImage" 
-                                    Property="Source">
-
-                                <Setter.Value>
-
-                                    <DrawingImage>
-
-                                        <DrawingImage.Drawing>
-
-                                            <DrawingGroup>
-
-                                                <GeometryDrawing Brush="{StaticResource Color1}" 
-                                                                 Geometry="M164.292308,6524.36583 L164.292308,6524.36583 C163.902564,6524.77071 163.902564,6525.42619 164.292308,6525.83004 L172.555873,6534.39267 C173.33636,6535.20244 174.602528,6535.20244 175.383014,6534.39267 L183.70754,6525.76791 C184.093286,6525.36716 184.098283,6524.71997 183.717533,6524.31405 C183.328789,6523.89985 182.68821,6523.89467 182.29347,6524.30266 L174.676479,6532.19636 C174.285736,6532.60124 173.653152,6532.60124 173.262409,6532.19636 L165.705379,6524.36583 C165.315635,6523.96094 164.683051,6523.96094 164.292308,6524.36583" />
-
-                                            </DrawingGroup>
-
-                                        </DrawingImage.Drawing>
-
-                                    </DrawingImage>
-
-                                </Setter.Value>
-
-                            </Setter>
-
-                        </Trigger>
+                        <MultiTrigger>
+                            
+                            <MultiTrigger.Conditions>
+                                
+                                <Condition Property="IsMouseOver" 
+                                           Value="False" />
+                                
+                                <Condition Property="IsChecked" 
+                                           Value="True" />
+                                
+                            </MultiTrigger.Conditions>
+                            
+                            <Setter TargetName="ArrowIcon" 
+                                    Property="Source" 
+                                    Value="{StaticResource ArrowUpIcon}" />
+                            
+                        </MultiTrigger>
 
                     </ControlTemplate.Triggers>
 
@@ -118,10 +124,10 @@
         </Setter>
 
         <Setter Property="Height"
-                Value="50" />
+                Value="40" />
 
         <Setter Property="Width"
-                Value="25" />
+                Value="40" />
 
         <Setter Property="VerticalAlignment"
                 Value="Top" />
@@ -130,7 +136,174 @@
                 Value="Right" />
 
         <Setter Property="Margin"
-                Value="20,0,0,0" />
+                Value="0,0,0,0" />
+
+    </Style>
+
+
+    <Style x:Key="ApplyButtonStyle" 
+           TargetType="Button">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="10"
+                            BorderBrush="Black"
+                            BorderThickness="1">
+
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" />
+
+                    </Border>
+
+                </ControlTemplate>
+                
+            </Setter.Value>
+            
+        </Setter>
+
+            <Setter Property="Content" 
+                    Value="Apply" />
+
+        <Setter Property="Width"
+                Value="100" />
+
+        <Setter Property="Height"
+                Value="35" />
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Setter Property="Margin"
+                Value="70,50,0,0" />
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver" 
+                     Value="True">
+
+                <Setter Property="Background" 
+                        Value="{StaticResource Color2}" />
+
+            </Trigger>
+
+            <Trigger Property="IsPressed" 
+                     Value="True">
+
+                <Setter Property="Background" 
+                        Value="{StaticResource Color7}" />
+
+                <Setter Property="Foreground" 
+                        Value="{StaticResource Color1}" />
+
+                <Setter Property="Effect">
+                    
+                    <Setter.Value>
+                        
+                        <DropShadowEffect Color="Black"
+                                          Direction="300"
+                                          ShadowDepth="5"
+                                          BlurRadius="5"
+                                          Opacity="0.5" />
+                        
+                    </Setter.Value>
+                    
+                </Setter>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="ChangeValueTextBoxStyle"
+           TargetType="TextBox">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border Background="{TemplateBinding Background}"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            CornerRadius="5"
+                            BorderBrush="Black"
+                            BorderThickness="1">
+
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      VerticalAlignment="Center" />
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="Width"
+                Value="500" />
+
+        <Setter Property="Height"
+                Value="35" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="FontFamily" 
+                Value="Nito Sans" />
+
+        <Setter Property="Margin"
+                Value="80,50,0,0" />
+
+    </Style>
+
+    <Style x:Key="DropDownDockStyle"
+           TargetType="DockPanel">
+
+        <Setter Property="Visibility"
+                Value="Collapsed" />
+
+        <Setter Property="Opacity"
+                Value="0" />
+
+        <Setter Property="Margin"
+                Value="0,-50,0,0" />
+
+    </Style>
+
+    <Style x:Key="PropertyNameStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource SecondHeader}">
+
+        <Setter Property="Margin"
+                Value="50,0,0,0" />
+
+        <Setter Property="Grid.Column"
+                Value="0" />
+
+    </Style>
+
+    <Style x:Key="PropertyValueStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource SecondHeader}">
+
+        <Setter Property="Margin"
+                Value="0,0,50,0" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Grid.Column"
+                Value="1" />
 
     </Style>
 

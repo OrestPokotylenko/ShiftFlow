@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
 
 namespace UI.SecondaryViews
@@ -13,7 +14,7 @@ namespace UI.SecondaryViews
 
         private void DropDown_Click(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            ToggleButton button = (ToggleButton)sender;
             DockPanel dockPanel = (DockPanel)button.Tag;
 
             if (dockPanel.Visibility == Visibility.Collapsed)
