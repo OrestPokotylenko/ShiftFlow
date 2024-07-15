@@ -22,6 +22,9 @@
     <SolidColorBrush x:Key="Color7" 
                      Color="#ABC4FF" />
 
+    <SolidColorBrush x:Key="ColorBlack"
+                     Color="Black" />   
+
     <Style TargetType="TextBlock">
         
         <Setter Property="FontFamily" 

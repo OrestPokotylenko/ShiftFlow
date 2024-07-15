@@ -19,31 +19,6 @@
             <StackPanel Width="850"
                         Margin="50,50,0,0">
 
-                <Border Style="{StaticResource ProfileBorderStyle}">
-
-                    <Grid>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Grid.Column="0"
-                                   Text="Full name:"
-                                   Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                   Padding="0" 
-                                   Margin="50,0,0,0" />
-
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding}"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                   HorizontalAlignment="Right"
-                                   Margin="0,0,50,0" />
-
-                    </Grid>
-
-                </Border>
-
                 <StackPanel Margin="0,0,0,100">
 
                     <DockPanel>
@@ -58,43 +33,29 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0"
-                                           Text="Email address:"
-                                           Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                           Padding="0" 
-                                           Margin="50,0,0,0" />
+                                <TextBlock Text="Email address:"
+                                           Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding}"
-                                           Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                           HorizontalAlignment="Right"
-                                           Margin="0,0,50,0" />
+                                <TextBlock Text="{Binding}"
+                                           Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
 
                         </Border>
 
-                        <Button Style="{StaticResource DropDownButtonStyle}" 
-                                Click="DropDown_Click"
-                                Tag="{Binding ElementName=EmailDockPanel}" />
+                        <ToggleButton Style="{StaticResource DropDownButtonStyle}" 
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=EmailDockPanel}" />
 
                     </DockPanel>
 
                     <DockPanel x:Name="EmailDockPanel"
-                               Visibility="Collapsed"
-                               Opacity="0"
-                               Margin="0,-50,0,0">
+                               Style="{StaticResource DropDownDockStyle}">
 
                         <TextBox x:Name="txtEmail"
-                                 Width="500"
-                                 Height="35"
-                                 DockPanel.Dock="Left"
-                                 Margin="80,50,0,0" />
+                                 Style="{StaticResource ChangeValueTextBoxStyle}" />
 
-                        <Button Content="Apply" 
-                                Width="100"
-                                Height="35"
-                                Margin="70,50,0,0" />
+                        <Button Style="{StaticResource ApplyButtonStyle}" />
 
                     </DockPanel>
 
@@ -114,43 +75,29 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0"
-                                           Text="Phone number:"
-                                           Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                           Padding="0" 
-                                           Margin="50,0,0,0" />
+                                <TextBlock Text="Phone number:"
+                                           Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding}"
-                                           Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                           HorizontalAlignment="Right"
-                                           Margin="0,0,50,0" />
+                                <TextBlock Text="{Binding}"
+                                           Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
 
                         </Border>
 
-                        <Button Style="{StaticResource DropDownButtonStyle}" 
-                                Click="DropDown_Click"
-                                Tag="{Binding ElementName=NumberDockPanel}" />
+                        <ToggleButton Style="{StaticResource DropDownButtonStyle}" 
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=NumberDockPanel}" />
 
                     </DockPanel>
 
                     <DockPanel x:Name="NumberDockPanel"
-                               Visibility="Collapsed"
-                               Opacity="0"
-                               Margin="0,-50,0,0">
+                               Style="{StaticResource DropDownDockStyle}">
 
                         <TextBox x:Name="txtPhoneNumber"
-                                 Width="500"
-                                 Height="35"
-                                 DockPanel.Dock="Left"
-                                 Margin="80,50,0,0" />
+                                 Style="{StaticResource ChangeValueTextBoxStyle}" />
 
-                        <Button Content="Apply" 
-                                Width="100"
-                                Height="35"
-                                Margin="70,50,0,0" />
+                        <Button Style="{StaticResource ApplyButtonStyle}" />
 
                     </DockPanel>
 
@@ -170,39 +117,29 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Grid.Column="0"
-                                       Text="Password:"
-                                       Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                       Padding="0" 
-                                       Margin="50,0,0,0" />
+                                <TextBlock Text="Password:"
+                                           Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Grid.Column="1"
-                                           Text="{Binding}"
-                                           Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                           HorizontalAlignment="Right"
-                                           Margin="0,0,50,0" />
+                                <TextBlock Text="{Binding}"
+                                           Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
 
                         </Border>
 
-                        <Button Style="{StaticResource DropDownButtonStyle}" 
-                                Click="DropDown_Click"
-                                Tag="{Binding ElementName=PasswordDockPanel}" />
+                        <ToggleButton Style="{StaticResource DropDownButtonStyle}" 
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=PasswordDockPanel}" />
 
                     </DockPanel>
 
                     <DockPanel x:Name="PasswordDockPanel"
-                               Visibility="Collapsed"
-                               Opacity="0"
-                               Margin="0,-50,0,0">
+                               Style="{StaticResource DropDownDockStyle}">
 
                         <StackPanel>
 
                             <TextBox x:Name="txtPassword"
-                                 Width="500"
-                                 Height="35"
-                                 Margin="80,50,0,0" />
+                                     Style="{StaticResource ChangeValueTextBoxStyle}" />
 
                             <PasswordBox x:Name="txtPasswordRepeat"
                                  Width="500"
@@ -211,10 +148,7 @@
 
                         </StackPanel>
 
-                        <Button Content="Apply" 
-                                Width="100"
-                                Height="35"
-                                Margin="70,50,0,0" />
+                        <Button Style="{StaticResource ApplyButtonStyle}" />
 
                     </DockPanel>
 
@@ -229,17 +163,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0"
-                                   Text="Employee number:"
-                                   Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                   Padding="0" 
-                                   Margin="50,0,0,0" />
+                        <TextBlock Text="Full name:"
+                                   Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding}"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                   HorizontalAlignment="Right"
-                                   Margin="0,0,50,0" />
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
 
@@ -254,17 +182,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0"
-                                   Text="Occupation:"
-                                   Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                   Padding="0" 
-                                   Margin="50,0,0,0" />
+                        <TextBlock Text="Employee number:"
+                                   Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding}"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                   HorizontalAlignment="Right"
-                                   Margin="0,0,50,0"/>
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
 
@@ -275,21 +197,34 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0"
-                                   Text="Contract type:"
-                                   Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                   Padding="0" 
-                                   Margin="50,0,0,0"/>
+                        <TextBlock Text="Occupation:"
+                                   Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding}"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                   HorizontalAlignment="Right"
-                                   Margin="0,0,50,0"/>
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PropertyValueStyle}" />
+
+                    </Grid>
+
+                </Border>
+
+                <Border Style="{StaticResource ProfileBorderStyle}">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Contract type:"
+                                   Style="{StaticResource PropertyNameStyle}" />
+
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
 
@@ -301,21 +236,15 @@
                     <Grid>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0"
-                                   Text="Employment start:"
-                                   Style="{StaticResource HomeViewLeftSecondHederStyle}" 
-                                   Padding="0" 
-                                   Margin="50,0,0,0"/>
+                        <TextBlock Text="Employment start:"
+                                   Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Grid.Column="1"
-                                   Text="{Binding}"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" 
-                                   HorizontalAlignment="Right"
-                                   Margin="0,0,50,0"/>
+                        <TextBlock Text="{Binding}"
+                                   Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
 
