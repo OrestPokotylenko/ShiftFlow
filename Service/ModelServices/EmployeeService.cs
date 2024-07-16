@@ -61,15 +61,20 @@ namespace Service.ModelServices
             return await _employeeDao.GetEmployeeByEmailAsync(email);
         }
 
-        public async Task UpdateEmployeePasswordAsync(string employeeNumber, string password)
+        public async Task UpdateEmployeePasswordAsync(Employee employee, string password)
         {
             (string encryptedPassword, byte[] salt) = EncryptPassword(password);
-            await _employeeDao.UpdateEmployeePasswordAsync(employeeNumber, encryptedPassword, salt);
+            await _employeeDao.UpdateEmployeePasswordAsync(employee, encryptedPassword, salt);
         }
 
         public async Task WarmUp()
         {
             await _employeeDao.WarmUp();
+        }
+
+        public async Task UpdateEmployeeAsync(Employee employee)
+        {
+            await _employeeDao.UpdateEmployeeAsync(employee);
         }
     }
 }

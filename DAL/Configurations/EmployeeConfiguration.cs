@@ -15,12 +15,17 @@ namespace DAL.Configurations
             builder.Property(e => e.BirthDate).IsRequired();
             builder.Property(e => e.Email).IsRequired();
             builder.Property(e => e.PhoneNumber).IsRequired().HasMaxLength(15);
+            builder.Property(e => e.Address).IsRequired().HasMaxLength(100);
             builder.Property(e => e.HireDate).IsRequired();
             builder.Property(e => e.EmployeeNumber).IsRequired().HasMaxLength(8);
             builder.HasIndex(e => e.EmployeeNumber).IsUnique();
 
             builder.Property(e => e.Occupation)
                 .HasConversion(o => o.ToString(), o => (OccupationType)Enum.Parse(typeof(OccupationType), o))
+                    .IsRequired().HasMaxLength(25);
+
+            builder.Property(e => e.Contract)
+                .HasConversion(c => c.ToString(), c => (ContractType)Enum.Parse(typeof(ContractType), c))
                     .IsRequired().HasMaxLength(25);
 
             builder.Property<string>("_password").HasColumnName("Password").IsRequired().HasMaxLength(64);

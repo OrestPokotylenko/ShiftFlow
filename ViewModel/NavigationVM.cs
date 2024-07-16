@@ -1,5 +1,5 @@
-﻿using Service.ModelServices;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using ViewModel.Utilities;
 
 namespace ViewModel
 {

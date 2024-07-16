@@ -1,5 +1,6 @@
 ﻿using Messages;
 using Microsoft.IdentityModel.Tokens;
+using Model;
 using Service.ModelServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -72,7 +73,8 @@ namespace UI.Login
             }
 
             string employeeNumber = RetreiveEmployeeNumber(deepLink);
-            await employeeService.UpdateEmployeePasswordAsync(employeeNumber, txtPassword.Text);
+            Employee employee = employeeService.GetEmployeeByNumber(employeeNumber);
+            await employeeService.UpdateEmployeePasswordAsync(employee, txtPassword.Text);
             return true;
         }
 
