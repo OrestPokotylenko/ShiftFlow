@@ -39,21 +39,22 @@ namespace DAL
             return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
         }
 
-        public async Task UpdateEmployeePasswordAsync(string employeeNumber, string password, byte[] salt)
+        public async Task UpdateEmployeePasswordAsync(Employee employee, string password, byte[] salt)
         {
-            var employee = await GetEmployeeByNumberAsync(employeeNumber);
-
-            if (employee != null)
-            {
-                employee.SetPassword(password);
-                employee.SetSalt(salt);
-                await _context.SaveChangesAsync();
-            }
+            employee.SetPassword(password);
+            employee.SetSalt(salt);
+            await _context.SaveChangesAsync();
         }
 
         public async Task WarmUp()
         {
             await _context.Employees.FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateEmployeeAsync(Employee employee)
+        {
+            _context.Employees.Update(employee);
+            await _context.SaveChangesAsync();
         }
     }
 }

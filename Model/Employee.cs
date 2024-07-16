@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Model
 {
-    public class Employee(string firstName, string lastName, DateOnly birthDate, string email, string phoneNumber, OccupationType occupation, DateOnly hireDate, string employeeNumber, string password, byte[] salt)
+    public class Employee(string firstName, string lastName, DateOnly birthDate, string email, string phoneNumber, string address, OccupationType occupation, DateOnly hireDate, ContractType contract, string employeeNumber, string password, byte[] salt)
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EmployeeId { get; private set; }
         public string FirstName { get; private set; } = firstName;
         public string LastName { get; private set; } = lastName;
@@ -15,9 +14,10 @@ namespace Model
         public DateOnly BirthDate { get; private set; } = birthDate;
         public string Email { get; set; } = email;
         public string PhoneNumber { get; set; } = phoneNumber;
+        public string Address { get; set; } = address;
         public OccupationType Occupation { get; private set; } = occupation;
         public DateOnly HireDate { get; private set; } = hireDate;
-        [Required]
+        public ContractType Contract { get; private set; } = contract;
         public string EmployeeNumber { get; private set; } = employeeNumber;
 
         private string _password = password;

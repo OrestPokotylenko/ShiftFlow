@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace ViewModel
+namespace ViewModel.Utilities
 {
     class RelayCommand(Action<object> execute, Predicate<object>? canExecute = null) : ICommand
     {

@@ -36,7 +36,7 @@
                                 <TextBlock Text="Email address:"
                                            Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Text="{Binding}"
+                                <TextBlock Text="{Binding Email}"
                                            Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
@@ -52,10 +52,17 @@
                     <DockPanel x:Name="EmailDockPanel"
                                Style="{StaticResource DropDownDockStyle}">
 
+                        <TextBlock Text="New email:" 
+                                   Style="{StaticResource PlaceholderStyle}" />
+
+
                         <TextBox x:Name="txtEmail"
+                                 Text="{Binding EmailTemp}"
                                  Style="{StaticResource ChangeValueTextBoxStyle}" />
 
-                        <Button Style="{StaticResource ApplyButtonStyle}" />
+                        <Button Style="{StaticResource ApplyButtonStyle}" 
+                                Command="{Binding ChangeEmailCommand}"
+                                CommandParameter="{Binding Text, ElementName=txtEmail}" />
 
                     </DockPanel>
 
@@ -78,7 +85,7 @@
                                 <TextBlock Text="Phone number:"
                                            Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Text="{Binding}"
+                                <TextBlock Text="{Binding PhoneNumber}"
                                            Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
@@ -94,10 +101,64 @@
                     <DockPanel x:Name="NumberDockPanel"
                                Style="{StaticResource DropDownDockStyle}">
 
-                        <TextBox x:Name="txtPhoneNumber"
-                                 Style="{StaticResource ChangeValueTextBoxStyle}" />
+                        <TextBlock Text="New phone number:" 
+                                   Style="{StaticResource PlaceholderStyle}" />
 
-                        <Button Style="{StaticResource ApplyButtonStyle}" />
+                        <TextBox x:Name="txtPhoneNumber"
+                                 Style="{StaticResource ChangeValueTextBoxStyle}" 
+                                 Text="{Binding PhoneNumberTemp}" />
+
+                        <Button Style="{StaticResource ApplyButtonStyle}" 
+                                Command="{Binding ChangePhoneNumberCommand}"
+                                CommandParameter="{Binding Text, ElementName=txtPhoneNumber}" />
+
+                    </DockPanel>
+
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,100">
+
+                    <DockPanel>
+
+                        <Border Style="{StaticResource ProfileBorderStyle}"
+                                Margin="0">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Address:"
+                                           Style="{StaticResource PropertyNameStyle}" />
+
+                                <TextBlock Text="{Binding Address}"
+                                           Style="{StaticResource PropertyValueStyle}" />
+
+                            </Grid>
+
+                        </Border>
+
+                        <ToggleButton Style="{StaticResource DropDownButtonStyle}" 
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=AddressDockPanel}" />
+
+                    </DockPanel>
+
+                    <DockPanel x:Name="AddressDockPanel"
+                               Style="{StaticResource DropDownDockStyle}">
+
+                        <TextBlock Text="New address:" 
+                                   Style="{StaticResource PlaceholderStyle}" />
+
+                        <TextBox x:Name="txtAddress"
+                                 Style="{StaticResource ChangeValueTextBoxStyle}" 
+                                 Text="{Binding AddressTemp}" />
+
+                        <Button Style="{StaticResource ApplyButtonStyle}" 
+                                Command="{Binding ChangeAddressCommand}"
+                                CommandParameter="{Binding Text, ElementName=txtAddress}" />
 
                     </DockPanel>
 
@@ -120,7 +181,7 @@
                                 <TextBlock Text="Password:"
                                            Style="{StaticResource PropertyNameStyle}" />
 
-                                <TextBlock Text="{Binding}"
+                                <TextBlock Text="{Binding Password}"
                                            Style="{StaticResource PropertyValueStyle}" />
 
                             </Grid>
@@ -138,15 +199,26 @@
 
                         <StackPanel>
 
-                            <TextBox x:Name="txtPassword"
-                                     Style="{StaticResource ChangeValueTextBoxStyle}" />
+                            <TextBlock Text="New password:" 
+                                       Style="{StaticResource PlaceholderStyle}" />
 
-                            <PasswordBox x:Name="txtPasswordRepeat"
-                                         Style="{StaticResource ChangeValuePasswordBoxStyle}" />
+                            <TextBox x:Name="txtPassword"
+                                     Style="{StaticResource ChangeValueTextBoxStyle}" 
+                                     Text="{Binding PasswordReset, UpdateSourceTrigger=PropertyChanged}" />
+
+                            <TextBlock Text="Repeat password:" 
+                                       Style="{StaticResource PlaceholderStyle}"/>
+
+                            <TextBox x:Name="txtPasswordRepeat"
+                                         Style="{StaticResource ChangeValueTextBoxStyle}"
+                                         Text="{Binding PasswordConfirmation, UpdateSourceTrigger=PropertyChanged}" />
 
                         </StackPanel>
 
-                        <Button Style="{StaticResource ApplyButtonStyle}" />
+                        <Button Style="{StaticResource ApplyButtonStyle}"
+                                Margin="70,70,0,0"
+                                Command="{Binding ChangePasswordCommand}"
+                                IsEnabled="{Binding CorrectPassword}" />
 
                     </DockPanel>
 
@@ -164,7 +236,7 @@
                         <TextBlock Text="Full name:"
                                    Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Text="{Binding}"
+                        <TextBlock Text="{Binding FullName}"
                                    Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
@@ -183,7 +255,7 @@
                         <TextBlock Text="Employee number:"
                                    Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Text="{Binding}"
+                        <TextBlock Text="{Binding EmployeeNumber}"
                                    Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
@@ -202,7 +274,7 @@
                         <TextBlock Text="Occupation:"
                                    Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Text="{Binding}"
+                        <TextBlock Text="{Binding Occupation}"
                                    Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
@@ -221,7 +293,7 @@
                         <TextBlock Text="Contract type:"
                                    Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Text="{Binding}"
+                        <TextBlock Text="{Binding Contract}"
                                    Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>
@@ -241,7 +313,7 @@
                         <TextBlock Text="Employment start:"
                                    Style="{StaticResource PropertyNameStyle}" />
 
-                        <TextBlock Text="{Binding}"
+                        <TextBlock Text="{Binding HireDate}"
                                    Style="{StaticResource PropertyValueStyle}" />
 
                     </Grid>

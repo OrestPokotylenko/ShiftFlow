@@ -130,7 +130,7 @@
                 Value="40" />
 
         <Setter Property="VerticalAlignment"
-                Value="Top" />
+                Value="Center" />
 
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
@@ -181,7 +181,7 @@
                 Value="{StaticResource Color1}" />
 
         <Setter Property="Margin"
-                Value="70,50,0,0" />
+                Value="70,0,0,0" />
 
         <Style.Triggers>
 
@@ -262,51 +262,7 @@
                 Value="Nito Sans" />
 
         <Setter Property="Margin"
-                Value="80,50,0,0" />
-
-    </Style>
-
-    <Style x:Key="ChangeValuePasswordBoxStyle"
-       TargetType="PasswordBox">
-
-        <Setter Property="Template">
-
-            <Setter.Value>
-
-                <ControlTemplate TargetType="PasswordBox">
-
-                    <Border Background="{TemplateBinding Background}"
-                        Width="{TemplateBinding Width}"
-                        Height="{TemplateBinding Height}"
-                        CornerRadius="5"
-                        BorderBrush="Black"
-                        BorderThickness="1">
-
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                  VerticalAlignment="Center" />
-
-                    </Border>
-
-                </ControlTemplate>
-
-            </Setter.Value>
-
-        </Setter>
-
-        <Setter Property="Width"
-            Value="500" />
-
-        <Setter Property="Height"
-            Value="35" />
-
-        <Setter Property="FontSize"
-            Value="14" />
-
-        <Setter Property="FontFamily" 
-            Value="Nito Sans" />
-
-        <Setter Property="Margin"
-            Value="80,50,0,0" />
+                Value="80,0,0,0" />
 
     </Style>
 
@@ -348,6 +304,26 @@
 
         <Setter Property="Grid.Column"
                 Value="1" />
+
+    </Style>
+
+    <Style x:Key="PlaceholderStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="FontFamily" 
+                Value="Nito Sans" />
+
+        <Setter Property="FontSize" 
+                Value="14" />
+
+        <Setter Property="Height"
+                Value="20" />
+
+        <Setter Property="DockPanel.Dock"
+                Value="Top" />
+
+        <Setter Property="Margin"
+                Value="80,50,0,0" />
 
     </Style>
 
