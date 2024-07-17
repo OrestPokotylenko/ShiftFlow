@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Styles/HomeView.xaml" />
                 <ResourceDictionary Source="Styles/ProfileView.xaml" />
                 <ResourceDictionary Source="Styles/Animations.xaml" />
+                <ResourceDictionary Source="Styles/Settings.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
