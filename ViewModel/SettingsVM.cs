@@ -1,19 +1,33 @@
-﻿namespace ViewModel
+﻿using Model;
+using Service;
+
+namespace ViewModel
 {
     public class SettingsVM : BaseVM
     {
-        private bool _emailNotifications;
+        private readonly Settings _settings;
+        private readonly SettingsService _settingsService = new();
+
         public bool EmailNotifications
         {
-            get { return _emailNotifications; }
-            set { _emailNotifications = value; OnPropertyChanged(); }
+            get { return _settings.EmailNotifications; }
+            set { _settings.EmailNotifications = value; OnPropertyChanged();  UpdateSettings(); }
         }
 
-        private bool _pushNotifications;
         public bool PushNotifications
         {
-            get { return _pushNotifications; }
-            set { _pushNotifications = value; OnPropertyChanged(); }
+            get { return _settings.PushNotifications; ; }
+            set { _settings.PushNotifications = value; OnPropertyChanged(); UpdateSettings(); }
+        }
+
+        private void UpdateSettings()
+        {
+            _settingsService.SaveSettings(_settings);
+        }
+
+        public SettingsVM()
+        {
+            _settings = _settingsService.GetSettings();
         }
     }
 }

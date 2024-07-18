@@ -10,9 +10,9 @@
              mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:NavigationVM/>
+        <vm:NavigationVM />
     </UserControl.DataContext>
-
+    
     <Grid>
 
         <Grid.RowDefinitions>

@@ -8,7 +8,7 @@
              mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:SettingsVM/>
+        <vm:SettingsVM />
     </UserControl.DataContext>
 
     <Grid Background="{StaticResource Color3}">
@@ -55,8 +55,7 @@
                                 <TextBlock Text="Email Notifications" 
                                            Style="{StaticResource SettingsLeftTextBlock}" />
 
-                                <ToggleButton Grid.Column="1" 
-                                              Style="{StaticResource SettingsToggleButton}"
+                                <ToggleButton Style="{StaticResource SettingsToggleButton}"
                                               IsChecked="{Binding EmailNotifications, Mode=TwoWay}" />
 
                             </Grid>
@@ -75,8 +74,7 @@
                                 <TextBlock Text="Push Notifiactions" 
                                            Style="{StaticResource SettingsLeftTextBlock}" />
 
-                                <ToggleButton Grid.Column="1" 
-                                              Style="{StaticResource SettingsToggleButton}" 
+                                <ToggleButton Style="{StaticResource SettingsToggleButton}" 
                                               IsChecked="{Binding PushNotifications, Mode=TwoWay}" />
 
                             </Grid>

@@ -34,6 +34,9 @@
         <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
+        <Setter Property="Grid.Column"
+                Value="1" />
+
         <Setter Property="Margin"
                 Value="0,0,10,0" />
 
