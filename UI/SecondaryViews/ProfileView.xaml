@@ -55,7 +55,6 @@
                         <TextBlock Text="New email:" 
                                    Style="{StaticResource PlaceholderStyle}" />
 
-
                         <TextBox x:Name="txtEmail"
                                  Text="{Binding EmailTemp}"
                                  Style="{StaticResource ChangeValueTextBoxStyle}" />

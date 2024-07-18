@@ -8,14 +8,155 @@
              mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:SettingsVM/>
+        <vm:SettingsVM />
     </UserControl.DataContext>
 
     <Grid Background="{StaticResource Color3}">
 
-        <TextBlock Text="Settings" 
-                   Style="{StaticResource StandardHeader}" />
+        <StackPanel Width="850"
+                    Margin="50,50,0,0">
+
+            <StackPanel Margin="0,0,0,100">
+
+                <Border Style="{StaticResource SettingsBorder}">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Notifications"
+                                   Style="{StaticResource PropertyNameStyle}" />
+
+                        <ToggleButton Style="{StaticResource SettingsDropDownStyle}"
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=NotificationsDockPanel}" />
+
+                    </Grid>
+
+                </Border>
+
+                <Border Margin="50,0,0,0">
+
+                    <DockPanel x:Name="NotificationsDockPanel"
+                               Style="{StaticResource DropDownDockStyle}">
+
+                        <Border Style="{StaticResource SettingsSettingBorderStyle}">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Email Notifications" 
+                                           Style="{StaticResource SettingsLeftTextBlock}" />
+
+                                <ToggleButton Style="{StaticResource SettingsToggleButton}"
+                                              IsChecked="{Binding EmailNotifications, Mode=TwoWay}" />
+
+                            </Grid>
+
+                        </Border>
+
+                        <Border Style="{StaticResource SettingsSettingBorderStyle}">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Push Notifiactions" 
+                                           Style="{StaticResource SettingsLeftTextBlock}" />
+
+                                <ToggleButton Style="{StaticResource SettingsToggleButton}" 
+                                              IsChecked="{Binding PushNotifications, Mode=TwoWay}" />
+
+                            </Grid>
+
+                        </Border>
+
+                    </DockPanel>
+
+                </Border>
+
+                <Border Style="{StaticResource SettingsBorder}"
+                        Margin="0,50,0,0">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Contact Information"
+                                   Style="{StaticResource PropertyNameStyle}" />
+
+                        <ToggleButton Style="{StaticResource SettingsDropDownStyle}"
+                                      Click="DropDown_Click"
+                                      Tag="{Binding ElementName=ContactDockPanel}" />
+
+                    </Grid>
+
+                </Border>
+
+                <Border Margin="50,0,0,0">
+
+                    <DockPanel x:Name="ContactDockPanel"
+                                Style="{StaticResource DropDownDockStyle}">
+
+                        <Border Style="{StaticResource SettingsSettingBorderStyle}">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Email:" 
+                                           Style="{StaticResource SettingsLeftTextBlock}" />
+
+                                <TextBlock Text="test@gmail.com"
+                                           Style="{StaticResource SettingsRightTextBlock}" />
+
+                            </Grid>
+
+                        </Border>
+
+                        <Border Style="{StaticResource SettingsSettingBorderStyle}">
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="Phone Number" 
+                                           Style="{StaticResource SettingsLeftTextBlock}" />
+
+                                <TextBlock Text="0645527030"
+                                           Style="{StaticResource SettingsRightTextBlock}" />
+                                
+                            </Grid>
+
+                        </Border>
+
+                    </DockPanel>
+
+                </Border>
+
+            </StackPanel>
+
+        </StackPanel>
 
     </Grid>
-    
+
 </UserControl>
