@@ -1,0 +1,142 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="TPListBoxStyle"
+           TargetType="ListBox">
+
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Hidden" />
+
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
+
+        <Setter Property="ScrollViewer.Focusable"
+                Value="False" />
+
+        <Setter Property="Height"
+                Value="150" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+        <Setter Property="Background"
+                Value="Transparent" />
+
+        <Setter Property="BorderThickness"
+                Value="0" />
+
+    </Style>
+
+    <Style x:Key="TPListBoxItemStyle"
+           TargetType="ListBoxItem">
+
+        <Setter Property="Template">
+            
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="ListBoxItem">
+
+                    <Border Name="Border" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center" />
+
+                    </Border>
+                    
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+
+                            <MultiTrigger.Conditions>
+
+                                <Condition Property="IsSelected"
+                                           Value="False" />
+
+                                <Condition Property="IsMouseOver"
+                                           Value="True" />
+
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Background"
+                                    Value="{StaticResource Color3}" />
+
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsSelected" 
+                                 Value="True">
+                            
+                            <Setter TargetName="Border" 
+                                    Property="Background" 
+                                    Value="{StaticResource Color7}" />
+                            
+                        </Trigger>
+                        
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+                
+            </Setter.Value>
+            
+        </Setter>
+
+        <Setter Property="FontFamily"
+                Value="Nito Sans" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="Width"
+                Value="50" />
+
+        <Setter Property="Height"
+                Value="50" />
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+    </Style>
+
+    <Style x:Key="TPBorderStyle"
+           TargetType="Border">
+
+        <Setter Property="Width"
+                Value="40" />
+
+        <Setter Property="Height"
+                Value="40" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+    </Style>
+
+    <Style x:Key="TPTextBlockStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Center" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+        <Setter Property="Text"
+                Value="{Binding}" />
+
+    </Style>
+
+</ResourceDictionary>
