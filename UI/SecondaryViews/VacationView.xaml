@@ -5,16 +5,180 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.SecondaryViews" 
              xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+             xmlns:tp="clr-namespace:UI.Controls"
              mc:Ignorable="d">
-    
+
     <UserControl.DataContext>
         <vm:VacationVM/>
     </UserControl.DataContext>
-    
-    <Grid Background="{StaticResource Color3}">
-        
-        <TextBlock Text="Vacation" 
-                   Style="{StaticResource StandardHeader}" />
-        
+
+    <Grid Background="{StaticResource Color3}"
+          Width="800"
+          Margin="0,50,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource PlaceholderBorderStyle}"
+                Grid.Row="0"
+                Margin="0,0,0,50">
+
+            <DockPanel>
+
+                <TextBlock Text="All day"
+                           Style="{StaticResource VacationLeftTextBlockStyle}" />
+
+                <ToggleButton Style="{StaticResource SettingsToggleButton}" 
+                              DockPanel.Dock="Right"
+                              IsChecked="{Binding DayOff}" />
+
+            </DockPanel>
+
+        </Border>
+
+        <Grid Style="{StaticResource TimeGridStyle}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Style="{StaticResource PlaceholderBorderStyle}"
+                    Grid.Row="0">
+
+                <DockPanel>
+
+                    <TextBlock Text="Time"
+                               Style="{StaticResource VacationLeftTextBlockStyle}" />
+
+                    <Grid>
+
+                        <StackPanel Style="{StaticResource TimeStackPanelStyle}">
+
+                            <Button Style="{StaticResource OpenCalendarButtonStyle}" 
+                                    Command="{Binding DayOffStartTimeCommand}">
+
+                                <TextBlock Text="{Binding SelectedTimeStart, StringFormat='{}{0:hh\\:mm}'}" />
+
+                            </Button>
+
+                            <TextBlock Style="{StaticResource VacationDashStyle}"/>
+
+                            <Button Style="{StaticResource OpenCalendarButtonStyle}"
+                                    Command="{Binding DayOffEndTimeCommand}"
+                                    Margin="0,0,10,0">
+
+                                <TextBlock Text="{Binding SelectedTimeEnd, StringFormat='{}{0:hh\\:mm}'}" />
+
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </DockPanel>
+
+            </Border>
+
+            <tp:TimePicker SelectedTime="{Binding SelectedTimeStart, Mode=TwoWay}"
+                           Style="{StaticResource TimePickerStyle}"
+                           Tag="{Binding DayOffStartOpen}" />
+
+            <tp:TimePicker SelectedTime="{Binding SelectedTimeEnd, Mode=TwoWay}"
+                           Style="{StaticResource TimePickerStyle}"
+                           Tag="{Binding DayOffEndOpen}" />
+
+        </Grid>
+
+        <Border Style="{StaticResource PlaceholderBorderStyle}"
+                Grid.Row="2">
+
+            <DockPanel>
+
+                <TextBlock Text="Date"
+                           Style="{StaticResource VacationLeftTextBlockStyle}" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Style="{StaticResource DateStackPanelStyle}" 
+                                Grid.Column="1">
+
+                        <Button Style="{StaticResource OpenCalendarButtonStyle}" 
+                                Command="{Binding StartDateCalendarCommand}">
+
+                            <TextBlock Text="{Binding VacationStartDate, StringFormat='{}{0:dd MMMM}'}" />
+
+                        </Button>
+
+                        <TextBlock Style="{StaticResource VacationDashStyle}" />
+
+                        <Button Style="{StaticResource OpenCalendarButtonStyle}"
+                                Command="{Binding EndDateCallendarCommand}"
+                                Margin="0,0,10,0">
+
+                            <TextBlock Text="{Binding VacationEndDate, StringFormat='{}{0:dd MMMM}'}" />
+
+                        </Button>
+
+                    </StackPanel>
+
+                    <Button Style="{StaticResource DayOffButtonStyle}" 
+                            Command="{Binding DayOffCalendarCommand}" 
+                            Grid.Column="1">
+
+                        <TextBlock Text="{Binding DayOffDate, StringFormat='{}{0:dd MMMM}'}" />
+
+                    </Button>
+
+                </Grid>
+
+            </DockPanel>
+
+        </Border>
+
+        <Calendar x:Name="DayOffCalendar"
+                  Style="{StaticResource CallendarStyle}"
+                  Tag="{Binding DayOffCallendarOpen}" 
+                  SelectedDate="{Binding DayOffDate}" />
+
+        <Calendar x:Name="VacationStartDate"
+                  Style="{StaticResource CallendarStyle}"
+                  Tag="{Binding VacationStartDateOpen}"
+                  SelectedDate="{Binding VacationStartDate}" />
+
+        <Calendar x:Name="VacationEndDate"
+                  Style="{StaticResource CallendarStyle}"
+                  Tag="{Binding VacationEndDateOpen}"
+                  SelectedDate="{Binding VacationEndDate}" />
+
+        <Border Grid.Row="4"
+                Style="{StaticResource PlaceholderBorderStyle}"
+                Margin="0,50,0,0">
+
+            <DockPanel>
+
+                <TextBlock Text="Note"
+                           Style="{StaticResource VacationLeftTextBlockStyle}" />
+
+                <TextBox x:Name="txtReason"
+                         Style="{StaticResource VacationTextBoxStyle}" />
+
+            </DockPanel>
+            
+        </Border>
+
+        <Button Style="{StaticResource VacationSubmitbuttonStyle}" />
+
     </Grid>
+
 </UserControl>
