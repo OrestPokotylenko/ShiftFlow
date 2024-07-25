@@ -14,6 +14,7 @@ namespace DAL.Configurations
             builder.Property(r => r.StartDate).IsRequired(false);
             builder.Property(r => r.EndDate).IsRequired(false); 
             builder.Property(r => r.RequestDate).IsRequired();
+            builder.Property(r => r.Note).IsRequired(false).HasMaxLength(100);
             builder.Property(r => r.Approved).IsRequired(false);
 
             builder.Property(r => r.RequestType)

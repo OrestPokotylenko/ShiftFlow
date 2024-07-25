@@ -138,6 +138,10 @@ namespace DAL.Migrations
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Note")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
@@ -185,34 +189,6 @@ namespace DAL.Migrations
                     b.ToTable("Shifts");
                 });
 
-            modelBuilder.Entity("Model.Vacation", b =>
-                {
-                    b.Property<int>("VacationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VacationId"));
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Note")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("VacationId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Vacations");
-                });
-
             modelBuilder.Entity("Model.DeepLink", b =>
                 {
                     b.HasOne("Model.Employee", "Employee")
@@ -236,17 +212,6 @@ namespace DAL.Migrations
                 });
 
             modelBuilder.Entity("Model.Shift", b =>
-                {
-                    b.HasOne("Model.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("Model.Vacation", b =>
                 {
                     b.HasOne("Model.Employee", "Employee")
                         .WithMany()
