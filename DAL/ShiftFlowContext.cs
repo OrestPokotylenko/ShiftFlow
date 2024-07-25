@@ -27,7 +27,7 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new DeepLinkConfiguration());
             modelBuilder.ApplyConfiguration(new ShiftConfiguration());
-            modelBuilder.ApplyConfiguration(new ShiftConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestConfiguration());
         }
     }
 }
