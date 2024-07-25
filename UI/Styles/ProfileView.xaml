@@ -168,8 +168,8 @@
             
         </Setter>
 
-            <Setter Property="Content" 
-                    Value="Apply" />
+        <Setter Property="Content" 
+                Value="Apply" />
 
         <Setter Property="Width"
                 Value="100" />
@@ -198,9 +198,6 @@
 
                 <Setter Property="Background" 
                         Value="{StaticResource Color7}" />
-
-                <Setter Property="Foreground" 
-                        Value="{StaticResource Color1}" />
 
                 <Setter Property="Effect">
                     
