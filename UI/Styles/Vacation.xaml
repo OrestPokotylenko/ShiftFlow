@@ -82,7 +82,7 @@
 
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding DayOff}" 
+            <DataTrigger Binding="{Binding FullDay}" 
                          Value="True">
 
                 <Setter Property="Visibility" 
@@ -123,7 +123,7 @@
 
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding DayOff}"
+            <DataTrigger Binding="{Binding FullDay}"
                          Value="False">
 
                 <Setter Property="Visibility"
@@ -239,7 +239,7 @@
 
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding DayOff}"
+            <DataTrigger Binding="{Binding FullDay}"
                          Value="False">
 
                 <Setter Property="Visibility"
@@ -324,7 +324,7 @@
                 Value="Submit" />
 
         <Setter Property="Grid.Row"
-                Value="5" />
+                Value="6" />
 
         <Setter Property="Background"
                 Value="{StaticResource Color1}" />
@@ -467,6 +467,26 @@
 
         <Setter Property="Margin"
                 Value="30,0,30,0" />
+
+    </Style>
+
+    <Style x:Key="VacationErrorMessageTextBlockStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="Foreground"
+                Value="Red" />
+
+        <Setter Property="Text"
+                Value="{Binding ErrorMessage}" />
+
+        <Setter Property="FontFamily"
+                Value="Nito Sans" />
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="Margin"
+                Value="0,10,0,0" />
 
     </Style>
 

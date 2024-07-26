@@ -6,5 +6,6 @@ namespace ViewModel.Utilities
     {
         Task ExecuteAsync(object parameter);
         bool CanExecute(object parameter);
+        void RaiseCanExecuteChanged();
     }
 }
