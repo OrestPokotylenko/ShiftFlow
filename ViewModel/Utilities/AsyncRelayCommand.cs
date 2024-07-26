@@ -1,6 +1,6 @@
 ﻿namespace ViewModel.Utilities
 {
-    internal class AsyncRelayCommand(Func<object, Task> execute, Func<object, bool> canExecute = null) : ICommandAsync
+    class AsyncRelayCommand(Func<object, Task> execute, Func<object, bool> canExecute = null) : ICommandAsync
     {
         private readonly Func<object, Task> _execute = execute;
         private readonly Func<object, bool> _canExecute = canExecute;
@@ -30,5 +30,7 @@
                 }
             }
         }
+
+        public void RaiseCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
     }
 }
