@@ -95,5 +95,115 @@
                 Value="Left" />
         
     </Style>
-    
+
+    <Style x:Key="StandardButtonStyle"
+       TargetType="Button">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border BorderBrush="{StaticResource ColorBlack}"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="1"
+                            CornerRadius="10">
+
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="FontFamily"
+                Value="Nito Sans" />
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Setter Property="Width"
+                Value="150" />
+
+        <Setter Property="Height"
+                Value="40" />
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color2}" />
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color7}" />
+
+                <Setter Property="Effect">
+
+                    <Setter.Value>
+
+                        <DropShadowEffect Color="Black"
+                                          Direction="300"
+                                          ShadowDepth="5"
+                                          BlurRadius="5"
+                                          Opacity="0.5" />
+
+                    </Setter.Value>
+
+                </Setter>
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="StandardWrapBorderStyle" 
+           TargetType="Border">
+
+        <Setter Property="BorderBrush" 
+                Value="Black" />
+
+        <Setter Property="BorderThickness"
+                Value="1" />
+
+        <Setter Property="CornerRadius"
+                Value="10" />
+
+        <Setter Property="Margin"
+                Value="0,0,0,50" />
+
+    </Style>
+
+    <Style x:Key="StandardPlaceholderBorderStyle"
+           TargetType="Border">
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Setter Property="BorderBrush"
+                 Value="Black" />
+
+        <Setter Property="BorderThickness"
+                 Value="1" />
+
+        <Setter Property="CornerRadius"
+                 Value="10" />
+
+    </Style>
+
 </ResourceDictionary>

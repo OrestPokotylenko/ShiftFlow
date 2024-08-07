@@ -130,7 +130,7 @@ namespace ViewModel
         private void GetWeekShifts()
         {
             DateTime startDate = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
-            ShiftsForWeek = new ObservableCollection<Shift>(shiftService.GetShiftsForWeek(1, startDate));
+            ShiftsForWeek = new(shiftService.GetShiftsForWeek(1, startDate));
 
             if (ShiftsForWeek.Count == 0)
             {

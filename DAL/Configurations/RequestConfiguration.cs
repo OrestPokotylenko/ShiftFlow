@@ -11,6 +11,7 @@ namespace DAL.Configurations
             builder.HasKey(r => r.RequestId);
             builder.Property(r => r.RequestId).ValueGeneratedOnAdd();
             builder.Property(r => r.EmployeeId).IsRequired();
+            builder.Property(r => r.ShiftId).IsRequired(false);
             builder.Property(r => r.StartDate).IsRequired(false);
             builder.Property(r => r.EndDate).IsRequired(false); 
             builder.Property(r => r.RequestDate).IsRequired();
@@ -25,6 +26,11 @@ namespace DAL.Configurations
                 .WithMany()
                 .HasForeignKey(r => r.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(r => r.Shift)
+                .WithMany()
+                .HasForeignKey(r => r.ShiftId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

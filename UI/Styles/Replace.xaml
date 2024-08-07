@@ -1,0 +1,127 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ReplaceShiftButtonStyle" 
+           TargetType="Button">
+        
+        <Setter Property="Template">
+            
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="Button">
+                    
+                    <Grid Width="420" 
+                          Height="90">
+                        
+                        <Border Style="{StaticResource HomeViewBorderTemplateStyle}" 
+                                Background="{TemplateBinding Background}" />
+                        
+                        <TextBlock Text="{Binding StartEndTime}" 
+                                   Style="{StaticResource StandardHeader}"
+                                   HorizontalAlignment="Left"
+                                   Margin="30,0,0,20" />
+                        
+                        <TextBlock Text="{Binding BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}"
+                                   Style="{StaticResource HomeViewLeftSecondHederStyle}"
+                                   Margin="30,35,0,0" />
+                        
+                        <TextBlock Text="{Binding DepartmentType}"
+                                   Style="{StaticResource StandardHeader}" 
+                                   HorizontalAlignment="Right"
+                                   Margin="0,0,30,0" />
+                        
+                    </Grid>
+                    
+                </ControlTemplate>
+                
+            </Setter.Value>
+            
+        </Setter>
+
+        <Setter Property="Margin"
+                Value="0,0,30,0" />
+
+        <Setter Property="Background"
+                Value="{StaticResource Color1}" />
+
+        <Style.Triggers>
+
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color5}" />
+
+            </Trigger>
+
+            <Trigger Property="IsPressed"
+                     Value="True">
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color7}" />
+
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="ReplaceButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource StandardButtonStyle}">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Margin"
+                Value="0,0,30,0" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding DataContext.RequestSent, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                         Value="True">
+
+                <Setter Property="ContentTemplate">
+                    
+                    <Setter.Value>
+                        
+                        <DataTemplate>
+                            
+                            <Image Source="{StaticResource OkIcon}" 
+                                   Width="25"
+                                   Height="25"
+                                   HorizontalAlignment="Center" />
+
+                        </DataTemplate>
+                        
+                    </Setter.Value>
+                    
+                </Setter>
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color7}" />
+
+                <Setter Property="IsEnabled"
+                        Value="False" />
+
+            </DataTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="ReplaceScrollViewerStyle"
+           TargetType="ScrollViewer">
+
+        <Setter Property="HorizontalScrollBarVisibility"
+                Value="Auto" />
+
+        <Setter Property="VerticalScrollBarVisibility"
+                Value="Disabled" />
+
+        <Setter Property="Width"
+                Value="950" />
+
+    </Style>
+
+</ResourceDictionary>

@@ -1,10 +1,12 @@
 ﻿namespace Model
 {
-    public class Request(int employeeId, RequestType requestType, DateOnly requestDate, DateTime? startDate = null, DateTime? endDate = null, string? note = null, bool? approved = null, int? requestId = null)
+    public class Request(int employeeId, RequestType requestType, DateOnly requestDate, DateTime? startDate = null, DateTime? endDate = null, string? note = null, int? shiftId = null, bool? approved = null, int? requestId = null)
     {
         public int? RequestId { get; private set; } = requestId;
         public int EmployeeId { get; private set; } = employeeId;
         public virtual Employee? Employee { get; private set; }
+        public int? ShiftId { get; private set; } = shiftId;
+        public virtual Shift? Shift { get; private set; }
         public RequestType RequestType { get; private set; } = requestType;
         public DateTime? StartDate { get; private set; } = startDate;
         public DateTime? EndDate { get; private set; } = endDate;

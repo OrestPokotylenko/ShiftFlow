@@ -25,7 +25,7 @@
                 Value="Left" />
 
         <Setter Property="Margin"
-                Value="50,0,0,0" />
+                Value="50,0,50,0" />
 
     </Style>
 

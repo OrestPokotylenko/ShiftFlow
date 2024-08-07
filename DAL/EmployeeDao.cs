@@ -56,5 +56,27 @@ namespace DAL
             _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
         }
+
+        private static Func<ShiftFlowContext, Employee, DateTime, DateTime, IEnumerable<Employee>> CompiledFreeEmployee =
+            EF.CompileQuery((
+                ShiftFlowContext context, Employee employee, DateTime startTime, DateTime endTime) => context
+                    .Employees.AsNoTracking()
+                    .Where(e => e.Occupation == employee.Occupation
+                    && !context.Shifts
+                    .Any(s => s.EmployeeId == e.EmployeeId && s.StartTime >= startTime && s.StartTime < endTime)));
+
+        public List<Employee>? GetFreeEmployees(Employee employee, DateTime startTime, DateTime endTime)
+        {
+            var employees = _context.Employees
+                .Where(e => e.Occupation == employee.Occupation)
+                .ToList();
+
+            var freeEmployees = employees
+                .Where(e => !_context.Shifts
+                    .Any(s => s.EmployeeId == e.EmployeeId && s.StartTime >= startTime && s.StartTime < endTime))
+                .ToList();
+
+            return freeEmployees;
+        }
     }
 }
