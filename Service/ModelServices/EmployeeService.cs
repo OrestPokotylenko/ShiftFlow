@@ -76,5 +76,10 @@ namespace Service.ModelServices
         {
             await _employeeDao.UpdateEmployeeAsync(employee);
         }
+
+        public List<Employee>? GetFreeEmployees(Employee employee, DateTime startTime, DateTime endTime)
+        {
+            return _employeeDao.GetFreeEmployees(employee, startTime, endTime);
+        }
     }
 }

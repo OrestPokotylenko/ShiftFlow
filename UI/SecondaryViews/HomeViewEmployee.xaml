@@ -75,7 +75,7 @@
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
                         <TextBlock Text="Upcoming shifts" 
-                           Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
 
                         <ScrollViewer HorizontalScrollBarVisibility="Auto"
                                       VerticalScrollBarVisibility="Disabled"
@@ -122,7 +122,7 @@
                                                 <TextBlock Text="{Binding DepartmentType}"
                                                         Style="{StaticResource StandardHeader}" 
                                                         HorizontalAlignment="Right"
-                                                        Margin="0,0,30,0"/>
+                                                        Margin="0,0,30,0" />
 
                                             </Grid>
 

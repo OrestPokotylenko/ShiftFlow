@@ -4,8 +4,11 @@
              xmlns:local="clr-namespace:UI">
 
     <Application.Resources>
+        
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
+                
                 <ResourceDictionary Source="Styles/Global.xaml" />
                 <ResourceDictionary Source="Styles/Login.xaml" />
                 <ResourceDictionary Source="Styles/Main.xaml" />
@@ -17,7 +20,12 @@
                 <ResourceDictionary Source="Styles/Settings.xaml" />
                 <ResourceDictionary Source="Styles/Vacation.xaml" />
                 <ResourceDictionary Source="Styles/Controls.xaml" />
+                <ResourceDictionary Source="Styles/Replace.xaml" />
+                
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
+        
     </Application.Resources>
+    
 </Application>
