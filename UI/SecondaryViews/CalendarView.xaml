@@ -4,17 +4,115 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.SecondaryViews" 
-             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel" 
+             xmlns:converter="clr-namespace:UI.Utilities"
              mc:Ignorable="d">
 
     <UserControl.DataContext>
         <vm:CalendarVM/>
     </UserControl.DataContext>
 
-    <Grid Background="{StaticResource Color3}">
-        <TextBlock Text="Calendar" 
-                   Style="{StaticResource StandardHeader}" 
-                   Margin="0,50,0,40" />
+    <Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+
+            <Grid Background="{StaticResource Color3}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Style="{StaticResource CalendarMonthStackPanelStyle}">
+
+                    <Button Style="{StaticResource CalendarChangeMonthButtonStyle}" 
+                            Tag="-1"
+                            Command="{Binding GetPreviousMonthCommand}"
+                            CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}">
+
+                        <Image Source="{StaticResource ArrowUpIcon}" 
+                               Style="{StaticResource CalendarImageStyle}" />
+
+                    </Button>
+
+                    <TextBlock Text="{Binding CurrentDate, StringFormat={}{0:MMM yyyy}}" 
+                               Style="{StaticResource CalendarMonthStyle}" />
+
+                    <Button Style="{StaticResource CalendarChangeMonthButtonStyle}"
+                            Tag="1"
+                            Command="{Binding GetNextMonthCommand}"
+                            CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}">
+
+                        <Image Source="{StaticResource ArrowDownIcon}" 
+                               Style="{StaticResource CalendarImageStyle}" />
+                        
+                    </Button>
+
+                </StackPanel>
+
+                <UniformGrid Grid.Row="1" 
+                             Style="{StaticResource CalendarUGridStyle}">
+
+                    <TextBlock Text="Sun" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Mon" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Tue" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Wed" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Thu" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Fri" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Sat" 
+                               HorizontalAlignment="Center" />
+
+                </UniformGrid>
+
+                <ItemsControl Grid.Row="2" 
+                              ItemsSource="{Binding DaysOfMonth}"
+                              Margin="0,0,0,50">
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+
+                            <UniformGrid Columns="7" 
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top" />
+
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Button Style="{StaticResource CalendarFieldStyle}"
+                                    Command="{Binding DataContext.DayCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    Tag="{Binding DataContext.IsEmptyField, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    Visibility="{Binding Converter={StaticResource VisibilityNullValueConverter}}" />
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </Grid>
+
+        </ScrollViewer>
+
     </Grid>
-    
+
 </UserControl>
