@@ -16,5 +16,10 @@ namespace Service.ModelServices
         {
             await requestDao.AddRequestAsync(request);
         }
+
+        public Request? GetVacationForToday(int employeeId, DateTime today)
+        {
+            return requestDao.GetVacationForToday(employeeId, today);
+        }
     }
 }

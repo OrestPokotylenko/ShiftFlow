@@ -47,6 +47,60 @@
 
     </Style>
 
+    <Style x:Key="CalendarPopUpMarkStyle"
+           TargetType="Border">
+        
+        <Setter Property="Width"
+                Value="10" />
+
+        <Setter Property="Height"
+                Value="80" />
+
+        <Setter Property="CornerRadius"
+                Value="5" />
+
+        <Setter Property="Background"
+                Value="Transparent" />
+
+        <Setter Property="Margin"
+                Value="-5,0,30,0" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding SelectedDay.HasShift}"
+                         Value="True">
+
+                <Setter Property="Background"
+                        Value="Gray" />
+
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding SelectedDay.HasVacation}"
+                         Value="True">
+
+                <Setter Property="Background"
+                        Value="LightGreen" />
+
+            </DataTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="CalendarPopUpTimeStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="FontFamily"
+                Value="Nito Sans" />
+
+        <Setter Property="FontSize"
+                Value="24" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+    </Style>
+
     <Style x:Key="CalendarDateStyle"
            TargetType="TextBlock">
 
@@ -166,9 +220,9 @@
                     <Setter.Value>
 
                         <DropShadowEffect ShadowDepth="4"
-                          BlurRadius="5"
-                          Color="Black"
-                          Opacity="0.3" />
+                                          BlurRadius="5"
+                                          Color="Black"
+                                          Opacity="0.3" />
 
                     </Setter.Value>
 
@@ -245,6 +299,150 @@
 
         <Setter Property="Margin"
                 Value="0,10,0,10" />
+
+    </Style>
+
+    <Style x:Key="CalendarPopUpStyle"
+           TargetType="Popup">
+        
+        <Setter Property="Width"
+                Value="400" />
+
+        <Setter Property="Height"
+                Value="500" />
+
+        <Setter Property="Placement"
+                Value="Center" />
+                
+    </Style>
+
+    <Style x:Key="CalendarCloseButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource StandardButtonStyle}">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource ColorBlack}"
+                            BorderThickness="1">
+
+                        <Image Source="{StaticResource XIcon}"
+                               Width="20"
+                               Height="20" />
+
+                    </Border>
+                    
+                </ControlTemplate>
+                
+            </Setter.Value>
+            
+        </Setter>
+
+        <Setter Property="Width"
+                Value="25" />
+
+        <Setter Property="Height"
+                Value="25" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Margin"
+                Value="0,10,10,0" />
+
+    </Style>
+
+    <Style x:Key="CalendarTextBlockStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="FontFamily"
+                Value="Nito Sans" />
+
+        <Setter Property="FontSize"
+                Value="20" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+        <Setter Property="Margin"
+                Value="0,0,50,0" />
+
+    </Style>
+
+    <Style x:Key="CalendarPopoUpVacationGridStyle"
+           TargetType="Grid">
+
+        <Setter Property="Grid.Column"
+                Value="1" />
+
+        <Setter Property="Visibility"
+                Value="Collapsed" />
+
+        <Setter Property="Margin"
+                Value="0,0,0,15" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding SelectedDay.HasVacation}"
+                         Value="True">
+
+                <Setter Property="Visibility"
+                        Value="Visible" />
+
+            </DataTrigger>
+            
+        </Style.Triggers>
+        
+    </Style>
+
+    <Style x:Key="CalendarPopUpButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource StandardButtonStyle}">
+
+        <Setter Property="Content"
+                Value="Available" />
+
+        <Setter Property="Width"
+                Value="200" />
+
+        <Setter Property="Margin"
+                Value="0,250,0,0" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding RequestSent}"
+                         Value="True">
+
+                <Setter Property="ContentTemplate">
+
+                    <Setter.Value>
+
+                        <DataTemplate>
+
+                            <Image Source="{StaticResource OkIcon}" 
+                                   Width="25"
+                                   Height="25"
+                                   HorizontalAlignment="Center" />
+
+                        </DataTemplate>
+
+                    </Setter.Value>
+
+                </Setter>
+
+                <Setter Property="Background"
+                        Value="{StaticResource Color7}" />
+
+                <Setter Property="IsEnabled"
+                        Value="False" />
+
+            </DataTrigger>
+
+        </Style.Triggers>
 
     </Style>
 
