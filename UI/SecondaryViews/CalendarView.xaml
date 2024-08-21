@@ -4,17 +4,196 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.SecondaryViews" 
-             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel" 
+             xmlns:converter="clr-namespace:UI.Utilities"
              mc:Ignorable="d">
 
     <UserControl.DataContext>
         <vm:CalendarVM/>
     </UserControl.DataContext>
 
-    <Grid Background="{StaticResource Color3}">
-        <TextBlock Text="Calendar" 
-                   Style="{StaticResource StandardHeader}" 
-                   Margin="0,50,0,40" />
+    <Grid>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+
+            <Grid Background="{StaticResource Color3}">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Style="{StaticResource CalendarMonthStackPanelStyle}">
+
+                    <Button Style="{StaticResource CalendarChangeMonthButtonStyle}" 
+                            Tag="-1"
+                            Command="{Binding GetPreviousMonthCommand}"
+                            CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}">
+
+                        <Image Source="{StaticResource ArrowUpIcon}" 
+                               Style="{StaticResource CalendarImageStyle}" />
+
+                    </Button>
+
+                    <TextBlock Text="{Binding CurrentDate, StringFormat={}{0:MMM yyyy}}" 
+                               Style="{StaticResource CalendarMonthStyle}" />
+
+                    <Button Style="{StaticResource CalendarChangeMonthButtonStyle}"
+                            Tag="1"
+                            Command="{Binding GetNextMonthCommand}"
+                            CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}">
+
+                        <Image Source="{StaticResource ArrowDownIcon}" 
+                               Style="{StaticResource CalendarImageStyle}" />
+
+                    </Button>
+
+                </StackPanel>
+
+                <UniformGrid Grid.Row="1" 
+                             Style="{StaticResource CalendarUGridStyle}">
+
+                    <TextBlock Text="Sun" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Mon" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Tue" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Wed" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Thu" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Fri" 
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="Sat" 
+                               HorizontalAlignment="Center" />
+
+                </UniformGrid>
+
+                <ItemsControl Grid.Row="2" 
+                              ItemsSource="{Binding DaysOfMonth}"
+                              Margin="0,0,0,50">
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+
+                            <UniformGrid Columns="7" 
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Top" />
+
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Button Style="{StaticResource CalendarFieldStyle}"
+                                    Visibility="{Binding Converter={StaticResource VisibilityNullValueConverter}}"
+                                    Command="{Binding DataContext.OpenPopUpCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                    CommandParameter="{Binding}" />
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+                <Popup IsOpen="{Binding IsPopUpOpen}"
+                       Style="{StaticResource CalendarPopUpStyle}">
+
+                    <Border Background="{StaticResource Color3}"
+                            BorderBrush="{StaticResource Color1}"
+                            BorderThickness="2"
+                            CornerRadius="5">
+
+                        <StackPanel>
+
+                            <Button Command="{Binding ClosePopUpCommand}"
+                                    Style="{StaticResource CalendarCloseButtonStyle}" />
+
+                            <Grid Margin="0,50,0,0">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Style="{StaticResource CalendarPopUpMarkStyle}"
+                                        Grid.Column="0" />
+
+                                <Grid Grid.Column="1"
+                                      Margin="0,0,0,15">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="{Binding SelectedDay.Shift.StartEndTime}" 
+                                               Style="{StaticResource CalendarPopUpTimeStyle}"
+                                               Grid.Column="0" />
+
+                                    <TextBlock Text="{Binding SelectedDay.Shift.BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}"
+                                               Style="{StaticResource CalendarTextBlockStyle}"
+                                               Margin="0,35,0,0" 
+                                               Grid.Column="0" />
+
+                                    <TextBlock Text="{Binding SelectedDay.Shift.DepartmentType}"
+                                               Style="{StaticResource CalendarTextBlockStyle}"
+                                               Grid.Column="1" 
+                                               HorizontalAlignment="Right" 
+                                               Margin="0,0,50,0" />
+
+                                </Grid>
+
+                                <Grid Style="{StaticResource CalendarPopoUpVacationGridStyle}">
+
+                                    <StackPanel Orientation="Horizontal">
+
+                                        <TextBlock Text="{Binding SelectedDay.Vacation.StartDate, StringFormat={}{0:dd MMM}}"
+                                                   Style="{StaticResource CalendarPopUpTimeStyle}" />
+
+                                        <TextBlock Text="-"
+                                                   Style="{StaticResource CalendarPopUpTimeStyle}"
+                                                   Margin="5,0,5,0" />
+
+                                        <TextBlock Text="{Binding SelectedDay.Vacation.EndDate, StringFormat={}{0:dd MMM}}"
+                                                   Style="{StaticResource CalendarPopUpTimeStyle}" />
+
+                                    </StackPanel>
+
+                                    <TextBlock Text="{Binding SelectedDay.Vacation.RequestType}"
+                                               Style="{StaticResource CalendarTextBlockStyle}" 
+                                               Margin="0,50,0,0" />
+
+                                </Grid>
+
+                            </Grid>
+
+                            <Button Style="{StaticResource CalendarPopUpButtonStyle}"
+                                    Command="{Binding RequestAvailabilityCommand}" />
+
+                        </StackPanel>
+
+                    </Border>
+
+                </Popup>
+
+            </Grid>
+
+        </ScrollViewer>
+
     </Grid>
-    
+
 </UserControl>

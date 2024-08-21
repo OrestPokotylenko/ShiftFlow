@@ -16,5 +16,12 @@ namespace DAL
             await _context.Requests.AddAsync(request);
             await _context.SaveChangesAsync();
         }
+
+        public Request? GetVacationForToday(int employeeId, DateTime today)
+        {
+            return _context.Requests
+                .FirstOrDefault(r => r.EmployeeId == employeeId && r.StartDate <= today && r.EndDate >= today && 
+                    (r.RequestType == RequestType.DayOff || r.RequestType == RequestType.Vacation));
+        }
     }
 }

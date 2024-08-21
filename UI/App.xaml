@@ -1,14 +1,15 @@
 ﻿<Application x:Class="UI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:UI">
+             xmlns:local="clr-namespace:UI"
+             xmlns:converter="clr-namespace:UI.Utilities">
 
     <Application.Resources>
-        
+
         <ResourceDictionary>
-            
+
             <ResourceDictionary.MergedDictionaries>
-                
+
                 <ResourceDictionary Source="Styles/Global.xaml" />
                 <ResourceDictionary Source="Styles/Login.xaml" />
                 <ResourceDictionary Source="Styles/Main.xaml" />
@@ -21,11 +22,14 @@
                 <ResourceDictionary Source="Styles/Vacation.xaml" />
                 <ResourceDictionary Source="Styles/Controls.xaml" />
                 <ResourceDictionary Source="Styles/Replace.xaml" />
-                
+                <ResourceDictionary Source="Styles/Calendar.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
+
+            <converter:NullValueConverter x:Key="VisibilityNullValueConverter" />
             
         </ResourceDictionary>
-        
+
     </Application.Resources>
-    
+
 </Application>
