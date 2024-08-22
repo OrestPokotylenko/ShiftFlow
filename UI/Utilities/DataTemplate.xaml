@@ -1,7 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+                    xmlns:uiLogin="clr-namespace:UI.Login"
                     xmlns:ui="clr-namespace:UI.SecondaryViews">
+
+    <DataTemplate DataType="{x:Type vm:LoginVM}">
+        <uiLogin:LoginView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AskEmailVM}">
+        <uiLogin:AskEmailView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ResetPasswordVM}">
+        <uiLogin:ResetPasswordView />
+    </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:HomeVM}">
         <ui:HomeViewEmployee />

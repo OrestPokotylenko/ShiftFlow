@@ -17,8 +17,8 @@ namespace UI
         {
             InitializeComponent();
             Task.Run(employeeService.WarmUp);
-            ShowEmployeeMainView();
-            //ProcessArgs(deepLink);
+            //ShowEmployeeMainView();
+            ProcessArgs(deepLink);
         }
 
 
