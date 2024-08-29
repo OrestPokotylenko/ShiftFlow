@@ -10,7 +10,7 @@
              mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:NavigationVM />
+        <vm:EmplyeeNavigationVM />
     </UserControl.DataContext>
     
     <Grid>

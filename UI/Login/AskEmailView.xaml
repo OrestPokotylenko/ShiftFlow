@@ -4,7 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.Login"
+             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d">
+
+    <UserControl.DataContext>
+        <vm:AskEmailVM />
+    </UserControl.DataContext>
 
     <UserControl.Background>
         <ImageBrush ImageSource="\Resources\abstract-blur-supermarket-department-store.jpg"/>

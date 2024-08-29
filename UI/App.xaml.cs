@@ -100,7 +100,7 @@ namespace UI
                                 {
                                     if (await ValidDeepLinkAsync(deepLink))
                                     {
-                                        mainWindow?.ProcessArgs(deepLink);
+                                        //mainWindow?.ProcessArgs(deepLink);
                                     }
                                 });
                             }
