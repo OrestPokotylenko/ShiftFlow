@@ -10,13 +10,13 @@
              mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:NavigationVM />
+        <vm:EmplyeeNavigationVM />
     </UserControl.DataContext>
     
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="60" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -24,17 +24,40 @@
               Background="#ABC4FF"
               Width="Auto"
               Height="60">
-            
-            <TextBlock Text="ShiftFlow" 
-                       Style="{StaticResource Header}" 
-                       Padding="0" 
-                       Foreground="#EDF2FB" 
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center" />
-            
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="ShiftFlow" 
+                           Style="{StaticResource Header}" 
+                           Padding="0" 
+                           Foreground="#EDF2FB" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Grid.Column="0" />
+
+                <Button Width="30"
+                        Height="30"
+                        Margin="0,0,50,0"
+                        Grid.Column="1"
+                        Command="{Binding NotificationsCommand}">
+
+                    <Image Source="{StaticResource OkIcon}"
+                           Width="25"
+                           Height="25" />
+
+                </Button>
+
+            </Grid>
+
         </Grid>
 
         <Grid Grid.Row="1">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="*" />
@@ -56,7 +79,7 @@
                                Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Home"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -72,7 +95,7 @@
                                Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Calendar"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -88,7 +111,7 @@
                                Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Replace"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -101,10 +124,10 @@
                     <Grid>
 
                         <Image Source="{StaticResource VacationIcon}"
-                               Style="{StaticResource ImageStyle}"/>
+                               Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Vacation"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -120,7 +143,7 @@
                                Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Profile"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -133,10 +156,10 @@
                     <Grid>
 
                         <Image Source="{StaticResource SettingsIcon}"
-                               Style="{StaticResource ImageStyle}"/>
+                               Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Settings"
-                                   Style="{StaticResource NavigationButtonTextStyle}"/>
+                                   Style="{StaticResource NavigationButtonTextStyle}" />
 
                     </Grid>
 
@@ -149,12 +172,12 @@
                     <Grid>
 
                         <Image Source="{StaticResource LogoutIcon}"
-                               Style="{StaticResource ImageStyle}"/>
+                               Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Text="Logout"
                                    Style="{StaticResource NavigationButtonTextStyle}" 
                                    HorizontalAlignment="Left" 
-                                   Margin="48,0,0,0"/>
+                                   Margin="48,0,0,0" />
 
                     </Grid>
 

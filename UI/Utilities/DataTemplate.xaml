@@ -1,10 +1,32 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
-                    xmlns:ui="clr-namespace:UI.SecondaryViews">
+                    xmlns:ui="clr-namespace:UI.SecondaryViews"
+                    xmlns:uiLogin="clr-namespace:UI.Login"
+                    xmlns:uiMains="clr-namespace:UI.MainViews">
+
+    <DataTemplate DataType="{x:Type vm:LoginVM}">
+        <uiLogin:LoginView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AskEmailVM}">
+        <uiLogin:AskEmailView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ResetPasswordVM}">
+        <uiLogin:ResetPasswordView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:EmplyeeNavigationVM}">
+        <uiMains:EmployeeMainView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ManagerNavigationVM}">
+        <uiMains:ManagerMainView />
+    </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:HomeVM}">
-        <ui:HomeViewEmployee />
+        <ui:HomeView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:CalendarVM}">
@@ -25,6 +47,18 @@
 
     <DataTemplate DataType="{x:Type vm:SettingsVM}">
         <ui:SettingsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SchedulesVM}">
+        <ui:SchedulesView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RequestsVM}">
+        <ui:RequestsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NotificationsVM}">
+        <ui:NotificationsView />
     </DataTemplate>
 
 </ResourceDictionary>

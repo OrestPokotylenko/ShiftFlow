@@ -4,24 +4,62 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.Login"
+             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d">
 
+    <UserControl.DataContext>
+        <vm:AskEmailVM />
+    </UserControl.DataContext>
+
     <UserControl.Background>
-        <ImageBrush ImageSource="\Resources\abstract-blur-supermarket-department-store.jpg"/>
+
+        <ImageBrush ImageSource="\Resources\abstract-blur-supermarket-department-store.jpg" />
+
     </UserControl.Background>
 
     <Grid>
+
         <Border Style="{StaticResource LoginBorderStyle}">
+
             <Grid Style="{StaticResource LoginGridStyle}">
-                <StackPanel Grid.Row="1" Style="{StaticResource LoginStackpanelStyle}" Height="500">
-                    <TextBlock Style="{StaticResource Header}" Padding="0,60,0,50" Text="Reset your password" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="lblMessage" TextWrapping="Wrap" Width="290" Height="35"/>
-                    <TextBlock Text="Enter your email address:" Margin="0,25,0,4"/>
-                    <TextBox x:Name="txtEmail" Style="{StaticResource LoginTextBoxStyle}" Margin="0,0,0,65" GotFocus="TextBox_GotFocus"/>
-                    <Button Content="Reset password" Style="{StaticResource LoginButtonStyle}" Click="ResetPasswordButton_Click"/>
-                    <Button Content="Back to login" HorizontalAlignment="Right" Width="120" Style="{StaticResource LoginForgotPasswordButtonStyle}" Margin="0,35,0,0" Click="BackToLoginButton_Click"/>
+
+                <StackPanel Grid.Row="1"
+                            Style="{StaticResource LoginStackpanelStyle}"
+                            Height="500">
+
+                    <TextBlock Style="{StaticResource Header}"
+                               Padding="0,60,0,50"
+                               Text="Reset your password"
+                               HorizontalAlignment="Center" />
+
+                    <TextBlock Text="{Binding Message}"
+                               Style="{StaticResource AskEmailMessageStyle}" />
+
+                    <TextBlock Text="Enter your email address:"
+                               Margin="0,25,0,4" />
+
+                    <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource LoginTextBoxStyle}"
+                             Tag="{Binding TextBoxError}"
+                             Margin="0,0,0,65" />
+
+                    <Button Content="Reset password"
+                            Style="{StaticResource LoginButtonStyle}"
+                            Command="{Binding SendEmailCommand}" />
+
+                    <Button Content="Back to login" 
+                            HorizontalAlignment="Right"
+                            Width="120" 
+                            Style="{StaticResource LoginForgotPasswordButtonStyle}"
+                            Margin="0,35,0,0"
+                            Command="{Binding BackToLoginCommand}" />
+
                 </StackPanel>
+
             </Grid>
+
         </Border>
+
     </Grid>
+
 </UserControl>

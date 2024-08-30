@@ -1,28 +1,16 @@
-﻿using Service.ModelServices;
-using System.Windows;
-using UI.Login;
-using UI.MainViews;
+﻿using System.Windows;
 
 namespace UI
 {
     public partial class MainWindow : Window
     {
-        private LoginView? loginView;
-        private AskEmailView? askEmailView;
-        private ResetPasswordView? resetPasswordView;
-        private EmployeeMainView? employeeMainView;
-        private EmployeeService employeeService = new();
-
         public MainWindow(string? deepLink = null)
         {
             InitializeComponent();
-            Task.Run(employeeService.WarmUp);
-            ShowEmployeeMainView();
-            //ProcessArgs(deepLink);
         }
 
 
-        public void ProcessArgs(string? deepLink)
+        /*public void ProcessArgs(string? deepLink)
         {
             if (deepLink != null)
             {
@@ -42,11 +30,11 @@ namespace UI
             }
         }
 
-        private void ShowLoginView()
+        internal void ShowLoginView()
         {
             loginView ??= new();
-            loginView.Login += LoginView_Login;
-            loginView.ForgotPassword += LoginView_ForgotPassword;
+            //loginView.Login += LoginView_Login;
+            //loginView.ForgotPassword += LoginView_ForgotPassword;
             MainWindowContent.Content = loginView;
         }
 
@@ -94,6 +82,6 @@ namespace UI
         {
             employeeMainView ??= new();
             MainWindowContent.Content = employeeMainView;
-        }
+        }*/
     }
 }
