@@ -54,7 +54,8 @@
 
                     <TextBox x:Name="txtPassword"
                              Style="{StaticResource LoginTextBoxStyle}"
-                             Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" />
+                             Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                             Tag="{Binding PasswordError}" />
 
                     <Button Content="Forgot password?"
                             Style="{StaticResource LoginForgotPasswordButtonStyle}"

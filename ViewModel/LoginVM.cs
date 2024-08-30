@@ -10,21 +10,21 @@ namespace ViewModel
 {
     public class LoginVM : BaseVM
     {
-        private string _username = "";
+        private string _username = string.Empty;
         public string Username
         {
             get { return _username; }
-            set { _username = value; OnPropertyChanged(); }
+            set { _username = value; OnPropertyChanged(); UsernameError = false; }
         }
 
-        private string _password = "";
+        private string _password = string.Empty;
         public string Password
         {
             get { return _password; }
-            set { _password = value; OnPropertyChanged(); }
+            set { _password = value; OnPropertyChanged(); PasswordError = false; }
         }
 
-        private string _errorMessage = "";
+        private string _errorMessage = string.Empty;
         public string ErrorMessage
         {
             get { return _errorMessage; }
@@ -87,9 +87,9 @@ namespace ViewModel
 
         private void ResetView()
         {
-            Username = "";
-            Password = "";
-            ErrorMessage = "";
+            Username = string.Empty;
+            Password = string.Empty;
+            ErrorMessage = string.Empty;
             UsernameError = false;
             PasswordError = false;
         }
