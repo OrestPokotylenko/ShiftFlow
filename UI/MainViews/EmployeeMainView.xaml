@@ -24,14 +24,36 @@
               Background="#ABC4FF"
               Width="Auto"
               Height="60">
-            
-            <TextBlock Text="ShiftFlow" 
-                       Style="{StaticResource Header}" 
-                       Padding="0" 
-                       Foreground="#EDF2FB" 
-                       VerticalAlignment="Center" 
-                       HorizontalAlignment="Center" />
-            
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="ShiftFlow" 
+                           Style="{StaticResource Header}" 
+                           Padding="0" 
+                           Foreground="#EDF2FB" 
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"
+                           Grid.Column="0" />
+
+                <Button Width="30"
+                        Height="30"
+                        Margin="0,0,50,0"
+                        Grid.Column="1"
+                        Command="{Binding NotificationsCommand}">
+
+                    <Image Source="{StaticResource OkIcon}"
+                           Width="25"
+                           Height="25" />
+
+                </Button>
+
+            </Grid>
+
         </Grid>
 
         <Grid Grid.Row="1">

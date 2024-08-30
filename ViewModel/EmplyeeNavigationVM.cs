@@ -19,6 +19,7 @@ namespace ViewModel
         public ICommand ProfileCommand { get; set; }
         public ICommand SettingsCommand { get; set; }
         public ICommand LogoutCommand { get; set; }
+        public ICommand NotificationsCommand { get; set; }
 
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Calendar(object obj) => CurrentView = new CalendarVM();
@@ -27,6 +28,7 @@ namespace ViewModel
         private void Profile(object obj) => CurrentView = new ProfileVM();
         private void Settings(object obj) => CurrentView = new SettingsVM();
         private void Logout(object obj) => EventAggregator.Instance.ChangeView("Login");
+        private void Notifications(object obj) => CurrentView = new NotificationsVM();
 
         public EmplyeeNavigationVM()
         {
@@ -37,6 +39,7 @@ namespace ViewModel
             ProfileCommand = new RelayCommand(Profile);
             SettingsCommand = new RelayCommand(Settings);
             LogoutCommand = new RelayCommand(Logout);
+            NotificationsCommand = new RelayCommand(Notifications);
 
             CurrentView = new HomeVM();
         }

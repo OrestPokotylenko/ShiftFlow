@@ -57,4 +57,8 @@
         <ui:RequestsView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:NotificationsVM}">
+        <ui:NotificationsView />
+    </DataTemplate>
+
 </ResourceDictionary>

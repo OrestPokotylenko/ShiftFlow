@@ -62,8 +62,7 @@ namespace ViewModel
         {
             if (employee.Occupation is not OccupationType.Manager)
             {
-                //ShowEmployeeMainView();
-                ShowManagerMainView();
+                ShowEmployeeMainView();
             }
             else
             {
