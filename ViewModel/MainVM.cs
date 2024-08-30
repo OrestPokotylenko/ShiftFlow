@@ -55,10 +55,6 @@ namespace ViewModel
                 case "AskEmail":
                     ShowAskEmailView();
                     break;
-
-                case "ResetPassword":
-                    ShowResetPasswordView(viewName);
-                    break;
             }
         }
 

@@ -13,6 +13,10 @@
         <uiLogin:AskEmailView />
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type vm:ResetPasswordVM}">
+        <uiLogin:ResetPasswordView />
+    </DataTemplate>
+
     <DataTemplate DataType="{x:Type vm:EmplyeeNavigationVM}">
         <uiMains:EmployeeMainView />
     </DataTemplate>
