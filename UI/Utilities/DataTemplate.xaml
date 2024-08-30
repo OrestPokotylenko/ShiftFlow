@@ -26,7 +26,7 @@
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:HomeVM}">
-        <ui:HomeViewEmployee />
+        <ui:HomeView />
     </DataTemplate>
 
     <DataTemplate DataType="{x:Type vm:CalendarVM}">
@@ -47,6 +47,14 @@
 
     <DataTemplate DataType="{x:Type vm:SettingsVM}">
         <ui:SettingsView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SchedulesVM}">
+        <ui:SchedulesView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RequestsVM}">
+        <ui:RequestsView />
     </DataTemplate>
 
 </ResourceDictionary>

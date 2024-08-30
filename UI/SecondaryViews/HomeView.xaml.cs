@@ -2,9 +2,9 @@
 
 namespace UI.SecondaryViews
 {
-    public partial class HomeViewEmployee : UserControl
+    public partial class HomeView : UserControl
     {
-        public HomeViewEmployee()
+        public HomeView()
         {
             InitializeComponent();
         }
