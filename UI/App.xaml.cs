@@ -1,8 +1,9 @@
-﻿using Model;
-using Service.ModelServices;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.IO.Pipes;
 using System.Windows;
+using ViewModel;
 
 namespace UI
 {
@@ -10,12 +11,25 @@ namespace UI
     {
         private CancellationTokenSource cts = new();
         private static Mutex mutex;
+        private IHost _host;
+        private MainVM _mainVM;
+
+        public App()
+        {
+            _host = Host.CreateDefaultBuilder()
+            .ConfigureServices((context, services) =>
+            {
+                services.AddSingleton<MainVM>();
+            })
+            .Build();
+        }
 
         protected async override void OnStartup(StartupEventArgs e)
         {
             string mutexName = "ShiftFlowMutex";
             bool createdNew;
             mutex = new(true, mutexName, out createdNew);
+            _mainVM = _host.Services.GetRequiredService<MainVM>();
 
             if (!createdNew)
             {
@@ -30,18 +44,19 @@ namespace UI
             {
                 string deepLink = e.Args[0];
 
-                if (await ValidDeepLinkAsync(deepLink))
-                {
-                    MainWindow mainWindow = new(deepLink);
-                    mainWindow.Show();
-                    StartListeningForDeepLinks(mainWindow);
-                }
+                MainWindow mainWindow = new();
+                mainWindow.DataContext = _mainVM;
+                mainWindow.Show();
+
+                _mainVM.ProcessArgs(deepLink);
+                StartListeningForDeepLinks();
             }
             else
             {
                 MainWindow mainWindow = new();
+                mainWindow.DataContext = _mainVM;
                 mainWindow.Show();
-                StartListeningForDeepLinks(mainWindow);
+                StartListeningForDeepLinks();
             }
         }
 
@@ -49,6 +64,7 @@ namespace UI
         {
             mutex?.ReleaseMutex();
             mutex?.Dispose();
+            _host.Dispose();
             base.OnExit(e);
         }
 
@@ -68,20 +84,7 @@ namespace UI
             }
         }
 
-        private async Task<bool> ValidDeepLinkAsync(string deepLink)
-        {
-            DeepLinkService deepLinkService = new();
-            DeepLink deepLinkInstance = await deepLinkService.GetDeepLinkAsync(deepLink);
-
-            if (deepLinkInstance != null)
-            {
-                return DateTime.UtcNow < deepLinkInstance.ExpirationDate;
-            }
-
-            return false;
-        }
-
-        private void StartListeningForDeepLinks(MainWindow mainWindow)
+        private void StartListeningForDeepLinks()
         {
             Task.Run(async () =>
             {
@@ -98,10 +101,7 @@ namespace UI
                             {
                                 await Current.Dispatcher.Invoke(async () =>
                                 {
-                                    if (await ValidDeepLinkAsync(deepLink))
-                                    {
-                                        //mainWindow?.ProcessArgs(deepLink);
-                                    }
+                                    _mainVM.ProcessDeepLink(deepLink);
                                 });
                             }
                         }

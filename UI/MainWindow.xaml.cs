@@ -4,7 +4,7 @@ namespace UI
 {
     public partial class MainWindow : Window
     {
-        public MainWindow(string? deepLink = null)
+        public MainWindow()
         {
             InitializeComponent();
         }

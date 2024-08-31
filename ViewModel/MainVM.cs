@@ -82,7 +82,7 @@ namespace ViewModel
             }
         }
 
-        private void ProcessDeepLink(string deepLink)
+        public void ProcessDeepLink(string deepLink)
         {
             if (deepLink.StartsWith("shiftflow://reset"))
             {
@@ -97,7 +97,7 @@ namespace ViewModel
 
         private void ShowResetPasswordView(string deepLink)
         {
-            ResetPasswordViewCommand.Execute(deepLink);
+            ResetPasswordViewCommand.Execute(null);
         }
 
         private void ShowAskEmailView()
