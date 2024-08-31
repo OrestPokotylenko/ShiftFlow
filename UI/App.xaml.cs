@@ -1,8 +1,8 @@
-﻿using Model;
-using Service.ModelServices;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.IO.Pipes;
 using System.Windows;
+using ViewModel;
 
 namespace UI
 {
@@ -10,8 +10,10 @@ namespace UI
     {
         private CancellationTokenSource cts = new();
         private static Mutex mutex;
+        private string? _deepLink;
+        public static IServiceProvider ServiceProvider { get; private set; }
 
-        protected async override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
             string mutexName = "ShiftFlowMutex";
             bool createdNew;
@@ -28,24 +30,39 @@ namespace UI
 
             if (e.Args.Length > 0)
             {
-                string deepLink = e.Args[0];
+                _deepLink = e.Args[0];
+            }
 
-                MainWindow mainWindow = new(deepLink);
-                mainWindow.Show();
-                StartListeningForDeepLinks(mainWindow);
-            }
-            else
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            ServiceProvider = serviceCollection.BuildServiceProvider();
+
+            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+            mainWindow.DataContext = ServiceProvider.GetRequiredService<MainVM>();
+            mainWindow.Show();
+
+            StartListeningForDeepLinks();
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<MainVM>(provider =>
             {
-                MainWindow mainWindow = new();
-                mainWindow.Show();
-                StartListeningForDeepLinks(mainWindow);
-            }
+                return new MainVM(provider, _deepLink);
+            });
+            services.AddTransient<ResetPasswordVM>(provider =>
+            {
+                return new ResetPasswordVM(_deepLink);
+            });
+
+            services.AddTransient<MainWindow>();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             mutex?.ReleaseMutex();
             mutex?.Dispose();
+            cts.Cancel();
             base.OnExit(e);
         }
 
@@ -65,7 +82,8 @@ namespace UI
             }
         }
 
-        private void StartListeningForDeepLinks(MainWindow mainWindow)
+        private void StartListeningForDeepLinks()
+
         {
             Task.Run(async () =>
             {
@@ -80,20 +98,17 @@ namespace UI
 
                             if (deepLink != null)
                             {
-                                await Current.Dispatcher.Invoke(async () =>
+                                await Current.Dispatcher.InvokeAsync(() =>
                                 {
-                                    //mainWindow?.ProcessArgs(deepLink);
+                                    var mainVM = ServiceProvider.GetRequiredService<MainVM>();
+                                    mainVM.ProcessArgs(deepLink);
+
                                 });
                             }
                         }
                     }
                 }
             }, cts.Token);
-        }
-
-        public void StopListeningForDeepLinks()
-        {
-            cts.Cancel();
         }
     }
 }

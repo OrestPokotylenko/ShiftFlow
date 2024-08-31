@@ -1,4 +1,5 @@
-﻿using Messages;
+﻿using GalaSoft.MvvmLight.Messaging;
+using Messages;
 using Microsoft.IdentityModel.Tokens;
 using Model;
 using Service.ModelServices;
@@ -9,7 +10,7 @@ namespace ViewModel
 {
     public class ResetPasswordVM : BaseVM
     {
-        private readonly string _deepLink;
+        private string _deepLink;
 
         private string _newPassword;
         public string NewPassword
@@ -49,8 +50,9 @@ namespace ViewModel
         public ICommandAsync ResetPasswordCommand { get; set; }
         public ICommand BackToLoginCommand {  get; set; }
 
-        public ResetPasswordVM()
+        public ResetPasswordVM(string deepLink)
         {
+            _deepLink = deepLink;
             ResetPasswordCommand = new AsyncRelayCommand(ResetPassword);
             BackToLoginCommand = new RelayCommand(BackToLogin);
         }
@@ -115,6 +117,11 @@ namespace ViewModel
             ErrorMessage = string.Empty;
             NewPasswordError = false;
             RepeatPasswordError = false;
+        }
+
+        internal void SetDeepLink(string deepLink)
+        {
+            _deepLink = deepLink;
         }
     }
 }

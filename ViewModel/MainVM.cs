@@ -3,15 +3,18 @@ using ViewModel.Utilities;
 using Service.ModelServices;
 using GalaSoft.MvvmLight.Messaging;
 using Model;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace ViewModel
 {
     public class MainVM : BaseVM
     {
         private readonly EmployeeService _employeeService = new();
+        private readonly IServiceProvider _serviceProvider;
 
-        private object _currentView;
-        public object CurrentView
+        private object? _currentView;
+        public object? CurrentView
         {
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
@@ -25,12 +28,12 @@ namespace ViewModel
 
         private void LoginView(object obj) => CurrentView = new LoginVM();
         private void AskEmailView(object obj) => CurrentView = new AskEmailVM();
-        private void ResetPasswordView(object obj) => CurrentView = new ResetPasswordVM();
         private void EmployeeView(object obj) => CurrentView = new EmplyeeNavigationVM();
         private void ManagerView(object obj) => CurrentView = new ManagerNavigationVM();
 
-        public MainVM()
+        public MainVM(IServiceProvider serviceProvider, string deepLink)
         {
+            _serviceProvider = serviceProvider;
             LoginViewCommand = new RelayCommand(LoginView);
             AskEmailViewCommand = new RelayCommand(AskEmailView);
             ResetPasswordViewCommand = new RelayCommand(ResetPasswordView);
@@ -39,9 +42,22 @@ namespace ViewModel
 
             EventAggregator.Instance.OnChangeView += ChangeView;
             Messenger.Default.Register<Employee>(this, LoginEmployee);
+            Messenger.Default.Register<string>(this, CurrentDeepLink);
 
             Task.Run(_employeeService.WarmUp);
-            ProcessArgs(null);
+            ProcessArgs(deepLink);
+        }
+
+        private void ResetPasswordView(object obj)
+        {
+            string deepLink = obj as string;
+            var resetPasswordVM = ActivatorUtilities.CreateInstance<ResetPasswordVM>(_serviceProvider, deepLink);
+            CurrentView = resetPasswordVM;
+        }
+
+        private void CurrentDeepLink(string deepLink)
+        {
+            ResetPasswordView(deepLink);
         }
 
         private void ChangeView(string viewName)
@@ -72,17 +88,18 @@ namespace ViewModel
 
         public void ProcessArgs(string? deepLink)
         {
-            if (deepLink != null)
+            if (deepLink is not null)
             {
                 ProcessDeepLink(deepLink);
             }
             else
             {
                 ShowLoginView();
+                //ShowResetPasswordView("shiftflow://reset/?userId=12345678&token=BqHEvtCV9EykuwbPTSEzaA");
             }
         }
 
-        private void ProcessDeepLink(string deepLink)
+        public void ProcessDeepLink(string deepLink)
         {
             if (deepLink.StartsWith("shiftflow://reset"))
             {
