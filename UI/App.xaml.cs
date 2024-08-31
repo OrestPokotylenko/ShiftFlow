@@ -30,12 +30,9 @@ namespace UI
             {
                 string deepLink = e.Args[0];
 
-                if (await ValidDeepLinkAsync(deepLink))
-                {
-                    MainWindow mainWindow = new(deepLink);
-                    mainWindow.Show();
-                    StartListeningForDeepLinks(mainWindow);
-                }
+                MainWindow mainWindow = new(deepLink);
+                mainWindow.Show();
+                StartListeningForDeepLinks(mainWindow);
             }
             else
             {
@@ -68,19 +65,6 @@ namespace UI
             }
         }
 
-        private async Task<bool> ValidDeepLinkAsync(string deepLink)
-        {
-            DeepLinkService deepLinkService = new();
-            DeepLink deepLinkInstance = await deepLinkService.GetDeepLinkAsync(deepLink);
-
-            if (deepLinkInstance != null)
-            {
-                return DateTime.UtcNow < deepLinkInstance.ExpirationDate;
-            }
-
-            return false;
-        }
-
         private void StartListeningForDeepLinks(MainWindow mainWindow)
         {
             Task.Run(async () =>
@@ -98,10 +82,7 @@ namespace UI
                             {
                                 await Current.Dispatcher.Invoke(async () =>
                                 {
-                                    if (await ValidDeepLinkAsync(deepLink))
-                                    {
-                                        //mainWindow?.ProcessArgs(deepLink);
-                                    }
+                                    //mainWindow?.ProcessArgs(deepLink);
                                 });
                             }
                         }

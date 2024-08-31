@@ -12,6 +12,7 @@ namespace DAL.Configurations
             builder.Property(dl => dl.DeepLinkId).ValueGeneratedOnAdd();
             builder.Property(dl => dl.Link).IsRequired().HasMaxLength(100);
             builder.Property(dl => dl.ExpirationDate).IsRequired();
+            builder.Property(dl => dl.Used).IsRequired();
 
             builder.HasOne(dl => dl.Employee)
                 .WithMany()
