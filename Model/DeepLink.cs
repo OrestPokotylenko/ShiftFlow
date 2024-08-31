@@ -7,5 +7,6 @@
         public virtual Employee? Employee { get; private set; }
         public string Link { get; private set; } = link;
         public DateTime ExpirationDate { get; set; } = expirationDate;
+        public bool Used { get; set; } = false;
     }
 }
