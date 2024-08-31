@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using GalaSoft.MvvmLight.Messaging;
 using System.IO;
 using System.IO.Pipes;
 using System.Windows;
@@ -11,25 +10,13 @@ namespace UI
     {
         private CancellationTokenSource cts = new();
         private static Mutex mutex;
-        private IHost _host;
         private MainVM _mainVM;
-
-        public App()
-        {
-            _host = Host.CreateDefaultBuilder()
-            .ConfigureServices((context, services) =>
-            {
-                services.AddSingleton<MainVM>();
-            })
-            .Build();
-        }
 
         protected async override void OnStartup(StartupEventArgs e)
         {
             string mutexName = "ShiftFlowMutex";
             bool createdNew;
             mutex = new(true, mutexName, out createdNew);
-            _mainVM = _host.Services.GetRequiredService<MainVM>();
 
             if (!createdNew)
             {
@@ -40,31 +27,25 @@ namespace UI
 
             base.OnStartup(e);
 
+            _mainVM = new MainVM();
+
+            MainWindow mainWindow = new();
+            mainWindow.DataContext = _mainVM;
+            mainWindow.Show();
+
             if (e.Args.Length > 0)
             {
                 string deepLink = e.Args[0];
-
-                MainWindow mainWindow = new();
-                mainWindow.DataContext = _mainVM;
-                mainWindow.Show();
-
                 _mainVM.ProcessArgs(deepLink);
-                StartListeningForDeepLinks();
             }
-            else
-            {
-                MainWindow mainWindow = new();
-                mainWindow.DataContext = _mainVM;
-                mainWindow.Show();
-                StartListeningForDeepLinks();
-            }
+
+            StartListeningForDeepLinks();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             mutex?.ReleaseMutex();
             mutex?.Dispose();
-            _host.Dispose();
             base.OnExit(e);
         }
 
@@ -99,9 +80,9 @@ namespace UI
 
                             if (deepLink != null)
                             {
-                                await Current.Dispatcher.Invoke(async () =>
+                                await Current.Dispatcher.InvokeAsync(() =>
                                 {
-                                    _mainVM.ProcessDeepLink(deepLink);
+                                    Messenger.Default.Send(deepLink);
                                 });
                             }
                         }

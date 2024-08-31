@@ -10,8 +10,8 @@ namespace ViewModel
     {
         private readonly EmployeeService _employeeService = new();
 
-        private object _currentView;
-        public object CurrentView
+        private object? _currentView;
+        public object? CurrentView
         {
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
@@ -39,9 +39,15 @@ namespace ViewModel
 
             EventAggregator.Instance.OnChangeView += ChangeView;
             Messenger.Default.Register<Employee>(this, LoginEmployee);
+            Messenger.Default.Register<string>(this, CurrentDeepLink);
 
             Task.Run(_employeeService.WarmUp);
             ProcessArgs(null);
+        }
+
+        private void CurrentDeepLink(string deepLink)
+        {
+            ResetPasswordView(deepLink);
         }
 
         private void ChangeView(string viewName)
@@ -78,7 +84,8 @@ namespace ViewModel
             }
             else
             {
-                ShowLoginView();
+                //ShowLoginView();
+                ShowResetPasswordView();
             }
         }
 
@@ -86,7 +93,7 @@ namespace ViewModel
         {
             if (deepLink.StartsWith("shiftflow://reset"))
             {
-                ShowResetPasswordView(deepLink);
+                ResetPasswordView(deepLink);
             }
         }
 
@@ -95,7 +102,7 @@ namespace ViewModel
             LoginViewCommand.Execute(null);
         }
 
-        private void ShowResetPasswordView(string deepLink)
+        private void ShowResetPasswordView()
         {
             ResetPasswordViewCommand.Execute(null);
         }
