@@ -83,6 +83,7 @@ namespace UI
         }
 
         private void StartListeningForDeepLinks()
+
         {
             Task.Run(async () =>
             {
@@ -101,6 +102,7 @@ namespace UI
                                 {
                                     var mainVM = ServiceProvider.GetRequiredService<MainVM>();
                                     mainVM.ProcessArgs(deepLink);
+
                                 });
                             }
                         }
