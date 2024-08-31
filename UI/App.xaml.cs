@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Messaging;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.IO.Pipes;
 using System.Windows;
@@ -10,9 +10,10 @@ namespace UI
     {
         private CancellationTokenSource cts = new();
         private static Mutex mutex;
-        private MainVM _mainVM;
+        private string? _deepLink;
+        public static IServiceProvider ServiceProvider { get; private set; }
 
-        protected async override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
             string mutexName = "ShiftFlowMutex";
             bool createdNew;
@@ -27,25 +28,41 @@ namespace UI
 
             base.OnStartup(e);
 
-            _mainVM = new MainVM();
-
-            MainWindow mainWindow = new();
-            mainWindow.DataContext = _mainVM;
-            mainWindow.Show();
-
             if (e.Args.Length > 0)
             {
-                string deepLink = e.Args[0];
-                _mainVM.ProcessArgs(deepLink);
+                _deepLink = e.Args[0];
             }
 
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            ServiceProvider = serviceCollection.BuildServiceProvider();
+
+            var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+            mainWindow.DataContext = ServiceProvider.GetRequiredService<MainVM>();
+            mainWindow.Show();
+
             StartListeningForDeepLinks();
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<MainVM>(provider =>
+            {
+                return new MainVM(provider, _deepLink);
+            });
+            services.AddTransient<ResetPasswordVM>(provider =>
+            {
+                return new ResetPasswordVM(_deepLink);
+            });
+
+            services.AddTransient<MainWindow>();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             mutex?.ReleaseMutex();
             mutex?.Dispose();
+            cts.Cancel();
             base.OnExit(e);
         }
 
@@ -82,18 +99,14 @@ namespace UI
                             {
                                 await Current.Dispatcher.InvokeAsync(() =>
                                 {
-                                    Messenger.Default.Send(deepLink);
+                                    var mainVM = ServiceProvider.GetRequiredService<MainVM>();
+                                    mainVM.ProcessArgs(deepLink);
                                 });
                             }
                         }
                     }
                 }
             }, cts.Token);
-        }
-
-        public void StopListeningForDeepLinks()
-        {
-            cts.Cancel();
         }
     }
 }

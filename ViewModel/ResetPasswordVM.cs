@@ -50,9 +50,9 @@ namespace ViewModel
         public ICommandAsync ResetPasswordCommand { get; set; }
         public ICommand BackToLoginCommand {  get; set; }
 
-        public ResetPasswordVM()
+        public ResetPasswordVM(string deepLink)
         {
-            Messenger.Default.Register<string>(this, SetDeepLink);
+            _deepLink = deepLink;
             ResetPasswordCommand = new AsyncRelayCommand(ResetPassword);
             BackToLoginCommand = new RelayCommand(BackToLogin);
         }
