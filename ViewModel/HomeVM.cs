@@ -77,7 +77,8 @@ namespace ViewModel
 
         public string GetCurrentWeekDates(DateTime date)
         {
-            DateTime startDate = date.Date.AddDays(-(int)date.DayOfWeek + 1);
+            int diff = (7 + (date.DayOfWeek - DayOfWeek.Monday)) % 7;
+            DateTime startDate = date.Date.AddDays(-diff);
             DateTime endDate = startDate.AddDays(6);
 
             return $"{startDate:dd MMMM} - {endDate:dd MMMM}";
