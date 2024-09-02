@@ -41,20 +41,19 @@ namespace ViewModel
         public ICommand SelectShiftCommand { get; set; }
         public ICommandAsync ReplaceCommand { get; set; }
 
-        private readonly ShiftService _shiftService = new();
-        private readonly EmployeeService _employeeService = new();
-
-        public ReplaceVM()
+        public ReplaceVM(Employee employee)
         {
-            _employee = _employeeService.GetEmployeeByNumber("12345678");
+            _employee = employee;
+            ShiftService _shiftService = new();
             DateTime startDate = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
-            ShiftsForWeek = new(_shiftService.GetShiftsForWeek(_employee.EmployeeId, startDate));
+            ShiftsForWeek = new(_shiftService.GetShiftsForWeek(_employee, startDate));
             SelectShiftCommand = new RelayCommand(SelectShiftExecute);
             ReplaceCommand = new AsyncRelayCommand(AskReplaceAsync);
         }
 
         private ObservableCollection<Employee> GetFreeEmployees()
         {
+            EmployeeService _employeeService = new();
             return new(_employeeService.GetFreeEmployees(_employee, SelectedShift.StartTime, SelectedShift.EndTime));
         }
 

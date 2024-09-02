@@ -8,7 +8,7 @@ namespace ViewModel
 {
     public class VacationVM : BaseVM
     {
-        private readonly EmployeeService _employeeService = new();
+        private readonly Employee _employee;
         private readonly RequestService _requestService = new();
 
         private bool _fullDay = true;
@@ -109,8 +109,9 @@ namespace ViewModel
         public ICommand DayOffEndTimeCommand { get; set; }
         public ICommandAsync SubmitCommand { get; set; }
 
-        public VacationVM()
+        public VacationVM(Employee employee)
         {
+            _employee = employee;
             LoadCommands();
             LoadCalendarDates();
         }
@@ -162,11 +163,10 @@ namespace ViewModel
 
         private async Task AddRequestAsync(object parameter)
         {
-            Employee employee = _employeeService.GetEmployeeByNumber("12345678");
             DateOnly requestDate = DateOnly.FromDateTime(DateTime.Now);
             Request request = FullDay ? 
-                CreateRequest(employee.EmployeeId, RequestType.Vacation, requestDate, VacationStartDate, VacationEndDate, Note) : 
-                CreateRequest(employee.EmployeeId, RequestType.DayOff, requestDate, ConvertToDate(DayOffDate, SelectedTimeStart.Value), ConvertToDate(DayOffDate, SelectedTimeEnd.Value), Note);
+                CreateRequest(_employee.EmployeeId, RequestType.Vacation, requestDate, VacationStartDate, VacationEndDate, Note) : 
+                CreateRequest(_employee.EmployeeId, RequestType.DayOff, requestDate, ConvertToDate(DayOffDate, SelectedTimeStart.Value), ConvertToDate(DayOffDate, SelectedTimeEnd.Value), Note);
 
             await _requestService.AddRequestAsync(request);
 

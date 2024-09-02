@@ -12,9 +12,9 @@ namespace Service.ModelServices
             return _shiftDao.GetShiftForToday(employeeId, today);
         }
 
-        public List<Shift>? GetShiftsForWeek(int employeeId, DateTime weekStart)
+        public List<Shift>? GetShiftsForWeek(Employee employee, DateTime weekStart)
         {
-            return _shiftDao.GetShiftsForWeek(employeeId, weekStart);
+            return _shiftDao.GetShiftsForWeek(employee, weekStart);
         }
     }
 }

@@ -43,6 +43,8 @@ namespace DAL
         {
             employee.SetPassword(password);
             employee.SetSalt(salt);
+            _context.Employees.Update(employee);
+
             await _context.SaveChangesAsync();
         }
 

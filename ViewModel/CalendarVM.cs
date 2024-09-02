@@ -10,9 +10,8 @@ namespace ViewModel
     {
         private ShiftService _shiftService = new();
         private RequestService _requestService = new();
-        private EmployeeService _employeeService = new();
         private ObservableCollection<Day> _daysOfMonth = new();
-        private Employee employee;
+        private readonly Employee _employee;
         public ObservableCollection<Day> DaysOfMonth
         {
             get { return _daysOfMonth; }
@@ -53,11 +52,11 @@ namespace ViewModel
         public ICommand ClosePopUpCommand { get; set; }
         public ICommandAsync RequestAvailabilityCommand { get; set; }
 
-        public CalendarVM()
+        public CalendarVM(Employee employee)
         {
-            employee = _employeeService.GetEmployeeByNumber("12345678");
+            _employee = employee;
             CurrentDate = DateOnly.FromDateTime(DateTime.Now);
-            LoadCalendar(employee);
+            LoadCalendar(_employee);
 
             GetNextMonthCommand = new RelayCommand(GetMonthExecute);
             GetPreviousMonthCommand = new RelayCommand(GetMonthExecute);
@@ -105,7 +104,7 @@ namespace ViewModel
         {
             CurrentDate = CurrentDate.AddMonths(int.Parse((string)parameter));
             DaysOfMonth.Clear();
-            SetDaysOfMonth(CurrentDate.Year, CurrentDate.Month, employee);
+            SetDaysOfMonth(CurrentDate.Year, CurrentDate.Month, _employee);
         }
 
         private void OpenPopUp(object parameter)

@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using Model;
+using System.Windows.Input;
 using ViewModel.Utilities;
 
 namespace ViewModel
@@ -11,12 +12,11 @@ namespace ViewModel
         private void Schedules(object obj) => CurrentView = new SchedulesVM();
         private void Requests(object obj) => CurrentView = new RequestsVM();
 
-        public ManagerNavigationVM()
+        public ManagerNavigationVM(Employee employee)
+            : base(employee)
         {
             SchedulesCommand = new RelayCommand(Schedules);
             RequestsCommand = new RelayCommand(Requests);
-
-            CurrentView = new HomeVM();
         }
     }
 }

@@ -6,9 +6,9 @@ namespace DAL
     {
         private ShiftFlowContext _context = new();
 
-        public int CountRequests(bool? approve, int employeeId)
+        public int CountRequests(bool? approve, Employee employee)
         {
-            return _context.Requests.Count(r => r.Approved == approve && employeeId == r.EmployeeId);
+            return _context.Requests.Count(r => r.Approved == approve && employee.EmployeeId == r.EmployeeId);
         }
 
         public async Task AddRequestAsync(Request request)
