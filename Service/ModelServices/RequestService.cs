@@ -7,9 +7,9 @@ namespace Service.ModelServices
     {
         RequestDao requestDao = new();
 
-        public int CountRequests(bool? approve, int employeeId)
+        public int CountRequests(bool? approve, Employee employee)
         {
-            return requestDao.CountRequests(approve, employeeId);
+            return requestDao.CountRequests(approve, employee);
         }
 
         public async Task AddRequestAsync(Request request)

@@ -1,19 +1,13 @@
 ﻿<UserControl x:Class="UI.SecondaryViews.ReplaceView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d">
-
-    <UserControl.DataContext>
-        <vm:ReplaceVM />
-    </UserControl.DataContext>
 
     <Grid Background="{StaticResource Color3}">
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                      VerticalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 
             <Grid Margin="100,50,100,40">
 
@@ -22,19 +16,17 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0"
-                        Style="{StaticResource StandardWrapBorderStyle}">
+                <Border Grid.Row="0" Style="{StaticResource StandardWrapBorderStyle}">
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Text="Upcoming shifts" 
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Upcoming shifts" />
 
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                                      VerticalScrollBarVisibility="Disabled"
-                                      Width="950"
+                        <ScrollViewer Width="950"
                                       Height="180"
-                                      Margin="0,0,0,10">
+                                      Margin="0,0,0,10"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Disabled">
 
                             <ItemsControl ItemsSource="{Binding ShiftsForWeek}">
 
@@ -54,13 +46,13 @@
 
                                         <StackPanel>
 
-                                            <TextBlock Text="{Binding StartTime.Date, StringFormat='{}{0:dddd dd MMMM yyyy}'}" 
-                                                        Style="{StaticResource SecondHeader}"
-                                                        Margin="0,0,0,10" />
+                                            <TextBlock Margin="0,0,0,10"
+                                                       Style="{StaticResource SecondHeader}"
+                                                       Text="{Binding StartTime.Date, StringFormat='{}{0:dddd dd MMMM yyyy}'}" />
 
-                                            <Button Style="{StaticResource ReplaceShiftButtonStyle}"
-                                                    Command="{Binding DataContext.SelectShiftCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                    CommandParameter="{Binding}" />
+                                            <Button Command="{Binding DataContext.SelectShiftCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}"
+                                                    Style="{StaticResource ReplaceShiftButtonStyle}" />
 
                                         </StackPanel>
 
@@ -76,13 +68,12 @@
 
                 </Border>
 
-                <Border Grid.Row="1"
-                        Style="{StaticResource StandardWrapBorderStyle}">
+                <Border Grid.Row="1" Style="{StaticResource StandardWrapBorderStyle}">
 
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                                  VerticalScrollBarVisibility="Auto"
-                                  Width="950"
-                                  MinHeight="100">
+                    <ScrollViewer Width="950"
+                                  MinHeight="100"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto">
 
                         <ItemsControl ItemsSource="{Binding FreeEmployees}">
 
@@ -90,8 +81,7 @@
 
                                 <ItemsPanelTemplate>
 
-                                    <StackPanel Orientation="Horizontal"
-                                                HorizontalAlignment="Center" />
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" />
 
                                 </ItemsPanelTemplate>
 
@@ -107,15 +97,15 @@
 
                                         <Border Style="{StaticResource StandardPlaceholderBorderStyle}" />
 
-                                        <TextBlock Text="{Binding FullName}" 
-                                                   Style="{StaticResource StandardHeader}"
+                                        <TextBlock Margin="20,0,0,0"
                                                    HorizontalAlignment="Left"
-                                                   Margin="20,0,0,0" />
+                                                   Style="{StaticResource StandardHeader}"
+                                                   Text="{Binding FullName}" />
 
-                                        <Button Content="Request replace"
-                                                Style="{StaticResource ReplaceButtonStyle}"
-                                                Command="{Binding DataContext.ReplaceCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                                CommandParameter="{Binding}" />
+                                        <Button Command="{Binding DataContext.ReplaceCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                CommandParameter="{Binding}"
+                                                Content="Request replace"
+                                                Style="{StaticResource ReplaceButtonStyle}" />
 
                                     </Grid>
 

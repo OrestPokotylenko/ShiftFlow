@@ -7,9 +7,8 @@ namespace ViewModel
 {
     public class HomeVM : BaseVM
     {
-        private ShiftService shiftService = new();
-        private EmployeeService employeeService = new();
-        private RequestService requestService = new();
+        private ShiftService _shiftService = new();
+        private readonly Employee _employee;
 
         private Shift? _shiftForToday;
         public Shift? ShiftForToday
@@ -106,8 +105,9 @@ namespace ViewModel
             return ci.Calendar.GetWeekOfYear(today, rule, firstDayOfWeek);
         }
 
-        public HomeVM()
+        public HomeVM(Employee employee)
         {
+            _employee = employee;
             Load();
         }
 
@@ -120,7 +120,7 @@ namespace ViewModel
 
         private void GetTodayShift()
         {
-            ShiftForToday = shiftService.GetShiftForToday(1, DateTime.Now);
+            ShiftForToday = _shiftService.GetShiftForToday(1, DateTime.Now);
 
             if (ShiftForToday == null)
             {
@@ -131,7 +131,7 @@ namespace ViewModel
         private void GetWeekShifts()
         {
             DateTime startDate = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
-            ShiftsForWeek = new(shiftService.GetShiftsForWeek(1, startDate));
+            ShiftsForWeek = new(_shiftService.GetShiftsForWeek(_employee, startDate));
 
             if (ShiftsForWeek.Count == 0)
             {
@@ -141,9 +141,10 @@ namespace ViewModel
 
         private void CountRequestsAsync()
         {
-            PendingRequests = requestService.CountRequests(null, 1);
-            ApprovedRequests = requestService.CountRequests(true, 1);
-            RejectedRequests = requestService.CountRequests(false, 1);
+            RequestService requestService = new();
+            PendingRequests = requestService.CountRequests(null, _employee);
+            ApprovedRequests = requestService.CountRequests(true, _employee);
+            RejectedRequests = requestService.CountRequests(false, _employee);
         }
     }
 }

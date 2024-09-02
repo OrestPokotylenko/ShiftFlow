@@ -43,12 +43,8 @@ namespace Service.ModelServices
 
         public (string encryptedPassword, byte[] salt) EncryptPassword(string password)
         {
-            byte[] salt;
-
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(salt = new byte[16]);
-            }
+            byte[] salt = new byte[16];
+            RandomNumberGenerator.Fill(salt);
 
             using var hmac = new HMACSHA256(salt);
             byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));

@@ -27,12 +27,12 @@ namespace DAL
                     .Shifts.AsNoTracking()
                         .Where(s => s.EmployeeId == id && s.StartTime.Date >= weekStart.Date && s.StartTime.Date <= weekEnd.Date));
 
-        public List<Shift>? GetShiftsForWeek(int employeeId, DateTime weekStart)
+        public List<Shift>? GetShiftsForWeek(Employee employee, DateTime weekStart)
         {
             DateTime weekEnd = weekStart.AddDays(6);
             var shiftsForWeek = new List<Shift>();
 
-            foreach (Shift shift in CompiledShiftsForWeek(_context, employeeId, weekStart, weekEnd))
+            foreach (Shift shift in CompiledShiftsForWeek(_context, employee.EmployeeId, weekStart, weekEnd))
             {
                 shiftsForWeek.Add(shift);
             }

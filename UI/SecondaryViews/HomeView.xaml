@@ -1,18 +1,12 @@
 ﻿<UserControl x:Class="UI.SecondaryViews.HomeView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:ui="clr-namespace:UI.SecondaryViews" 
-             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ui="clr-namespace:UI.SecondaryViews"
              mc:Ignorable="d">
 
-    <UserControl.DataContext>
-        <vm:HomeVM />
-    </UserControl.DataContext>
-
-    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                  VerticalScrollBarVisibility="Auto">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 
         <Grid Background="{StaticResource Color3}">
 
@@ -35,196 +29,179 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0"
-                        Style="{StaticResource HomeViewBorderStyle}">
+                <Border Grid.Row="0" Style="{StaticResource HomeViewBorderStyle}">
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Text="Shift for today" 
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Shift for today" />
 
                         <Grid Style="{StaticResource HomeViewGridStyle}">
 
-                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                            <TextBlock Text="No shifts for today"
-                                       Style="{StaticResource HomeViewEmptyStyle}" 
-                                       Tag="{Binding NoTodayShift}"/>
+                            <TextBlock Style="{StaticResource HomeViewEmptyStyle}"
+                                       Tag="{Binding NoTodayShift}"
+                                       Text="No shifts for today" />
 
-                            <TextBlock Text="{Binding ShiftForToday.StartEndTime}"
+                            <TextBlock Margin="0,0,0,20"
                                        Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
-                                       Margin="0,0,0,20"/>
+                                       Text="{Binding ShiftForToday.StartEndTime}" />
 
-                            <TextBlock Text="{Binding ShiftForToday.BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}"
-                                       Style="{StaticResource HomeViewLeftSecondHederStyle}" />
+                            <TextBlock Style="{StaticResource HomeViewLeftSecondHederStyle}" Text="{Binding ShiftForToday.BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}" />
 
-                            <TextBlock Text="{Binding ShiftForToday.DepartmentType}"
-                                       Style="{StaticResource HomeViewRightStandardHeaderStyle}" />
+                            <TextBlock Style="{StaticResource HomeViewRightStandardHeaderStyle}" Text="{Binding ShiftForToday.DepartmentType}" />
 
                         </Grid>
 
                         <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                     </StackPanel>
-                    
+
                 </Border>
 
-                <Border Grid.Row="1"
-                        Style="{StaticResource HomeViewBorderStyle}">
+                <Border Grid.Row="1" Style="{StaticResource HomeViewBorderStyle}">
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Text="Upcoming shifts" 
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Upcoming shifts" />
 
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                                      VerticalScrollBarVisibility="Disabled"
-                                      Width="950"
-                                      Height="180">
+                        <ScrollViewer Width="950"
+                                      Height="180"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      VerticalScrollBarVisibility="Disabled">
 
                             <ItemsControl ItemsSource="{Binding ShiftsForWeek}">
-                                
+
                                 <ItemsControl.ItemsPanel>
-                                    
+
                                     <ItemsPanelTemplate>
-                                        
-                                        <StackPanel Orientation="Horizontal"/>
-                                        
+
+                                        <StackPanel Orientation="Horizontal" />
+
                                     </ItemsPanelTemplate>
-                                    
+
                                 </ItemsControl.ItemsPanel>
-                                
+
                                 <ItemsControl.ItemTemplate>
-                                    
+
                                     <DataTemplate>
 
                                         <StackPanel>
 
-                                            <TextBlock Text="{Binding StartTime.Date, StringFormat='{}{0:dddd dd MMMM yyyy}'}" 
+                                            <TextBlock Margin="0,0,0,10"
                                                        Style="{StaticResource SecondHeader}"
-                                                       Margin="0,0,0,10"/>
+                                                       Text="{Binding StartTime.Date, StringFormat='{}{0:dddd dd MMMM yyyy}'}" />
 
-                                            <Grid Width="420" 
+                                            <Grid Width="420"
                                                   Height="90"
                                                   Margin="0,0,30,0">
 
-                                                <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                                                <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                                                <TextBlock Text="{Binding StartEndTime}" 
-                                                         Style="{StaticResource StandardHeader}"
-                                                         HorizontalAlignment="Left"
-                                                         Margin="30,0,0,20"/>
+                                                <TextBlock Margin="30,0,0,20"
+                                                           HorizontalAlignment="Left"
+                                                           Style="{StaticResource StandardHeader}"
+                                                           Text="{Binding StartEndTime}" />
 
-                                                <TextBlock Text="{Binding BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}"
-                                                         Style="{StaticResource HomeViewLeftSecondHederStyle}"
-                                                         Margin="30,35,0,0"/>
+                                                <TextBlock Margin="30,35,0,0"
+                                                           Style="{StaticResource HomeViewLeftSecondHederStyle}"
+                                                           Text="{Binding BreakDuration.TotalMinutes, StringFormat='Break: {0} minutes'}" />
 
-                                                <TextBlock Text="{Binding DepartmentType}"
-                                                        Style="{StaticResource StandardHeader}" 
-                                                        HorizontalAlignment="Right"
-                                                        Margin="0,0,30,0" />
+                                                <TextBlock Margin="0,0,30,0"
+                                                           HorizontalAlignment="Right"
+                                                           Style="{StaticResource StandardHeader}"
+                                                           Text="{Binding DepartmentType}" />
 
                                             </Grid>
 
                                         </StackPanel>
 
                                     </DataTemplate>
-                                    
+
                                 </ItemsControl.ItemTemplate>
-                                
+
                             </ItemsControl>
 
                         </ScrollViewer>
 
-                        <Button Style="{StaticResource SeeAllButtonStyle}"/>
+                        <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                     </StackPanel>
-                    
+
                 </Border>
 
-                <Border Grid.Row="2"
-                        Style="{StaticResource HomeViewBorderStyle}">
+                <Border Grid.Row="2" Style="{StaticResource HomeViewBorderStyle}">
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Text="Total hours"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Total hours" />
 
                         <Grid Style="{StaticResource HomeViewGridStyle}">
 
-                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                            <TextBlock Text="{Binding CurrentWeekOfYear, StringFormat='Week: {0}'}" 
+                            <TextBlock Margin="0,0,0,20"
                                        Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
-                                       Margin="0,0,0,20" />
+                                       Text="{Binding CurrentWeekOfYear, StringFormat='Week: {0}'}" />
 
-                            <TextBlock Text="{Binding CurrentWeek}"
-                                       Style="{StaticResource HomeViewLeftSecondHederStyle}" />
+                            <TextBlock Style="{StaticResource HomeViewLeftSecondHederStyle}" Text="{Binding CurrentWeek}" />
 
-                            <TextBlock Text="{Binding TotalTimeWeek}"
-                                        Style="{StaticResource HomeViewRightStandardHeaderStyle}" />
+                            <TextBlock Style="{StaticResource HomeViewRightStandardHeaderStyle}" Text="{Binding TotalTimeWeek}" />
 
                         </Grid>
 
-                        <Button Style="{StaticResource SeeAllButtonStyle}"/>
+                        <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                     </StackPanel>
-                    
+
                 </Border>
 
-                <Border Grid.Row="3"
-                        Style="{StaticResource HomeViewBorderStyle}">
+                <Border Grid.Row="3" Style="{StaticResource HomeViewBorderStyle}">
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Text="Requests"
-                                   Style="{StaticResource HomeViewSecondHeaderStyle}" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Requests" />
 
-                        <Grid Style="{StaticResource HomeViewGridStyle}"
-                              Margin="0,0,0,20">
+                        <Grid Margin="0,0,0,20" Style="{StaticResource HomeViewGridStyle}">
 
-                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                            <TextBlock Text="Pending"
-                                   Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
-                                   VerticalAlignment="Center" />
+                            <TextBlock VerticalAlignment="Center"
+                                       Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
+                                       Text="Pending" />
 
-                            <TextBlock Text="{Binding PendingRequests, StringFormat='({0})'}"
-                                       Style="{StaticResource CountTextBlockStyle}"/>
+                            <TextBlock Style="{StaticResource CountTextBlockStyle}" Text="{Binding PendingRequests, StringFormat='({0})'}" />
 
                         </Grid>
 
-                        <Grid Style="{StaticResource HomeViewGridStyle}"
-                              Margin="0,0,0,20">
+                        <Grid Margin="0,0,0,20" Style="{StaticResource HomeViewGridStyle}">
 
-                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                            <TextBlock Text="Approved"
+                            <TextBlock VerticalAlignment="Center"
                                        Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
-                                       VerticalAlignment="Center" />
+                                       Text="Approved" />
 
-                            <TextBlock Text="{Binding ApprovedRequests, StringFormat='({0})'}"
-                                       Style="{StaticResource CountTextBlockStyle}"/>
+                            <TextBlock Style="{StaticResource CountTextBlockStyle}" Text="{Binding ApprovedRequests, StringFormat='({0})'}" />
 
                         </Grid>
 
                         <Grid Style="{StaticResource HomeViewGridStyle}">
 
-                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}"/>
+                            <Border Style="{StaticResource HomeViewBorderTemplateStyle}" />
 
-                            <TextBlock Text="Denied"
+                            <TextBlock VerticalAlignment="Center"
                                        Style="{StaticResource HomeViewLeftStandardHeaderStyle}"
-                                       VerticalAlignment="Center" />
+                                       Text="Denied" />
 
-                            <TextBlock Text="{Binding RejectedRequests, StringFormat='({0})'}"
-                                       Style="{StaticResource CountTextBlockStyle}"/>
+                            <TextBlock Style="{StaticResource CountTextBlockStyle}" Text="{Binding RejectedRequests, StringFormat='({0})'}" />
 
                         </Grid>
 
-                        <Button Style="{StaticResource SeeAllButtonStyle}"/>
+                        <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                     </StackPanel>
-                    
+
                 </Border>
 
             </Grid>

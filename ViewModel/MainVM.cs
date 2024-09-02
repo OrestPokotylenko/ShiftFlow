@@ -4,7 +4,6 @@ using Service.ModelServices;
 using GalaSoft.MvvmLight.Messaging;
 using Model;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace ViewModel
 {
@@ -12,6 +11,7 @@ namespace ViewModel
     {
         private readonly EmployeeService _employeeService = new();
         private readonly IServiceProvider _serviceProvider;
+        private Employee _loggedInEmployee;
 
         private object? _currentView;
         public object? CurrentView
@@ -28,12 +28,13 @@ namespace ViewModel
 
         private void LoginView(object obj) => CurrentView = new LoginVM();
         private void AskEmailView(object obj) => CurrentView = new AskEmailVM();
-        private void EmployeeView(object obj) => CurrentView = new EmplyeeNavigationVM();
-        private void ManagerView(object obj) => CurrentView = new ManagerNavigationVM();
+        private void EmployeeView(object obj) => CurrentView = new EmplyeeNavigationVM(_loggedInEmployee);
+        private void ManagerView(object obj) => CurrentView = new ManagerNavigationVM(_loggedInEmployee);
 
         public MainVM(IServiceProvider serviceProvider, string deepLink)
         {
             _serviceProvider = serviceProvider;
+
             LoginViewCommand = new RelayCommand(LoginView);
             AskEmailViewCommand = new RelayCommand(AskEmailView);
             ResetPasswordViewCommand = new RelayCommand(ResetPasswordView);
@@ -76,6 +77,8 @@ namespace ViewModel
 
         private void LoginEmployee(Employee employee)
         {
+            _loggedInEmployee = employee;
+
             if (employee.Occupation is not OccupationType.Manager)
             {
                 ShowEmployeeMainView();
@@ -95,7 +98,6 @@ namespace ViewModel
             else
             {
                 ShowLoginView();
-                //ShowResetPasswordView("shiftflow://reset/?userId=12345678&token=BqHEvtCV9EykuwbPTSEzaA");
             }
         }
 
