@@ -10,8 +10,9 @@ namespace ViewModel
     {
         private ShiftService _shiftService = new();
         private RequestService _requestService = new();
-        private ObservableCollection<Day> _daysOfMonth = new();
         private readonly Employee _employee;
+
+        private ObservableCollection<Day> _daysOfMonth = new();
         public ObservableCollection<Day> DaysOfMonth
         {
             get { return _daysOfMonth; }

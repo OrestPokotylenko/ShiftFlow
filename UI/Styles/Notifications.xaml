@@ -234,7 +234,7 @@
            TargetType="TextBlock">
 
         <Setter Property="FontSize"
-                Value="14" />
+                Value="16" />
 
         <Setter Property="VerticalAlignment"
                 Value="Center" />
@@ -255,7 +255,7 @@
                 Value="Top" />
         
         <Setter Property="Margin"
-                Value="50,15,0,0" />
+                Value="50,8,0,0" />
 
     </Style>
 

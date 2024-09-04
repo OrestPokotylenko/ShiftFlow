@@ -9,7 +9,7 @@ namespace DAL
 
         public async Task AddEmployeeAsync(Employee employee)
         {
-            await _context.Employees.AddAsync(employee);
+            _context.Employees.Add(employee);
             await _context.SaveChangesAsync();
         }
 
