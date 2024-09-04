@@ -20,6 +20,7 @@ namespace DAL
                 .Build();
 
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("ShiftFlowDb"));
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

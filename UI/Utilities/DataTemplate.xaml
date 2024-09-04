@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
                     xmlns:ui="clr-namespace:UI.SecondaryViews"
                     xmlns:uiLogin="clr-namespace:UI.Login"
-                    xmlns:uiMains="clr-namespace:UI.MainViews">
+                    xmlns:uiMains="clr-namespace:UI.MainViews"
+                    xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel">
 
     <DataTemplate DataType="{x:Type vm:LoginVM}">
         <uiLogin:LoginView />

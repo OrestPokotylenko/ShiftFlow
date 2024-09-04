@@ -6,7 +6,8 @@
              xmlns:ui="clr-namespace:UI.SecondaryViews"
              mc:Ignorable="d">
 
-    <Grid Background="{StaticResource Color3}">
+    <Grid Background="{StaticResource Color3}"
+          Margin="0,50,0,0">
 
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
                       VerticalScrollBarVisibility="Auto">
@@ -28,23 +29,48 @@
                     <DataTemplate>
 
                         <Border Width="850"
-                                Height="40"
+                                Height="60"
+                                Margin="0,0,0,50"
                                 Style="{StaticResource StandardPlaceholderBorderStyle}">
 
                             <Grid>
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" 
-                                           Text="{Binding Notification}" />
+                                           Text="{Binding RequestType}"
+                                           Style="{StaticResource NotificationsHeaderStyle}"/>
 
-                                <Button Grid.Column="1" 
-                                        Style="{StaticResource StandardButtonStyle}"
-                                        Width="40"
-                                        Height="40" />
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding StartDate, StringFormat={}{0:dd MMMM}}"
+                                           Style="{StaticResource NotificationsTextStyle}" />
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding StartDate, StringFormat={}{0:HH:mm}}"
+                                           Style="{StaticResource NotificationsTextStyle}" 
+                                           Margin="130,30,0,0" />
+
+                                <TextBlock Grid.Column="0"
+                                           Text="-"
+                                           Style="{StaticResource NotificationsTextStyle}"
+                                           Margin="168,30,0,0" />
+
+                                <TextBlock Grid.Column="0"
+                                           Text="{Binding EndDate, StringFormat={}{0:HH:mm}}"
+                                           Style="{StaticResource NotificationsTextStyle}"
+                                           Margin="178,30,0,0" />
+
+                                <Button Style="{StaticResource NotificationsAcceptButtonStyle}"
+                                        Command="{Binding DataContext.AcceptCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}" />
+
+                                <Button Style="{StaticResource NotificationsDeclineButtonStyle}"
+                                        Command="{Binding DataContext.DeclineCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}" />
 
                             </Grid>
 

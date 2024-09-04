@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service.ModelServices;
 using System.Windows.Input;
 using ViewModel.Utilities;
 
@@ -13,6 +14,20 @@ namespace ViewModel
         {
             get { return _currentView; }
             set { _currentView = value; OnPropertyChanged(); }
+        }
+
+        private bool _newNotification;
+        public bool NewNotification
+        {
+            get { return _newNotification; }
+            set { _newNotification = value; OnPropertyChanged(); }
+        }
+
+        private bool _notificationsChecked = false;
+        public bool NotificationsChecked
+        {
+            get { return _notificationsChecked; }
+            set { _notificationsChecked = value; OnPropertyChanged(); }
         }
 
         public ICommand HomeCommand { get; set; }
@@ -31,11 +46,16 @@ namespace ViewModel
         private void Profile(object obj) => CurrentView = new ProfileVM(_loggedInEmployee);
         private void Settings(object obj) => CurrentView = new SettingsVM();
         private void Logout(object obj) => EventAggregator.Instance.ChangeView("Login");
-        private void Notifications(object obj) => CurrentView = new NotificationsVM();
+        private void Notifications(object obj)
+        {
+            CurrentView = new NotificationsVM(_loggedInEmployee);
+            NotificationsChecked = true;
+        }
 
         public EmplyeeNavigationVM(Employee employee)
         {
             _loggedInEmployee = employee;
+            GetNewNotification();
 
             HomeCommand = new RelayCommand(Home);
             CalendarCommand = new RelayCommand(Calendar);
@@ -47,6 +67,14 @@ namespace ViewModel
             NotificationsCommand = new RelayCommand(Notifications);
 
             Home(null);
+        }
+
+        private async Task GetNewNotification()
+        {
+            RequestService requestService = new();
+            List<Request>? notifications = await requestService.GetReplaceRequests(_loggedInEmployee);
+
+            NewNotification = notifications != null && notifications.Count > 0;
         }
     }
 }

@@ -12,6 +12,6 @@
         public DateTime? EndDate { get; private set; } = endDate;
         public DateOnly RequestDate { get; private set; } = requestDate;
         public string? Note { get; private set; } = note;
-        public bool? Approved { get; private set; } = approved;
+        public bool? Approved { get; set; } = approved;
     }
 }

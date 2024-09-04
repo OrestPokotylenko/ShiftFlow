@@ -35,6 +35,66 @@
 
                         </Trigger>
 
+                        <MultiDataTrigger>
+
+                            <MultiDataTrigger.Conditions>
+
+                                <Condition Binding="{Binding NewNotification}"
+                                           Value="True" />
+
+                                <Condition Binding="{Binding NotificationsChecked}"
+                                           Value="False" />
+
+                            </MultiDataTrigger.Conditions>
+
+                            <Setter TargetName="NotificationIcon"
+                                    Property="Source"
+                                    Value="{StaticResource NotificationCircleIcon}" />
+
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+
+                            <MultiDataTrigger.Conditions>
+                                
+                                <Condition Binding="{Binding NewNotification}"
+                                           Value="True" />
+
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+
+                                <Condition Binding="{Binding NotificationsChecked}"
+                                           Value="False" />
+
+                            </MultiDataTrigger.Conditions>
+
+                            <Setter TargetName="NotificationIcon"
+                                    Property="Source"
+                                    Value="{StaticResource NotificationCircleHoveredIcon}" />
+
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+
+                            <MultiDataTrigger.Conditions>
+
+                                <Condition Binding="{Binding NewNotification}"
+                                           Value="True" />
+
+                                <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}"
+                                           Value="True" />
+
+                                <Condition Binding="{Binding NotificationsChecked}"
+                                           Value="False" />
+
+                            </MultiDataTrigger.Conditions>
+
+                            <Setter TargetName="NotificationIcon"
+                                    Property="Source"
+                                    Value="{StaticResource NotificationCirclePressedIcon}" />
+
+                        </MultiDataTrigger>
+
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
@@ -48,6 +108,154 @@
 
         <Setter Property="Height"
                 Value="30" />
+
+        <Setter Property="Grid.Column"
+                Value="1" />
+
+        <Setter Property="Margin"
+                Value="0,0,50,0" />
+
+    </Style>
+
+    <Style x:Key="NotificationBaseButtonStyle"
+           TargetType="Button">
+
+        <Setter Property="Width"
+                Value="30" />
+
+        <Setter Property="Height"
+                Value="30" />
+
+        <Setter Property="HorizontalAlignment"
+                Value="Right" />
+
+        <Setter Property="Margin"
+                Value="0,0,50,0" />
+
+    </Style>
+
+    <Style x:Key="NotificationsAcceptButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource NotificationBaseButtonStyle}">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Image x:Name="AcceptButton"
+                           Source="{StaticResource OkIcon}"
+                           Width="{TemplateBinding Width}" 
+                           Height="{TemplateBinding Height}" />
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                            <Setter TargetName="AcceptButton"
+                                    Property="Source"
+                                    Value="{StaticResource OkHoveredIcon}" />
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+
+                            <Setter TargetName="AcceptButton"
+                                    Property="Source"
+                                    Value="{StaticResource OkPressedIcon}" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="Grid.Column"
+                Value="1" />
+
+    </Style>
+
+    <Style x:Key="NotificationsDeclineButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource NotificationBaseButtonStyle}">
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+
+                    <Image x:Name="DeclineButton"
+                           Source="{StaticResource DeclineIcon}"
+                           Width="{TemplateBinding Width}" 
+                           Height="{TemplateBinding Height}" />
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                            <Setter TargetName="DeclineButton"
+                                    Property="Source"
+                                    Value="{StaticResource DeclineHoveredIcon}" />
+
+                        </Trigger>
+
+                        <Trigger Property="IsPressed"
+                                 Value="True">
+
+                            <Setter TargetName="DeclineButton"
+                                    Property="Source"
+                                    Value="{StaticResource DeclinePressedIcon}" />
+
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="Grid.Column"
+                Value="2" />
+
+    </Style>
+
+    <Style x:Key="NotificationsTextStyle"
+           TargetType="TextBlock">
+
+        <Setter Property="FontSize"
+                Value="14" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+
+        <Setter Property="Margin"
+                Value="50,30,0,0" />
+
+    </Style>
+
+    <Style x:Key="NotificationsHeaderStyle"
+           BasedOn="{StaticResource SecondHeader}"
+           TargetType="TextBlock">
+
+        <Setter Property="HorizontalAlignment"
+                Value="Left" />
+
+        <Setter Property="VerticalAlignment"
+                Value="Top" />
+        
+        <Setter Property="Margin"
+                Value="50,15,0,0" />
 
     </Style>
 

@@ -3,7 +3,7 @@
     public class Shift(int employeeId, DateTime startTime, DateTime endTime, DepartmentType departmentType, int? shiftId = null)
     {
         public int? ShiftId { get; private set; } = shiftId;
-        public int EmployeeId { get; private set; } = employeeId;
+        public int EmployeeId { get; set; } = employeeId;
         public virtual Employee? Employee { get; private set; }
         public DateTime StartTime { get; set; } = startTime;
         public DateTime EndTime { get; set; } = endTime;

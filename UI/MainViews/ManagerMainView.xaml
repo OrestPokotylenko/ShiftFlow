@@ -36,17 +36,8 @@
                            Style="{StaticResource Header}"
                            Text="ShiftFlow" />
 
-                <Button Grid.Column="1"
-                        Width="30"
-                        Height="30"
-                        Margin="0,0,50,0"
-                        Command="{Binding NotificationsCommand}">
-
-                    <Image Width="25"
-                           Height="25"
-                           Source="{StaticResource OkIcon}" />
-
-                </Button>
+                <Button Style="{StaticResource NotifcationsOpenButtonStyle}"
+                        Command="{Binding NotificationsCommand}" />
 
             </Grid>
 

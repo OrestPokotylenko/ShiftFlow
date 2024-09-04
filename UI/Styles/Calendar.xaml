@@ -17,7 +17,7 @@
                 Value="26" />
 
         <Setter Property="Grid.Row" 
-                alue="1" />
+                Value="1" />
 
         <Style.Triggers>
 
