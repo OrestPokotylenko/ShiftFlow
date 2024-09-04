@@ -9,7 +9,7 @@ namespace DAL
 
         public async Task AddDeepLinkAsync(DeepLink deepLink)
         {
-            await _context.DeepLinks.AddAsync(deepLink);
+            _context.DeepLinks.Add(deepLink);
             await _context.SaveChangesAsync();
         }
 

@@ -31,5 +31,10 @@ namespace Service.ModelServices
         {
             await requestDao.UpdateRequestAsync(request);
         }
+
+        public async Task<List<Request>?> GetAllRequests()
+        {
+            return await requestDao.GetAllRequests();
+        }
     }
 }

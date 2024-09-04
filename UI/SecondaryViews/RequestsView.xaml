@@ -7,7 +7,80 @@
              mc:Ignorable="d">
     <Grid>
 
-        <TextBlock Text="Requests" />
+        <Grid Background="{StaticResource Color3}"
+              Margin="0,50,0,0">
+
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                          VerticalScrollBarVisibility="Auto">
+
+                <ItemsControl ItemsSource="{Binding Requests}">
+
+                    <ItemsControl.ItemsPanel>
+
+                        <ItemsPanelTemplate>
+
+                            <StackPanel Orientation="Vertical" />
+
+                        </ItemsPanelTemplate>
+
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <Border Width="850"
+                                    Height="60"
+                                    Margin="0,0,0,50"
+                                    Style="{StaticResource StandardPlaceholderBorderStyle}">
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Column="0" 
+                                               Text="{Binding RequestType}"
+                                               Style="{StaticResource NotificationsHeaderStyle}"/>
+
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding StartDate, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
+                                               Style="{StaticResource NotificationsTextStyle}" />
+
+                                    <TextBlock Grid.Column="0"
+                                               Text="-"
+                                               Style="{StaticResource NotificationsTextStyle}"
+                                               Margin="180,30,0,0" />
+
+                                    <TextBlock Grid.Column="0"
+                                               Text="{Binding EndDate, StringFormat={}{0:dd/MM/yyyy HH:mm}}"
+                                               Style="{StaticResource NotificationsTextStyle}" 
+                                               Margin="190,30,0,0" />
+
+                                    <Button Style="{StaticResource NotificationsAcceptButtonStyle}"
+                                            Command="{Binding DataContext.AcceptCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                            CommandParameter="{Binding}" />
+
+                                    <Button Style="{StaticResource NotificationsDeclineButtonStyle}"
+                                            Command="{Binding DataContext.DeclineCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                            CommandParameter="{Binding}" />
+
+                                </Grid>
+
+                            </Border>
+
+                        </DataTemplate>
+
+                    </ItemsControl.ItemTemplate>
+
+                </ItemsControl>
+
+            </ScrollViewer>
+
+        </Grid>
 
     </Grid>
 

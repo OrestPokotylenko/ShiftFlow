@@ -174,8 +174,9 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource OkIcon}" 
-                               Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource QuestionMarkIcon}" 
+                               Style="{StaticResource ImageStyle}" 
+                               HorizontalAlignment="Center" />
 
                         <TextBlock Style="{StaticResource NavigationButtonTextStyle}"
                                    Text="Requests" />
