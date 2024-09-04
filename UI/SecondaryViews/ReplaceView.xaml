@@ -7,7 +7,8 @@
 
     <Grid Background="{StaticResource Color3}">
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
 
             <Grid Margin="100,50,100,40">
 
@@ -20,7 +21,8 @@
 
                     <StackPanel Style="{StaticResource HomeViewStackPanelStyle}">
 
-                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" Text="Upcoming shifts" />
+                        <TextBlock Style="{StaticResource HomeViewSecondHeaderStyle}" 
+                                   Text="Upcoming shifts" />
 
                         <ScrollViewer Width="950"
                                       Height="180"
@@ -68,7 +70,8 @@
 
                 </Border>
 
-                <Border Grid.Row="1" Style="{StaticResource StandardWrapBorderStyle}">
+                <Border Grid.Row="1" 
+                        Style="{StaticResource StandardWrapBorderStyle}">
 
                     <ScrollViewer Width="950"
                                   MinHeight="100"
@@ -81,7 +84,8 @@
 
                                 <ItemsPanelTemplate>
 
-                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                                    <StackPanel HorizontalAlignment="Center"
+                                                Orientation="Horizontal" />
 
                                 </ItemsPanelTemplate>
 

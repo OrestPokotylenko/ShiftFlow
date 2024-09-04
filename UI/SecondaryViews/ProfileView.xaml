@@ -8,15 +8,18 @@
 
     <Grid Background="{StaticResource Color3}">
 
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Auto">
 
-            <StackPanel Width="850" Margin="50,50,0,0">
+            <StackPanel Width="850" 
+                        Margin="50,50,0,0">
 
                 <StackPanel Margin="0,0,0,100">
 
                     <DockPanel>
 
-                        <Border Margin="0" Style="{StaticResource ProfileBorderStyle}">
+                        <Border Margin="0" 
+                                Style="{StaticResource ProfileBorderStyle}">
 
                             <Grid>
 
@@ -25,9 +28,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Email address:" />
+                                <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                           Text="Email address:" />
 
-                                <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding Email}" />
+                                <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                           Text="{Binding Email}" />
 
                             </Grid>
 
@@ -39,9 +44,11 @@
 
                     </DockPanel>
 
-                    <DockPanel x:Name="EmailDockPanel" Style="{StaticResource DropDownDockStyle}">
+                    <DockPanel x:Name="EmailDockPanel" 
+                               Style="{StaticResource DropDownDockStyle}">
 
-                        <TextBlock Style="{StaticResource PlaceholderStyle}" Text="New email:" />
+                        <TextBlock Style="{StaticResource PlaceholderStyle}"
+                                   Text="New email:" />
 
                         <TextBox x:Name="txtEmail"
                                  Style="{StaticResource ChangeValueTextBoxStyle}"
@@ -59,7 +66,8 @@
 
                     <DockPanel>
 
-                        <Border Margin="0" Style="{StaticResource ProfileBorderStyle}">
+                        <Border Margin="0" 
+                                Style="{StaticResource ProfileBorderStyle}">
 
                             <Grid>
 
@@ -68,9 +76,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Phone number:" />
+                                <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                           Text="Phone number:" />
 
-                                <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding PhoneNumber}" />
+                                <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                           Text="{Binding PhoneNumber}" />
 
                             </Grid>
 
@@ -82,9 +92,11 @@
 
                     </DockPanel>
 
-                    <DockPanel x:Name="NumberDockPanel" Style="{StaticResource DropDownDockStyle}">
+                    <DockPanel x:Name="NumberDockPanel"
+                               Style="{StaticResource DropDownDockStyle}">
 
-                        <TextBlock Style="{StaticResource PlaceholderStyle}" Text="New phone number:" />
+                        <TextBlock Style="{StaticResource PlaceholderStyle}" 
+                                   Text="New phone number:" />
 
                         <TextBox x:Name="txtPhoneNumber"
                                  Style="{StaticResource ChangeValueTextBoxStyle}"
@@ -102,7 +114,8 @@
 
                     <DockPanel>
 
-                        <Border Margin="0" Style="{StaticResource ProfileBorderStyle}">
+                        <Border Margin="0" 
+                                Style="{StaticResource ProfileBorderStyle}">
 
                             <Grid>
 
@@ -111,9 +124,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Address:" />
+                                <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                           Text="Address:" />
 
-                                <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding Address}" />
+                                <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                           Text="{Binding Address}" />
 
                             </Grid>
 
@@ -125,9 +140,11 @@
 
                     </DockPanel>
 
-                    <DockPanel x:Name="AddressDockPanel" Style="{StaticResource DropDownDockStyle}">
+                    <DockPanel x:Name="AddressDockPanel"
+                               Style="{StaticResource DropDownDockStyle}">
 
-                        <TextBlock Style="{StaticResource PlaceholderStyle}" Text="New address:" />
+                        <TextBlock Style="{StaticResource PlaceholderStyle}" 
+                                   Text="New address:" />
 
                         <TextBox x:Name="txtAddress"
                                  Style="{StaticResource ChangeValueTextBoxStyle}"
@@ -145,7 +162,8 @@
 
                     <DockPanel>
 
-                        <Border Margin="0" Style="{StaticResource ProfileBorderStyle}">
+                        <Border Margin="0" 
+                                Style="{StaticResource ProfileBorderStyle}">
 
                             <Grid>
 
@@ -154,9 +172,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Password:" />
+                                <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                           Text="Password:" />
 
-                                <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding Password}" />
+                                <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                           Text="{Binding Password}" />
 
                             </Grid>
 
@@ -168,17 +188,20 @@
 
                     </DockPanel>
 
-                    <DockPanel x:Name="PasswordDockPanel" Style="{StaticResource DropDownDockStyle}">
+                    <DockPanel x:Name="PasswordDockPanel" 
+                               Style="{StaticResource DropDownDockStyle}">
 
                         <StackPanel>
 
-                            <TextBlock Style="{StaticResource PlaceholderStyle}" Text="New password:" />
+                            <TextBlock Style="{StaticResource PlaceholderStyle}" 
+                                       Text="New password:" />
 
                             <TextBox x:Name="txtPassword"
                                      Style="{StaticResource ChangeValueTextBoxStyle}"
                                      Text="{Binding PasswordReset, UpdateSourceTrigger=PropertyChanged}" />
 
-                            <TextBlock Style="{StaticResource PlaceholderStyle}" Text="Repeat password:" />
+                            <TextBlock Style="{StaticResource PlaceholderStyle}" 
+                                       Text="Repeat password:" />
 
                             <TextBox x:Name="txtPasswordRepeat"
                                      Style="{StaticResource ChangeValueTextBoxStyle}"
@@ -204,26 +227,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Full name:" />
+                        <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                   Text="Full name:" />
 
-                        <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding FullName}" />
-
-                    </Grid>
-
-                </Border>
-
-                <Border Style="{StaticResource ProfileBorderStyle}">
-
-                    <Grid>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Employee number:" />
-
-                        <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding EmployeeNumber}" />
+                        <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                   Text="{Binding FullName}" />
 
                     </Grid>
 
@@ -238,9 +246,11 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Occupation:" />
+                        <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                   Text="Employee number:" />
 
-                        <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding Occupation}" />
+                        <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                   Text="{Binding EmployeeNumber}" />
 
                     </Grid>
 
@@ -255,15 +265,17 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Contract type:" />
+                        <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                   Text="Occupation:" />
 
-                        <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding Contract}" />
+                        <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                   Text="{Binding Occupation}" />
 
                     </Grid>
 
                 </Border>
 
-                <Border Margin="0,0,0,50" Style="{StaticResource ProfileBorderStyle}">
+                <Border Style="{StaticResource ProfileBorderStyle}">
 
                     <Grid>
 
@@ -272,9 +284,31 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Style="{StaticResource PropertyNameStyle}" Text="Employment start:" />
+                        <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                   Text="Contract type:" />
 
-                        <TextBlock Style="{StaticResource PropertyValueStyle}" Text="{Binding HireDate}" />
+                        <TextBlock Style="{StaticResource PropertyValueStyle}" 
+                                   Text="{Binding Contract}" />
+
+                    </Grid>
+
+                </Border>
+
+                <Border Margin="0,0,0,50" 
+                        Style="{StaticResource ProfileBorderStyle}">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Style="{StaticResource PropertyNameStyle}" 
+                                   Text="Employment start:" />
+
+                        <TextBlock Style="{StaticResource PropertyValueStyle}"
+                                   Text="{Binding HireDate}" />
 
                     </Grid>
 

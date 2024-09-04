@@ -71,9 +71,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource HomeIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource HomeIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Home" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}"
+                                   Text="Home" />
 
                     </Grid>
 
@@ -85,9 +87,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource CalendarIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource CalendarIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Calendar" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Calendar" />
 
                     </Grid>
 
@@ -99,9 +103,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource ReplaceIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource ReplaceIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Replace" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Replace" />
 
                     </Grid>
 
@@ -113,9 +119,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource VacationIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource VacationIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Vacation" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Vacation" />
 
                     </Grid>
 
@@ -127,9 +135,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource ProfileIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource ProfileIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Profile" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Profile" />
 
                     </Grid>
 
@@ -141,9 +151,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource SettingsIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource SettingsIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Settings" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Settings" />
 
                     </Grid>
 
@@ -155,9 +167,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource SettingsIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource SettingsIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Schdules" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 
+                                   Text="Schdules" />
 
                     </Grid>
 
@@ -169,9 +183,11 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource OkIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource OkIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
-                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}" Text="Requests" />
+                        <TextBlock Style="{StaticResource NavigationButtonTextStyle}"
+                                   Text="Requests" />
 
                     </Grid>
 
@@ -183,7 +199,8 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource LogoutIcon}" Style="{StaticResource ImageStyle}" />
+                        <Image Source="{StaticResource LogoutIcon}" 
+                               Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Margin="48,0,0,0"
                                    HorizontalAlignment="Left"
@@ -197,9 +214,11 @@
             </DockPanel>
 
 
-            <Grid Grid.Column="1" Background="#D7E3FC">
+            <Grid Grid.Column="1" 
+                  Background="#D7E3FC">
 
-                <ContentControl x:Name="ViewControl" Content="{Binding CurrentView}" />
+                <ContentControl x:Name="ViewControl" 
+                                Content="{Binding CurrentView}" />
 
             </Grid>
 
