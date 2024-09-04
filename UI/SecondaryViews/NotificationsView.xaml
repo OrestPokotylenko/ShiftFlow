@@ -52,17 +52,17 @@
                                 <TextBlock Grid.Column="0"
                                            Text="{Binding StartDate, StringFormat={}{0:HH:mm}}"
                                            Style="{StaticResource NotificationsTextStyle}" 
-                                           Margin="130,30,0,0" />
+                                           Margin="160,30,0,0" />
 
                                 <TextBlock Grid.Column="0"
                                            Text="-"
                                            Style="{StaticResource NotificationsTextStyle}"
-                                           Margin="168,30,0,0" />
+                                           Margin="205,30,0,0" />
 
                                 <TextBlock Grid.Column="0"
                                            Text="{Binding EndDate, StringFormat={}{0:HH:mm}}"
                                            Style="{StaticResource NotificationsTextStyle}"
-                                           Margin="178,30,0,0" />
+                                           Margin="218,30,0,0" />
 
                                 <Button Style="{StaticResource NotificationsAcceptButtonStyle}"
                                         Command="{Binding DataContext.AcceptCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
