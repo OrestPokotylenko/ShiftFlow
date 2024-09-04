@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:tp="clr-namespace:UI.Controls">
 
-    <Style x:Key="OpenCalendarButtonStyle"
+    <Style x:Key="OpenCalendarButtonStyle" 
            TargetType="Button">
 
         <Setter Property="Template">
@@ -12,26 +12,26 @@
                 <ControlTemplate TargetType="Button">
 
                     <Border Background="{TemplateBinding Background}"
-                            BorderBrush="Black" 
+                            BorderBrush="Black"
                             BorderThickness="1"
                             CornerRadius="5">
 
-                        <ContentPresenter HorizontalAlignment="Center" 
-                                          VerticalAlignment="Center" 
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
                                           RecognizesAccessKey="True" />
 
                     </Border>
 
                 </ControlTemplate>
-                
+
             </Setter.Value>
-            
+
         </Setter>
 
-        <Setter Property="Width"
+        <Setter Property="Width" 
                 Value="70" />
 
-        <Setter Property="Height"
+        <Setter Property="Height" 
                 Value="30" />
 
         <Style.Triggers>
@@ -48,27 +48,27 @@
 
                 <MultiTrigger.Conditions>
 
-                    <Condition Property="IsMouseOver"
+                    <Condition Property="IsMouseOver" 
                                Value="True" />
 
-                    <Condition Property="IsPressed"
+                    <Condition Property="IsPressed" 
                                Value="False" />
 
                 </MultiTrigger.Conditions>
 
-                <Setter Property="Background"
+                <Setter Property="Background" 
                         Value="{StaticResource Color3}" />
 
             </MultiTrigger>
 
         </Style.Triggers>
-        
+
     </Style>
 
-    <Style x:Key="DateStackPanelStyle"
+    <Style x:Key="DateStackPanelStyle" 
            TargetType="StackPanel">
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
         <Setter Property="VerticalAlignment"
@@ -77,7 +77,7 @@
         <Setter Property="Orientation"
                 Value="Horizontal" />
 
-        <Setter Property="Visibility"
+        <Setter Property="Visibility" 
                 Value="Collapsed" />
 
         <Style.Triggers>
@@ -89,36 +89,36 @@
                         Value="Visible" />
 
             </DataTrigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="TimeStackPanelStyle"
+    <Style x:Key="TimeStackPanelStyle" 
            TargetType="StackPanel">
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
-        <Setter Property="VerticalAlignment"
+        <Setter Property="VerticalAlignment" 
                 Value="Center" />
 
-        <Setter Property="Orientation"
+        <Setter Property="Orientation" 
                 Value="Horizontal" />
 
     </Style>
 
     <Style x:Key="DayOffButtonStyle"
-           TargetType="Button"
-           BasedOn="{StaticResource OpenCalendarButtonStyle}">
+           BasedOn="{StaticResource OpenCalendarButtonStyle}"
+           TargetType="Button">
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,10,0" />
 
-        <Setter Property="Visibility"
+        <Setter Property="Visibility" 
                 Value="Collapsed" />
 
         <Style.Triggers>
@@ -130,12 +130,12 @@
                         Value="Visible" />
 
             </DataTrigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="CallendarStyle"
+    <Style x:Key="CallendarStyle" 
            TargetType="Calendar">
 
         <Setter Property="Grid.Row"
@@ -147,7 +147,7 @@
         <Setter Property="Visibility"
                 Value="Collapsed" />
 
-        <Setter Property="IsTodayHighlighted"
+        <Setter Property="IsTodayHighlighted" 
                 Value="False" />
 
         <Setter Property="Margin"
@@ -158,39 +158,39 @@
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}"
                          Value="True">
 
-                <Setter Property="Visibility"
+                <Setter Property="Visibility" 
                         Value="Visible" />
 
             </DataTrigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="DatePickerStyle"
+    <Style x:Key="DatePickerStyle" 
            TargetType="DatePicker">
 
-        <Setter Property="Grid.Row"
+        <Setter Property="Grid.Row" 
                 Value="1" />
 
-        <Setter Property="Width"
+        <Setter Property="Width" 
                 Value="200" />
 
-        <Setter Property="Visibility"
+        <Setter Property="Visibility" 
                 Value="Collapsed" />
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,20,10,0" />
 
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}"
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" 
                          Value="True">
 
-                <Setter Property="Visibility"
+                <Setter Property="Visibility" 
                         Value="Visible" />
 
             </DataTrigger>
@@ -199,42 +199,42 @@
 
     </Style>
 
-    <Style x:Key="PlaceholderBorderStyle"
+    <Style x:Key="PlaceholderBorderStyle" 
            TargetType="Border">
 
-        <Setter Property="Background"
+        <Setter Property="Background" 
                 Value="{StaticResource Color1}" />
 
-        <Setter Property="BorderBrush"
+        <Setter Property="BorderBrush" 
                 Value="Black" />
 
-        <Setter Property="BorderThickness"
+        <Setter Property="BorderThickness" 
                 Value="1" />
 
-        <Setter Property="CornerRadius"
+        <Setter Property="CornerRadius" 
                 Value="10" />
 
-        <Setter Property="Height"
+        <Setter Property="Height" 
                 Value="60" />
 
-        <Setter Property="VerticalAlignment"
+        <Setter Property="VerticalAlignment" 
                 Value="Top" />
 
     </Style>
 
-    <Style x:Key="TimeGridStyle"
+    <Style x:Key="TimeGridStyle" 
            TargetType="Grid">
 
-        <Setter Property="Grid.Row"
+        <Setter Property="Grid.Row" 
                 Value="1" />
 
-        <Setter Property="Visibility"
+        <Setter Property="Visibility" 
                 Value="Collapsed" />
 
-        <Setter Property="Opacity"
+        <Setter Property="Opacity" 
                 Value="0" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,0,-50" />
 
         <Style.Triggers>
@@ -242,13 +242,13 @@
             <DataTrigger Binding="{Binding FullDay}"
                          Value="False">
 
-                <Setter Property="Visibility"
+                <Setter Property="Visibility" 
                         Value="Visible" />
 
                 <Setter Property="Opacity"
                         Value="1" />
 
-                <Setter Property="Margin"
+                <Setter Property="Margin" 
                         Value="0,0,0,50" />
 
             </DataTrigger>
@@ -257,90 +257,90 @@
 
     </Style>
 
-    <Style x:Key="TimePickerStyle"
+    <Style x:Key="TimePickerStyle" 
            TargetType="tp:TimePicker">
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
-        <Setter Property="Grid.Row"
+        <Setter Property="Grid.Row" 
                 Value="1" />
 
-        <Setter Property="Visibility"
+        <Setter Property="Visibility" 
                 Value="Collapsed" />
 
-        <Setter Property="Opacity"
+        <Setter Property="Opacity" 
                 Value="0" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,0,-50" />
 
         <Style.Triggers>
 
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}"
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" 
                          Value="True">
 
-                <Setter Property="Visibility"
+                <Setter Property="Visibility" 
                         Value="Visible" />
 
-                <Setter Property="Opacity"
+                <Setter Property="Opacity" 
                         Value="1" />
 
-                <Setter Property="Margin"
+                <Setter Property="Margin" 
                         Value="0,20,10,0" />
 
             </DataTrigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="VacationSubmitbuttonStyle"
+    <Style x:Key="VacationSubmitbuttonStyle" 
            TargetType="Button">
 
         <Setter Property="Template">
-            
+
             <Setter.Value>
-                
+
                 <ControlTemplate TargetType="Button">
-                    
-                    <Border BorderBrush="{StaticResource ColorBlack}"
-                            Background="{TemplateBinding Background}"
+
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource ColorBlack}"
                             BorderThickness="1"
                             CornerRadius="10">
-                        
-                        <ContentPresenter HorizontalAlignment="Center"
+
+                        <ContentPresenter HorizontalAlignment="Center" 
                                           VerticalAlignment="Center" />
-                        
+
                     </Border>
-                    
+
                 </ControlTemplate>
-                
+
             </Setter.Value>
-            
+
         </Setter>
 
-        <Setter Property="Content"
+        <Setter Property="Content" 
                 Value="Submit" />
 
-        <Setter Property="Grid.Row"
+        <Setter Property="Grid.Row" 
                 Value="6" />
 
-        <Setter Property="Background"
+        <Setter Property="Background" 
                 Value="{StaticResource Color1}" />
 
-        <Setter Property="Width"
+        <Setter Property="Width" 
                 Value="150" />
 
-        <Setter Property="Height"
+        <Setter Property="Height" 
                 Value="35" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,50,0,0" />
 
         <Style.Triggers>
 
-            <Trigger Property="IsMouseOver"
+            <Trigger Property="IsMouseOver" 
                      Value="True">
 
                 <Setter Property="Background"
@@ -348,33 +348,33 @@
 
             </Trigger>
 
-            <Trigger Property="IsPressed"
+            <Trigger Property="IsPressed" 
                      Value="True">
 
-                <Setter Property="Background"
+                <Setter Property="Background" 
                         Value="{StaticResource Color7}" />
 
                 <Setter Property="Effect">
 
                     <Setter.Value>
 
-                        <DropShadowEffect Color="Black"
+                        <DropShadowEffect BlurRadius="5"
                                           Direction="300"
+                                          Opacity="0.5"
                                           ShadowDepth="5"
-                                          BlurRadius="5"
-                                          Opacity="0.5" />
+                                          Color="Black" />
 
                     </Setter.Value>
-                    
+
                 </Setter>
 
             </Trigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
-    <Style x:Key="VacationTextBoxStyle"
+    <Style x:Key="VacationTextBoxStyle" 
            TargetType="TextBox">
 
         <Setter Property="Template">
@@ -389,80 +389,79 @@
 
                         <ScrollViewer x:Name="PART_ContentHost"
                                       Margin="5"
-                                      VerticalAlignment="Center" 
-                                      VerticalScrollBarVisibility="Hidden"
-                                      HorizontalScrollBarVisibility="Hidden" />
+                                      VerticalAlignment="Center"
+                                      HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Hidden" />
 
                     </Border>
-                            
-                    
+
                 </ControlTemplate>
-                
+
             </Setter.Value>
-            
+
         </Setter>
 
-        <Setter Property="Width"
+        <Setter Property="Width" 
                 Value="400" />
 
-        <Setter Property="Height"
+        <Setter Property="Height" 
                 Value="35" />
 
         <Setter Property="HorizontalAlignment"
                 Value="Right" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,10,0" />
 
-        <Setter Property="TextWrapping"
+        <Setter Property="TextWrapping" 
                 Value="Wrap" />
 
 
         <Style.Triggers>
 
-            <Trigger Property="IsFocused"
+            <Trigger Property="IsFocused" 
                      Value="True">
 
                 <Setter Property="Effect">
 
                     <Setter.Value>
 
-                        <DropShadowEffect Color="Black"
+                        <DropShadowEffect BlurRadius="5"
                                           Direction="300"
+                                          Opacity="0.5"
                                           ShadowDepth="3"
-                                          BlurRadius="5"
-                                          Opacity="0.5" />
-                        
+                                          Color="Black" />
+
                     </Setter.Value>
-                    
+
                 </Setter>
-                
+
             </Trigger>
-            
+
         </Style.Triggers>
 
     </Style>
 
     <Style x:Key="VacationLeftTextBlockStyle"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource SecondHeader}">
-        
-        <Setter Property="DockPanel.Dock"
+           BasedOn="{StaticResource SecondHeader}"
+           TargetType="TextBlock">
+
+        <Setter Property="DockPanel.Dock" 
                 Value="Left" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="10,0,0,0" />
 
     </Style>
 
     <Style x:Key="VacationDashStyle"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource SecondHeader}">
+           BasedOn="{StaticResource SecondHeader}"
+           TargetType="TextBlock">
 
-        <Setter Property="Text"
+        <Setter Property="Text" 
                 Value="-" />
 
-        <Setter Property="VerticalAlignment"
+        <Setter Property="VerticalAlignment" 
                 Value="Center" />
 
         <Setter Property="Margin"
@@ -473,19 +472,19 @@
     <Style x:Key="VacationErrorMessageTextBlockStyle"
            TargetType="TextBlock">
 
-        <Setter Property="Foreground"
+        <Setter Property="Foreground" 
                 Value="Red" />
 
         <Setter Property="Text"
                 Value="{Binding ErrorMessage}" />
 
-        <Setter Property="FontFamily"
+        <Setter Property="FontFamily" 
                 Value="Nito Sans" />
 
-        <Setter Property="FontSize"
+        <Setter Property="FontSize" 
                 Value="14" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,10,0,0" />
 
     </Style>

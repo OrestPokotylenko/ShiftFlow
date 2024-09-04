@@ -2,32 +2,32 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="SettingsBorder"
-           TargetType="Border"
-           BasedOn="{StaticResource ProfileBorderStyle}">
+           BasedOn="{StaticResource ProfileBorderStyle}"
+           TargetType="Border">
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0" />
 
     </Style>
 
     <Style x:Key="SettingsDropDownStyle"
-           TargetType="ToggleButton"
-           BasedOn="{StaticResource DropDownButtonStyle}">
+           BasedOn="{StaticResource DropDownButtonStyle}"
+           TargetType="ToggleButton">
 
         <Setter Property="Grid.Column"
                 Value="1" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,50,0" />
 
     </Style>
 
-    <Style x:Key="SettingsToggleButton"
+    <Style x:Key="SettingsToggleButton" 
            TargetType="ToggleButton">
 
-        <Setter Property="Width"
+        <Setter Property="Width" 
                 Value="65" />
-        
+
         <Setter Property="Height" 
                 Value="30" />
 
@@ -37,75 +37,76 @@
         <Setter Property="Grid.Column"
                 Value="1" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,10,0" />
 
         <Setter Property="Template">
-            
-            <Setter.Value>
-                
-                <ControlTemplate TargetType="ToggleButton">
-                    
-                    <Grid x:Name="Grid">
 
+            <Setter.Value>
+
+                <ControlTemplate TargetType="ToggleButton">
+
+                    <Grid x:Name="Grid">
+                        
                         <Border x:Name="BackgroundBorder"
-                                Width="65" Height="30"
+                                Width="65"
+                                Height="30"
                                 CornerRadius="15">
 
                             <Border.Background>
-                                
+
                                 <LinearGradientBrush StartPoint="0,0" 
                                                      EndPoint="1,0">
-                                    
-                                    <GradientStop x:Name="GradientStop1" 
-                                                  Color="LightGray" 
-                                                  Offset="0" />
-                                    
-                                    <GradientStop x:Name="GradientStop2" 
-                                                  Color="LightGray" 
-                                                  Offset="1" />
-                                    
+
+                                    <GradientStop x:Name="GradientStop1"
+                                                  Offset="0" Color="LightGray" />
+
+                                    <GradientStop x:Name="GradientStop2"
+                                                  Offset="1"
+                                                  Color="LightGray" />
+
                                 </LinearGradientBrush>
-                                
+
                             </Border.Background>
 
                             <Border.RenderTransform>
-                                
+
                                 <TranslateTransform x:Name="BackgroundTranslateTransform" />
-                                
+
                             </Border.RenderTransform>
-                            
+
                         </Border>
-                        
+
                         <Ellipse x:Name="MovingCircle"
-                                 Width="25" Height="25"
+                                 Width="25"
+                                 Height="25"
                                  Fill="White">
-                            
+
                             <Ellipse.RenderTransform>
-                                
+
                                 <TranslateTransform x:Name="CircleTranslateTransform" />
-                                
+
                             </Ellipse.RenderTransform>
 
                             <Ellipse.Effect>
 
-                                <DropShadowEffect ShadowDepth="0"
-                                                  BlurRadius="5"
-                                                  Color="Black"
-                                                  Opacity="0.5" />
-                                
+                                <DropShadowEffect BlurRadius="5"
+                                                  Opacity="0.5"
+                                                  ShadowDepth="0"
+                                                  Color="Black" />
+
                             </Ellipse.Effect>
-                            
+
                         </Ellipse>
-                        
+
                         <VisualStateManager.VisualStateGroups>
-                            
+
                             <VisualStateGroup x:Name="CheckStates">
-                                
+
                                 <VisualState x:Name="Unchecked">
-                                    
+
                                     <Storyboard>
-                                        
+
                                         <DoubleAnimation Storyboard.TargetName="CircleTranslateTransform"
                                                          Storyboard.TargetProperty="X"
                                                          To="-17"
@@ -114,12 +115,12 @@
                                         <ColorAnimation Storyboard.TargetName="GradientStop1"
                                                         Storyboard.TargetProperty="Color"
                                                         To="LightGray"
-                                                        Duration="0:0:0.2"/>
+                                                        Duration="0:0:0.2" />
 
                                     </Storyboard>
-                                    
+
                                 </VisualState>
-                                
+
                                 <VisualState x:Name="Checked">
 
                                     <Storyboard>
@@ -142,17 +143,16 @@
                                     </Storyboard>
 
                                 </VisualState>
-                                
+
                             </VisualStateGroup>
-                            
+
                         </VisualStateManager.VisualStateGroups>
-                        
                     </Grid>
-                    
+
                 </ControlTemplate>
-                
+
             </Setter.Value>
-            
+
         </Setter>
 
     </Style>
@@ -163,13 +163,13 @@
         <Setter Property="Width"
                 Value="500" />
 
-        <Setter Property="Height"
+        <Setter Property="Height" 
                 Value="40" />
 
         <Setter Property="HorizontalAlignment"
                 Value="Left" />
 
-        <Setter Property="DockPanel.Dock"
+        <Setter Property="DockPanel.Dock" 
                 Value="Top" />
 
         <Setter Property="BorderBrush"
@@ -178,40 +178,40 @@
         <Setter Property="BorderThickness"
                 Value="1" />
 
-        <Setter Property="Background"
+        <Setter Property="Background" 
                 Value="{StaticResource Color1}" />
 
         <Setter Property="CornerRadius"
                 Value="5" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,50,0,0" />
 
     </Style>
 
     <Style x:Key="SettingsLeftTextBlock"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource SecondHeader}">
+           BasedOn="{StaticResource SecondHeader}"
+           TargetType="TextBlock">
 
-        <Setter Property="Grid.Column"
+        <Setter Property="Grid.Column" 
                 Value="0" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="10,0,0,0" />
 
     </Style>
 
     <Style x:Key="SettingsRightTextBlock"
-           TargetType="TextBlock"
-           BasedOn="{StaticResource SecondHeader}">
+           BasedOn="{StaticResource SecondHeader}"
+           TargetType="TextBlock">
 
-        <Setter Property="Grid.Column"
+        <Setter Property="Grid.Column" 
                 Value="1" />
 
-        <Setter Property="HorizontalAlignment"
+        <Setter Property="HorizontalAlignment" 
                 Value="Right" />
 
-        <Setter Property="Margin"
+        <Setter Property="Margin" 
                 Value="0,0,10,0" />
 
     </Style>
