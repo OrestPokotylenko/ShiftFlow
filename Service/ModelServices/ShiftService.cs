@@ -16,5 +16,10 @@ namespace Service.ModelServices
         {
             return _shiftDao.GetShiftsForWeek(employee, weekStart);
         }
+
+        public async Task UpdateShiftAsync(Shift shift)
+        {
+            await _shiftDao.UpdateShiftAsync(shift);
+        }
     }
 }

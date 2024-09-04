@@ -21,5 +21,15 @@ namespace Service.ModelServices
         {
             return requestDao.GetVacationForToday(employeeId, today);
         }
+
+        public async Task<List<Request>?> GetReplaceRequests(Employee employee)
+        {
+            return await requestDao.GetReplaceRequests(employee);
+        }
+
+        public async Task UpdateRequestAsync(Request request)
+        {
+            await requestDao.UpdateRequestAsync(request);
+        }
     }
 }

@@ -39,5 +39,11 @@ namespace DAL
 
             return shiftsForWeek;
         }
+
+        public async Task UpdateShiftAsync(Shift shift)
+        {
+            _context.Shifts.Update(shift);
+            await _context.SaveChangesAsync();
+        }
     }
 }

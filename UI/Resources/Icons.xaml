@@ -1,92 +1,92 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <DrawingImage x:Key="SettingsIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M51.22,21h-5.052c-0.812,0-1.481-0.447-1.792-1.197s-0.153-1.54,0.42-2.114l3.572-3.571   c0.525-0.525,0.814-1.224,0.814-1.966c0-0.743-0.289-1.441-0.814-1.967l-4.553-4.553c-1.05-1.05-2.881-1.052-3.933,0l-3.571,3.571   c-0.574,0.573-1.366,0.733-2.114,0.421C33.447,9.313,33,8.644,33,7.832V2.78C33,1.247,31.753,0,30.22,0H23.78   C22.247,0,21,1.247,21,2.78v5.052c0,0.812-0.447,1.481-1.197,1.792c-0.748,0.313-1.54,0.152-2.114-0.421l-3.571-3.571   c-1.052-1.052-2.883-1.05-3.933,0l-4.553,4.553c-0.525,0.525-0.814,1.224-0.814,1.967c0,0.742,0.289,1.44,0.814,1.966l3.572,3.571   c0.573,0.574,0.73,1.364,0.42,2.114S8.644,21,7.832,21H2.78C1.247,21,0,22.247,0,23.78v6.439C0,31.753,1.247,33,2.78,33h5.052   c0.812,0,1.481,0.447,1.792,1.197s0.153,1.54-0.42,2.114l-3.572,3.571c-0.525,0.525-0.814,1.224-0.814,1.966   c0,0.743,0.289,1.441,0.814,1.967l4.553,4.553c1.051,1.051,2.881,1.053,3.933,0l3.571-3.572c0.574-0.573,1.363-0.731,2.114-0.42   c0.75,0.311,1.197,0.98,1.197,1.792v5.052c0,1.533,1.247,2.78,2.78,2.78h6.439c1.533,0,2.78-1.247,2.78-2.78v-5.052   c0-0.812,0.447-1.481,1.197-1.792c0.751-0.312,1.54-0.153,2.114,0.42l3.571,3.572c1.052,1.052,2.883,1.05,3.933,0l4.553-4.553   c0.525-0.525,0.814-1.224,0.814-1.967c0-0.742-0.289-1.44-0.814-1.966l-3.572-3.571c-0.573-0.574-0.73-1.364-0.42-2.114   S45.356,33,46.168,33h5.052c1.533,0,2.78-1.247,2.78-2.78V23.78C54,22.247,52.753,21,51.22,21z M52,30.22   C52,30.65,51.65,31,51.22,31h-5.052c-1.624,0-3.019,0.932-3.64,2.432c-0.622,1.5-0.295,3.146,0.854,4.294l3.572,3.571   c0.305,0.305,0.305,0.8,0,1.104l-4.553,4.553c-0.304,0.304-0.799,0.306-1.104,0l-3.571-3.572c-1.149-1.149-2.794-1.474-4.294-0.854   c-1.5,0.621-2.432,2.016-2.432,3.64v5.052C31,51.65,30.65,52,30.22,52H23.78C23.35,52,23,51.65,23,51.22v-5.052   c0-1.624-0.932-3.019-2.432-3.64c-0.503-0.209-1.021-0.311-1.533-0.311c-1.014,0-1.997,0.4-2.761,1.164l-3.571,3.572   c-0.306,0.306-0.801,0.304-1.104,0l-4.553-4.553c-0.305-0.305-0.305-0.8,0-1.104l3.572-3.571c1.148-1.148,1.476-2.794,0.854-4.294   C10.851,31.932,9.456,31,7.832,31H2.78C2.35,31,2,30.65,2,30.22V23.78C2,23.35,2.35,23,2.78,23h5.052   c1.624,0,3.019-0.932,3.64-2.432c0.622-1.5,0.295-3.146-0.854-4.294l-3.572-3.571c-0.305-0.305-0.305-0.8,0-1.104l4.553-4.553   c0.304-0.305,0.799-0.305,1.104,0l3.571,3.571c1.147,1.147,2.792,1.476,4.294,0.854C22.068,10.851,23,9.456,23,7.832V2.78   C23,2.35,23.35,2,23.78,2h6.439C30.65,2,31,2.35,31,2.78v5.052c0,1.624,0.932,3.019,2.432,3.64   c1.502,0.622,3.146,0.294,4.294-0.854l3.571-3.571c0.306-0.305,0.801-0.305,1.104,0l4.553,4.553c0.305,0.305,0.305,0.8,0,1.104   l-3.572,3.571c-1.148,1.148-1.476,2.794-0.854,4.294c0.621,1.5,2.016,2.432,3.64,2.432h5.052C51.65,23,52,23.35,52,23.78V30.22z" />
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M27,18c-4.963,0-9,4.037-9,9s4.037,9,9,9s9-4.037,9-9S31.963,18,27,18z M27,34c-3.859,0-7-3.141-7-7s3.141-7,7-7   s7,3.141,7,7S30.859,34,27,34z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ProfileIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M15.0778418,12.9406987 L18.5345074,14.5119103 C19.4269931,14.9175857 20,15.8074678 20,16.7878265 L20,17.5 C20,18.8807119 18.8807119,20 17.5,20 L6.5,20 C5.11928813,20 4,18.8807119 4,17.5 L4,16.7878265 C4,15.8074678 4.57300693,14.9175857 5.46549264,14.5119103 L8.92215823,12.9406987 C7.75209123,12.0255364 7,10.6005984 7,9 C7,6.23857625 9.23857625,4 12,4 C14.7614237,4 17,6.23857625 17,9 C17,10.6005984 16.2479088,12.0255364 15.0778418,12.9406987 L15.0778418,12.9406987 Z M9.96126583,13.5668358 L5.87929558,15.4222768 C5.34380416,15.665682 5,16.1996113 5,16.7878265 L5,17.5 C5,18.3284271 5.67157288,19 6.5,19 L17.5,19 C18.3284271,19 19,18.3284271 19,17.5 L19,16.7878265 C19,16.1996113 18.6561958,15.665682 18.1207044,15.4222768 L14.0387342,13.5668358 C13.4161054,13.8452135 12.7261289,14 12,14 C11.2738711,14 10.5838946,13.8452135 9.96126583,13.5668358 L9.96126583,13.5668358 Z M12,13 C14.209139,13 16,11.209139 16,9 C16,6.790861 14.209139,5 12,5 C9.790861,5 8,6.790861 8,9 C8,11.209139 9.790861,13 12,13 Z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="VacationIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
                 <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M9.123 30.464l-1.33-6.268-6.318-1.397 1.291-2.475 5.785-0.316c0.297-0.386 0.96-1.234 1.374-1.648l5.271-5.271-10.989-5.388 2.782-2.782 13.932 2.444 4.933-4.933c0.585-0.585 1.496-0.894 2.634-0.894 0.776 0 1.395 0.143 1.421 0.149l0.3 0.070 0.089 0.295c0.469 1.55 0.187 3.298-0.67 4.155l-4.956 4.956 2.434 13.875-2.782 2.782-5.367-10.945-4.923 4.924c-0.518 0.517-1.623 1.536-2.033 1.912l-0.431 5.425-2.449 1.329zM3.065 22.059l5.63 1.244 1.176 5.544 0.685-0.372 0.418-5.268 0.155-0.142c0.016-0.014 1.542-1.409 2.153-2.020l5.978-5.979 5.367 10.945 1.334-1.335-2.434-13.876 5.349-5.348c0.464-0.464 0.745-1.598 0.484-2.783-0.216-0.032-0.526-0.066-0.87-0.066-0.593 0-1.399 0.101-1.881 0.582l-5.325 5.325-13.933-2.444-1.335 1.334 10.989 5.388-6.326 6.326c-0.483 0.482-1.418 1.722-1.428 1.734l-0.149 0.198-5.672 0.31-0.366 0.702z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ReplaceIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
-                
+
                 <GeometryDrawing Geometry="M20.003 18.9423L18.9423 20.003L15.9193 16.98C14.655 18.229 12.9176 19 11 19C8.76823 19 6.78139 17.9557 5.5 16.3303L5.5 18L4 18L4.00001 13.5H8.4138V15H6.38927C7.37111 16.5058 9.07009 17.5 11 17.5C14.0376 17.5 16.5 15.0376 16.5 12H18C18 13.4058 17.5856 14.7149 16.8722 15.8116L20.003 18.9423Z">
-                    
+
                     <GeometryDrawing.Pen>
 
                         <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="0.5" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
                 <GeometryDrawing Geometry="M16.5 7.16965L16.5 5.5L18 5.5L18 10H13.5862V8.5H15.6107C14.6289 6.99416 12.9299 6 11 6C7.96244 6 5.50001 8.46243 5.50001 11.5H4.00001C4.00001 7.63401 7.13401 4.5 11 4.5C13.2318 4.5 15.2186 5.54431 16.5 7.16965Z">
-                    
+
                     <GeometryDrawing.Pen>
 
-                        <Pen Brush="{StaticResource ColorBlack}"
+                        <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="0.5" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="CalendarIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
                 <GeometryDrawing Brush="{StaticResource ColorBlack}" 
@@ -124,145 +124,145 @@
 
                 <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M60,4h-7V3c0-1.657-1.343-3-3-3s-3,1.343-3,3v1H17V3c0-1.657-1.343-3-3-3s-3,1.343-3,3v1H4   C1.789,4,0,5.789,0,8v52c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V8C64,5.789,62.211,4,60,4z M49,3c0-0.553,0.447-1,1-1   s1,0.447,1,1v3v4c0,0.553-0.447,1-1,1s-1-0.447-1-1V6V3z M13,3c0-0.553,0.447-1,1-1s1,0.447,1,1v3v4c0,0.553-0.447,1-1,1   s-1-0.447-1-1V6V3z M62,60c0,1.104-0.896,2-2,2H4c-1.104,0-2-0.896-2-2V17h60V60z M62,15H2V8c0-1.104,0.896-2,2-2h7v4   c0,1.657,1.343,3,3,3s3-1.343,3-3V6h30v4c0,1.657,1.343,3,3,3s3-1.343,3-3V6h7c1.104,0,2,0.896,2,2V15z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="HomeIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
-                
+
                 <GeometryDrawing Geometry="M5.5 10V17.5C5.5 18.4428 5.5 18.9142 5.79289 19.2071C6.08579 19.5 6.55719 19.5 7.5 19.5H16.5C17.4428 19.5 17.9142 19.5 18.2071 19.2071C18.5 18.9142 18.5 18.4428 18.5 17.5V10">
-                    
+
                     <GeometryDrawing.Pen>
 
                         <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="1" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
                 <GeometryDrawing Geometry="M20.5 11.5L12.5767 5.90707C12.231 5.66303 11.769 5.66303 11.4233 5.90707L3.5 11.5">
-                    
+
                     <GeometryDrawing.Pen>
 
                         <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="1" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
                 <GeometryDrawing Geometry="M14.5 19V15C14.5 13.8954 13.6046 13 12.5 13H11.5C10.3954 13 9.5 13.8954 9.5 15V19">
-                    
+
                     <GeometryDrawing.Pen>
 
                         <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="1" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
                 <GeometryDrawing Geometry="M17.5 9V5.5">
-                    
+
                     <GeometryDrawing.Pen>
 
                         <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="1" />
-                        
+
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="LogoutIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M25,2H16V4h9a1,1,0,0,1,1,1V27a1,1,0,0,1-1,1H16v2h9a3,3,0,0,0,3-3V5A3,3,0,0,0,25,2Z" />
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M21.58,17V15H7l4-4L9.58,9.55l-5,5a2,2,0,0,0,0,2.83l5,5L11,21,7,17Z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ArrowDownIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}"
+                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M164.292308,6524.36583 L164.292308,6524.36583 C163.902564,6524.77071 163.902564,6525.42619 164.292308,6525.83004 L172.555873,6534.39267 C173.33636,6535.20244 174.602528,6535.20244 175.383014,6534.39267 L183.70754,6525.76791 C184.093286,6525.36716 184.098283,6524.71997 183.717533,6524.31405 C183.328789,6523.89985 182.68821,6523.89467 182.29347,6524.30266 L174.676479,6532.19636 C174.285736,6532.60124 173.653152,6532.60124 173.262409,6532.19636 L165.705379,6524.36583 C165.315635,6523.96094 164.683051,6523.96094 164.292308,6524.36583" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ArrowUpIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
-                
+
                 <GeometryDrawing Brush="{StaticResource ColorBlack}" 
                                  Geometry="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394  l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393  C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ArrowDownHoverIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
-                
-                <GeometryDrawing Brush="{StaticResource Color7}"
+
+                <GeometryDrawing Brush="{StaticResource Color7}" 
                                  Geometry="M164.292308,6524.36583 L164.292308,6524.36583 C163.902564,6524.77071 163.902564,6525.42619 164.292308,6525.83004 L172.555873,6534.39267 C173.33636,6535.20244 174.602528,6535.20244 175.383014,6534.39267 L183.70754,6525.76791 C184.093286,6525.36716 184.098283,6524.71997 183.717533,6524.31405 C183.328789,6523.89985 182.68821,6523.89467 182.29347,6524.30266 L174.676479,6532.19636 C174.285736,6532.60124 173.653152,6532.60124 173.262409,6532.19636 L165.705379,6524.36583 C165.315635,6523.96094 164.683051,6523.96094 164.292308,6524.36583" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="ArrowUpHoverIcon">
-        
+
         <DrawingImage.Drawing>
-            
+
             <DrawingGroup>
-                
+
                 <GeometryDrawing Brush="{StaticResource Color7}" 
                                  Geometry="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394  l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393  C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z" />
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
     </DrawingImage>
 
     <DrawingImage x:Key="OkIcon">
@@ -275,17 +275,63 @@
 
                     <GeometryDrawing.Pen>
 
-                        <Pen Brush="{StaticResource ColorBlack}"
+                        <Pen Brush="{StaticResource ColorBlack}" 
                              Thickness="1" />
 
                     </GeometryDrawing.Pen>
-                    
+
                 </GeometryDrawing>
-                
+
             </DrawingGroup>
-            
+
         </DrawingImage.Drawing>
-        
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="OkHoveredIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M2,10 L8,16 L20,4">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color4}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="OkPressedIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M2,10 L8,16 L20,4">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color7}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
     </DrawingImage>
 
     <DrawingImage x:Key="XIcon">
@@ -294,13 +340,271 @@
 
             <DrawingGroup>
 
-                <GeometryDrawing Brush="{StaticResource ColorBlack}" 
+                <GeometryDrawing Brush="{StaticResource ColorBlack}"
                                  Geometry="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55  c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55  c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505  c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55  l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719  c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z" />
-                
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource ColorBlack}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
             </DrawingGroup>
             
         </DrawingImage.Drawing>
         
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationHoveredIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color2}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationPressedIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color5}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="DeclineIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Brush="{StaticResource ColorBlack}">
+                    
+                    <GeometryDrawing.Geometry>
+                        
+                        <GeometryGroup>
+                            
+                            <LineGeometry StartPoint="10,10"
+                                          EndPoint="70,70" />
+                            
+                            <LineGeometry StartPoint="70,10"
+                                          EndPoint="10,70" />
+                            
+                        </GeometryGroup>
+                        
+                    </GeometryDrawing.Geometry>
+                    
+                    <GeometryDrawing.Pen>
+                        
+                        <Pen Thickness="3" 
+                             Brush="{StaticResource ColorBlack}" />
+                        
+                    </GeometryDrawing.Pen>
+                    
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="DeclineHoveredIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Brush="{StaticResource Color4}">
+
+                    <GeometryDrawing.Geometry>
+
+                        <GeometryGroup>
+
+                            <LineGeometry StartPoint="10,10"
+                                          EndPoint="70,70" />
+
+                            <LineGeometry StartPoint="70,10"
+                                          EndPoint="10,70" />
+
+                        </GeometryGroup>
+
+                    </GeometryDrawing.Geometry>
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Thickness="3" 
+                             Brush="{StaticResource Color4}" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="DeclinePressedIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Brush="{StaticResource Color7}">
+
+                    <GeometryDrawing.Geometry>
+
+                        <GeometryGroup>
+
+                            <LineGeometry StartPoint="10,10"
+                                          EndPoint="70,70" />
+
+                            <LineGeometry StartPoint="70,10"
+                                          EndPoint="10,70" />
+
+                        </GeometryGroup>
+
+                    </GeometryDrawing.Geometry>
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Thickness="3" 
+                             Brush="{StaticResource Color7}" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationCircleIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource ColorBlack}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+                <GeometryDrawing Brush="Red"
+                                 Geometry="M16,4 A2,2 0 1,1 20,4 A2,2 0 1,1 16,4" />
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationCircleHoveredIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color2}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+                <GeometryDrawing Brush="{StaticResource Color2}"
+                                 Geometry="M16,4 A2,2 0 1,1 20,4 A2,2 0 1,1 16,4" />
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
+    </DrawingImage>
+
+    <DrawingImage x:Key="NotificationCirclePressedIcon">
+
+        <DrawingImage.Drawing>
+
+            <DrawingGroup>
+
+                <GeometryDrawing Geometry="M9.5 19C8.89555 19 7.01237 19 5.61714 19C4.87375 19 4.39116 18.2177 4.72361 17.5528L5.57771 15.8446C5.85542 15.2892 6 14.6774 6 14.0564C6 13.2867 6 12.1434 6 11C6 9 7 5 12 5C17 5 18 9 18 11C18 12.1434 18 13.2867 18 14.0564C18 14.6774 18.1446 15.2892 18.4223 15.8446L19.2764 17.5528C19.6088 18.2177 19.1253 19 18.382 19H14.5M9.5 19C9.5 21 10.5 22 12 22C13.5 22 14.5 21 14.5 19M9.5 19C11.0621 19 14.5 19 14.5 19">
+
+                    <GeometryDrawing.Pen>
+
+                        <Pen Brush="{StaticResource Color5}" 
+                             Thickness="1" />
+
+                    </GeometryDrawing.Pen>
+
+                </GeometryDrawing>
+
+                <GeometryDrawing Brush="{StaticResource Color5}"
+                                 Geometry="M16,4 A2,2 0 1,1 20,4 A2,2 0 1,1 16,4" />
+
+            </DrawingGroup>
+
+        </DrawingImage.Drawing>
+
     </DrawingImage>
 
 </ResourceDictionary>
