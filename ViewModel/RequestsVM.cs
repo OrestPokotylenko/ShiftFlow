@@ -39,7 +39,16 @@ namespace ViewModel
         private async Task AcceptRequestAsync(object parameter)
         {
             Request selectedRequest = (Request)parameter;
+            AvailabilityService _availabilityService = new();
             selectedRequest.Approved = true;
+
+            if (selectedRequest.RequestType == RequestType.ScheduleChange)
+            {
+                DayOfWeek dayOfWeek = selectedRequest.StartDate.Value.DayOfWeek;
+                Availability availability = new(selectedRequest.EmployeeId, dayOfWeek);
+                await _availabilityService.AddAvailabilityAsync(availability);
+            }
+
             Requests.Remove(selectedRequest);
 
             await _requestService.UpdateRequestAsync(selectedRequest);

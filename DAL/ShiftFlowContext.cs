@@ -11,6 +11,7 @@ namespace DAL
         public DbSet<DeepLink> DeepLinks { get; set; }
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Availability> Availabilities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,6 +30,7 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new DeepLinkConfiguration());
             modelBuilder.ApplyConfiguration(new ShiftConfiguration());
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
+            modelBuilder.ApplyConfiguration(new AvailabilityConfiguration());
         }
     }
 }

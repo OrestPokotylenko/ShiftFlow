@@ -98,7 +98,7 @@
 
                             <DataTemplate>
 
-                                <Button Command="{Binding DataContext.OpenCloseListCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                <Button Command="{Binding DataContext.OpenListCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"
                                         Style="{StaticResource ScheduleFieldStyle}"
                                         Visibility="{Binding Converter={StaticResource VisibilityNullValueConverter}}" />
@@ -155,7 +155,7 @@
 
                             <DataTemplate>
 
-                                <Grid>
+                                <Grid Margin="0,0,0,20">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -187,6 +187,7 @@
                                     <Grid Style="{StaticResource ScheduleTimeGridStyle}">
 
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
@@ -259,7 +260,7 @@
 
                             <DataTemplate>
 
-                                <Grid>
+                                <Grid Margin="0,0,0,20">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -279,8 +280,8 @@
                                                        Text="{Binding Employee.FullName}"
                                                        Style="{StaticResource NotificationsHeaderStyle}" />
 
-                                            <Button Style="{StaticResource NotificationsDeclineButtonStyle}"
-                                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                            <Button Style="{StaticResource NotificationsAcceptButtonStyle}"
+                                                    Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                                     CommandParameter="{Binding}" 
                                                     Grid.Column="1" />
 
@@ -291,6 +292,7 @@
                                     <Grid Style="{StaticResource ScheduleTimeGridStyle}">
 
                                         <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />

@@ -12,7 +12,7 @@ namespace Service.ModelServices
             await _deepLinkDao.AddDeepLinkAsync(deepLink);
         }
 
-        public async Task<DeepLink> GetDeepLinkAsync(string deepLink)
+        public async Task<DeepLink?> GetDeepLinkAsync(string deepLink)
         {
             return await _deepLinkDao.GetDeepLinkAsync(deepLink);
         }

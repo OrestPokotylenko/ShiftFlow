@@ -21,5 +21,15 @@ namespace Service.ModelServices
         {
             await _shiftDao.UpdateShiftAsync(shift);
         }
+
+        public async Task AddShiftsAsync(List<Shift> shifts)
+        {
+            await _shiftDao.AddShiftAsync(shifts);
+        }
+
+        public async Task DeleteShiftsAsync(List<Employee> employeesToRemove, DateTime date)
+        {
+            await _shiftDao.DeleteShiftAsync(employeesToRemove, date);
+        }
     }
 }

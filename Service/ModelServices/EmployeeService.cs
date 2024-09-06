@@ -19,7 +19,7 @@ namespace Service.ModelServices
             await _employeeDao.DeleteEmployeeAsync(employee);
         }
 
-        public async Task<Employee> GetEmployeeAsync(string employeeNumber, string enteredPassword)
+        public async Task<Employee?> GetEmployeeAsync(string employeeNumber, string enteredPassword)
         {
             Employee employee = await _employeeDao.GetEmployeeByNumberAsync(employeeNumber);
 
@@ -36,7 +36,7 @@ namespace Service.ModelServices
             return employee;
         }
 
-        public Employee GetEmployeeByNumber(string employeeNumber)
+        public Employee? GetEmployeeByNumber(string employeeNumber)
         {
             return _employeeDao.GetEmployeeByNumber(employeeNumber);
         }
@@ -52,7 +52,7 @@ namespace Service.ModelServices
             return (Convert.ToBase64String(hash), salt);
         }
 
-        public async Task<Employee> GetEmployeeByEmailAsync(string email)
+        public async Task<Employee?> GetEmployeeByEmailAsync(string email)
         {
             return await _employeeDao.GetEmployeeByEmailAsync(email);
         }
@@ -76,6 +76,16 @@ namespace Service.ModelServices
         public List<Employee>? GetFreeEmployees(Employee employee, DateTime startTime, DateTime endTime)
         {
             return _employeeDao.GetFreeEmployees(employee, startTime, endTime);
+        }
+
+        public async Task<List<Employee>?> GetUnavailableEmployeesByDateAsync(DayOfWeek dayOfWeek)
+        {
+            return await _employeeDao.GetUnavailableEmployeesByDateAsync(dayOfWeek);
+        }
+
+        public async Task<List<Employee>?> GetEmployeesWithShiftAsync(DateTime date)
+        {
+            return await _employeeDao.GetEmployeesWithShiftAsync(date);
         }
     }
 }

@@ -3,10 +3,8 @@ using Model;
 
 namespace DAL
 {
-    public class RequestDao
+    public class RequestDao : BaseDao
     {
-        private ShiftFlowContext _context = new();
-
         public int CountRequests(bool? approve, Employee employee)
         {
             return _context.Requests.Count(r => r.Approved == approve &&
