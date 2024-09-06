@@ -224,7 +224,9 @@
                                                      Style="{StaticResource ScheduleTimeTextBoxStyle}" />
 
                                         </StackPanel>
-                                        
+
+                                        <ComboBox Style="{StaticResource ScheduleComboBoxStyle}" />
+
                                     </Grid>
 
                                 </Grid>
@@ -327,6 +329,8 @@
 
                                         </StackPanel>
 
+                                        <ComboBox Style="{StaticResource ScheduleComboBoxStyle}" />
+
                                     </Grid>
 
                                 </Grid>
@@ -343,7 +347,7 @@
 
                     <ItemsControl Grid.Row="6"
                                   ItemsSource="{Binding UnavailableEmployees}"
-                                  Margin="0,0,0,100">
+                                  Margin="0,0,0,200">
 
                         <ItemsControl.ItemsPanel>
 
@@ -394,6 +398,7 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
                                         <StackPanel Grid.Column="0"
@@ -428,6 +433,8 @@
                                                      Style="{StaticResource ScheduleTimeTextBoxStyle}" />
 
                                         </StackPanel>
+
+                                        <ComboBox Style="{StaticResource ScheduleComboBoxStyle}" />
 
                                     </Grid>
 
