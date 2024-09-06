@@ -158,7 +158,7 @@
 
                     <Grid>
 
-                        <Image Source="{StaticResource SettingsIcon}" 
+                        <Image Source="{StaticResource SchedulesIcon}" 
                                Style="{StaticResource ImageStyle}" />
 
                         <TextBlock Style="{StaticResource NavigationButtonTextStyle}" 

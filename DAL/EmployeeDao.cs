@@ -3,10 +3,8 @@ using Model;
 
 namespace DAL
 {
-    public class EmployeeDao
+    public class EmployeeDao : BaseDao
     {
-        private ShiftFlowContext _context = new();
-
         public async Task AddEmployeeAsync(Employee employee)
         {
             _context.Employees.Add(employee);
@@ -24,17 +22,17 @@ namespace DAL
             }
         }
 
-        public async Task<Employee> GetEmployeeByNumberAsync(string employeeNumber)
+        public async Task<Employee?> GetEmployeeByNumberAsync(string employeeNumber)
         {
             return await _context.Employees.FirstOrDefaultAsync(e => e.EmployeeNumber == employeeNumber);
         }
 
-        public Employee GetEmployeeByNumber(string employeeNumber)
+        public Employee? GetEmployeeByNumber(string employeeNumber)
         {
             return _context.Employees.FirstOrDefault(e => e.EmployeeNumber == employeeNumber);
         }
 
-        public async Task<Employee> GetEmployeeByEmailAsync(string email)
+        public async Task<Employee?> GetEmployeeByEmailAsync(string email)
         {
             return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
         }
@@ -79,6 +77,22 @@ namespace DAL
                 .ToList();
 
             return freeEmployees;
+        }
+
+        public async Task<List<Employee>?> GetUnavailableEmployeesByDateAsync(DayOfWeek dayOfWeek)
+        {
+            return await _context.Employees.AsNoTracking()
+                .Where(e => !_context.Availabilities
+                .Any(a => a.EmployeeId == e.EmployeeId && a.DayOfWeek == dayOfWeek))
+                .ToListAsync();
+        }
+
+        public async Task<List<Employee>?> GetEmployeesWithShiftAsync(DateTime date)
+        {
+            return await _context.Employees.AsNoTracking()
+                .Where(e => _context.Shifts
+                .Any(s => s.EmployeeId == e.EmployeeId && s.StartTime.Date == date.Date))
+                .ToListAsync();
         }
     }
 }
