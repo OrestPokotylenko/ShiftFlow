@@ -6,9 +6,444 @@
              xmlns:ui="clr-namespace:UI.SecondaryViews"
              mc:Ignorable="d">
 
-    <Grid>
+    <Grid Background="{StaticResource Color3}">
 
-        <TextBlock Text="Schedules" />
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Auto">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Style="{StaticResource CalendarMonthStackPanelStyle}">
+
+                        <Button Command="{Binding GetPreviousMonthCommand}"
+                                CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                                Style="{StaticResource CalendarChangeMonthButtonStyle}"
+                                Tag="-1">
+
+                            <Image Source="{StaticResource ArrowUpIcon}" 
+                                   Style="{StaticResource CalendarImageStyle}" />
+
+                        </Button>
+
+                        <TextBlock Style="{StaticResource CalendarMonthStyle}" 
+                                   Text="{Binding CurrentDate, StringFormat={}{0:MMM yyyy}}" />
+
+                        <Button Command="{Binding GetNextMonthCommand}"
+                                CommandParameter="{Binding Tag, RelativeSource={RelativeSource Self}}"
+                                Style="{StaticResource CalendarChangeMonthButtonStyle}"
+                                Tag="1">
+
+                            <Image Source="{StaticResource ArrowDownIcon}"
+                                   Style="{StaticResource CalendarImageStyle}" />
+
+                        </Button>
+
+                    </StackPanel>
+
+                    <UniformGrid Grid.Row="1" 
+                                 Style="{StaticResource CalendarUGridStyle}">
+
+                        <TextBlock HorizontalAlignment="Center" 
+                                   Text="Sun" />
+
+                        <TextBlock HorizontalAlignment="Center" 
+                                   Text="Mon" />
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Tue" />
+
+                        <TextBlock HorizontalAlignment="Center" 
+                                   Text="Wed" />
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Thu" />
+
+                        <TextBlock HorizontalAlignment="Center" 
+                                   Text="Fri" />
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   Text="Sat" />
+
+                    </UniformGrid>
+
+                    <ItemsControl Grid.Row="2"
+                                  ItemsSource="{Binding DaysOfMonth}">
+
+                        <ItemsControl.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <UniformGrid HorizontalAlignment="Stretch"
+                                             VerticalAlignment="Top"
+                                             Columns="7" />
+
+                            </ItemsPanelTemplate>
+
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Button Command="{Binding DataContext.OpenCloseListCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Style="{StaticResource ScheduleFieldStyle}"
+                                        Visibility="{Binding Converter={StaticResource VisibilityNullValueConverter}}" />
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                </Grid>
+
+                <!--Lists-->
+                <Grid Style="{StaticResource ScheduleListStyle}">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+
+                        <TextBlock Style="{StaticResource ScheduleTotalTimeStyle}" />
+
+                        <Button Command="{Binding SaveCommand}"
+                                Style="{StaticResource ScheduleSaveButtonStyle}" />
+
+                    </Grid>
+
+                    <TextBlock Grid.Row="1"
+                               Text="Selected employees:"
+                               Style="{StaticResource ScheduleListNameStyle}" />
+
+                    <ItemsControl Grid.Row="2"
+                                  ItemsSource="{Binding SelectedEmployees}"
+                                  Margin="0,0,0,100">
+
+                        <ItemsControl.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <StackPanel Orientation="Vertical" />
+
+                            </ItemsPanelTemplate>
+
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Style="{StaticResource ScheduleBorderStyle}">
+
+                                        <Grid VerticalAlignment="Center">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" 
+                                                       Text="{Binding Employee.FullName}"
+                                                       Style="{StaticResource NotificationsHeaderStyle}" />
+
+                                            <Button Style="{StaticResource NotificationsDeclineButtonStyle}"
+                                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}" 
+                                                    Grid.Column="1" />
+
+                                        </Grid>
+
+                                    </Border>
+
+                                    <Grid Style="{StaticResource ScheduleTimeGridStyle}">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.StartHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.StartMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="-"
+                                                   Style="{StaticResource ScheduleTimeSignsStyle}"
+                                                   Margin="10,0,10,0" />
+
+                                        <StackPanel Grid.Column="2"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.EndHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.EndMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+                                        
+                                    </Grid>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <TextBlock Grid.Row="3"
+                               Text="Available employees:"
+                               Style="{StaticResource ScheduleListNameStyle}" />
+
+                    <ItemsControl Grid.Row="4"
+                                  ItemsSource="{Binding AvailableEmployees}"
+                                  Margin="0,0,0,100">
+
+                        <ItemsControl.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <StackPanel Orientation="Vertical" />
+
+                            </ItemsPanelTemplate>
+
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Style="{StaticResource ScheduleBorderStyle}">
+
+                                        <Grid VerticalAlignment="Center">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" 
+                                                       Text="{Binding Employee.FullName}"
+                                                       Style="{StaticResource NotificationsHeaderStyle}" />
+
+                                            <Button Style="{StaticResource NotificationsDeclineButtonStyle}"
+                                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}" 
+                                                    Grid.Column="1" />
+
+                                        </Grid>
+
+                                    </Border>
+
+                                    <Grid Style="{StaticResource ScheduleTimeGridStyle}">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.StartHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.StartMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="-"
+                                                   Style="{StaticResource ScheduleTimeSignsStyle}"
+                                                   Margin="10,0,10,0" />
+
+                                        <StackPanel Grid.Column="2"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.EndHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.EndMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <TextBlock Grid.Row="5"
+                               Text="Unavailable employees:"
+                               Style="{StaticResource ScheduleListNameStyle}" />
+
+                    <ItemsControl Grid.Row="6"
+                                  ItemsSource="{Binding UnavailableEmployees}"
+                                  Margin="0,0,0,100">
+
+                        <ItemsControl.ItemsPanel>
+
+                            <ItemsPanelTemplate>
+
+                                <StackPanel Orientation="Vertical" />
+
+                            </ItemsPanelTemplate>
+
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid Margin="0,0,0,20">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border Style="{StaticResource ScheduleBorderStyle}">
+
+                                        <Grid VerticalAlignment="Center">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" 
+                                                       Text="{Binding Employee.FullName}"
+                                                       Style="{StaticResource NotificationsHeaderStyle}" />
+
+                                            <Button Style="{StaticResource NotificationsAcceptButtonStyle}"
+                                                    Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                                    CommandParameter="{Binding}" 
+                                                    Grid.Column="1" />
+
+                                        </Grid>
+
+                                    </Border>
+
+                                    <Grid Style="{StaticResource ScheduleTimeGridStyle}">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.StartHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.StartMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1"
+                                                   Text="-"
+                                                   Style="{StaticResource ScheduleTimeSignsStyle}"
+                                                   Margin="10,0,10,0" />
+
+                                        <StackPanel Grid.Column="2"
+                                                    Orientation="Horizontal">
+
+                                            <TextBox Text="{Binding WorkingTime.EndHours, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                            <TextBlock Text=":"
+                                                       Style="{StaticResource ScheduleTimeSignsStyle}" />
+
+                                            <TextBox Text="{Binding WorkingTime.EndMinutes, StringFormat={}{0:00}}"
+                                                     Style="{StaticResource ScheduleTimeTextBoxStyle}" />
+
+                                        </StackPanel>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                </Grid>
+
+            </Grid>
+
+        </ScrollViewer>
 
     </Grid>
 

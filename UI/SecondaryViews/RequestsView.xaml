@@ -44,7 +44,7 @@
 
                                     <TextBlock Grid.Column="0" 
                                                Text="{Binding RequestType}"
-                                               Style="{StaticResource NotificationsHeaderStyle}"/>
+                                               Style="{StaticResource NotificationsHeaderStyle}" />
 
                                     <TextBlock Grid.Column="0"
                                                Text="{Binding StartDate, StringFormat={}{0:dd/MM/yyyy HH:mm}}"

@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="Styles/Replace.xaml" />
                 <ResourceDictionary Source="Styles/Calendar.xaml" />
                 <ResourceDictionary Source="Styles/Notifications.xaml" />
+                <ResourceDictionary Source="Styles/Schedules.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
 
