@@ -1,9 +1,5 @@
-﻿using System.Windows.Controls;
-using System.Windows;
-using Model;
-using Messages;
-using Microsoft.IdentityModel.Tokens;
-using Service.ModelServices;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace UI.Login
 {

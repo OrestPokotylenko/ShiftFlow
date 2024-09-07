@@ -44,16 +44,14 @@
                     <TextBlock Text="Username:" 
                                Margin="0,25,0,4" />
 
-                    <TextBox x:Name="txtUsername"
-                             Style="{StaticResource LoginTextBoxStyle}"
+                    <TextBox Style="{StaticResource LoginTextBoxStyle}"
                              Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                              Tag="{Binding UsernameError}" />
 
                     <TextBlock Text="Password:"
                                Margin="0,40,0,4" />
 
-                    <TextBox x:Name="txtPassword"
-                             Style="{StaticResource LoginTextBoxStyle}"
+                    <TextBox Style="{StaticResource LoginTextBoxStyle}"
                              Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                              Tag="{Binding PasswordError}" />
 
