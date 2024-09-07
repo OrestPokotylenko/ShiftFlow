@@ -403,14 +403,14 @@
            BasedOn="{StaticResource StandardButtonStyle}"
            TargetType="Button">
 
-        <Setter Property="Content"
-                Value="Available" />
-
         <Setter Property="Width"
                 Value="200" />
 
         <Setter Property="Margin"
                 Value="0,250,0,0" />
+
+        <Setter Property="Visibility"
+                Value="Collapsed" />
 
         <Style.Triggers>
 
@@ -439,6 +439,48 @@
 
                 <Setter Property="IsEnabled"
                         Value="False" />
+
+            </DataTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="CalendarAvailableButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource CalendarPopUpButtonStyle}">
+
+        <Setter Property="Content"
+                Value="Available" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding SelectedDay.Available}"
+                         Value="False">
+
+                <Setter Property="Visibility"
+                        Value="Visible" />
+
+            </DataTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="CalendarUnavailableButtonStyle"
+           TargetType="Button"
+           BasedOn="{StaticResource CalendarPopUpButtonStyle}">
+
+        <Setter Property="Content"
+                Value="Unavailable" />
+
+        <Style.Triggers>
+
+            <DataTrigger Binding="{Binding SelectedDay.Available}"
+                         Value="True">
+
+                <Setter Property="Visibility"
+                        Value="Visible" />
 
             </DataTrigger>
 

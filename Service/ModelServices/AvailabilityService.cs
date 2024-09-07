@@ -16,5 +16,15 @@ namespace Service.ModelServices
         {
             await _availabilityDao.AddAvailabilityAsync(availability);
         }
+
+        public async Task<bool> IsAvailableAsync(Employee employee, DayOfWeek day)
+        {
+            return await _availabilityDao.IsAvailableAsync(employee, day);
+        }
+
+        public async Task DeleteAvailabilityAsync(Employee employee, DayOfWeek day)
+        {
+            await _availabilityDao.DeleteAvailabilityAsync(employee, day);
+        }
     }
 }

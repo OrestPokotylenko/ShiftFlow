@@ -11,26 +11,25 @@ namespace DAL
                     .Shifts.AsNoTracking()
                         .FirstOrDefault(s => s.EmployeeId == id && s.StartTime >= startDate && s.StartTime < endDate));
 
-        public Shift? GetShiftForToday(int employeeId, DateTime today)
+        public Shift? GetShiftForToday(Employee employee, DateTime today)
         {
             DateTime startDate = today.Date;
             DateTime endDate = startDate.AddDays(1);
 
-            return CompiledShiftForToday(_context, employeeId, startDate, endDate);
+            return CompiledShiftForToday(_context, employee.EmployeeId, startDate, endDate);
         }
 
-        private static Func<ShiftFlowContext, int, DateTime, DateTime, IEnumerable<Shift>> CompiledShiftsForWeek =
+        private static Func<ShiftFlowContext, int, DateTime, IEnumerable<Shift>> CompiledShiftsForWeek =
             EF.CompileQuery((
-                ShiftFlowContext context, int id, DateTime weekStart, DateTime weekEnd) => context
+                ShiftFlowContext context, int id, DateTime today) => context
                     .Shifts.AsNoTracking()
-                        .Where(s => s.EmployeeId == id && s.StartTime.Date >= weekStart.Date && s.StartTime.Date <= weekEnd.Date));
+                        .Where(s => s.EmployeeId == id && s.StartTime.Date > today.Date));
 
-        public List<Shift>? GetShiftsForWeek(Employee employee, DateTime weekStart)
+        public List<Shift>? GetUpcomingShifts(Employee employee, DateTime today)
         {
-            DateTime weekEnd = weekStart.AddDays(6);
             var shiftsForWeek = new List<Shift>();
 
-            foreach (Shift shift in CompiledShiftsForWeek(_context, employee.EmployeeId, weekStart, weekEnd))
+            foreach (Shift shift in CompiledShiftsForWeek(_context, employee.EmployeeId, today))
             {
                 shiftsForWeek.Add(shift);
             }
@@ -54,7 +53,7 @@ namespace DAL
         {
             foreach (Employee employee in employeesToRemove)
             {
-                Shift? shift = GetShiftForToday(employee.EmployeeId, date);
+                Shift? shift = GetShiftForToday(employee, date);
 
                 if (shift != null)
                 {

@@ -178,7 +178,7 @@ namespace ViewModel
 
             foreach (var employee in employeesWithShift)
             {
-                Shift? shift = _shiftService.GetShiftForToday(employee.EmployeeId, _selectedDate);
+                Shift? shift = _shiftService.GetShiftForToday(employee, _selectedDate);
 
                 if (shift is not null)
                 {
