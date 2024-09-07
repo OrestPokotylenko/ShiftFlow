@@ -8,9 +8,9 @@ namespace ViewModel
 {
     public class CalendarVM : BaseVM
     {
-        private ShiftService _shiftService = new();
-        private RequestService _requestService = new();
-        private AvailabilityService _availabilityService = new();
+        private readonly ShiftService _shiftService = new();
+        private readonly RequestService _requestService = new();
+        private readonly AvailabilityService _availabilityService = new();
         private readonly Employee _employee;
 
         private ObservableCollection<Day> _daysOfMonth = new();

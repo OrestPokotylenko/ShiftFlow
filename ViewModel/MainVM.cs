@@ -46,7 +46,7 @@ namespace ViewModel
             Messenger.Default.Register<string>(this, CurrentDeepLink);
 
             Task.Run(_employeeService.WarmUp);
-            ProcessArgs(deepLink);
+            ProcessArgs("shiftflow://shifts/?userId=12345678&token=ciPRX1eUrkmTxjUhXKT2Hw");
         }
 
         private void ResetPasswordView(object obj)
@@ -107,6 +107,14 @@ namespace ViewModel
             {
                 ShowResetPasswordView(deepLink);
             }
+            else if(deepLink.StartsWith("shiftflow://shifts"))
+            {
+                string employeeNumber = RetreiveEmployeeNumber(deepLink);
+                Employee employee = _employeeService.GetEmployeeByNumber(employeeNumber);
+                _loggedInEmployee = employee;
+                LoginEmployee(_loggedInEmployee);
+               ((EmplyeeNavigationVM)CurrentView).CurrentView = new CalendarVM(_loggedInEmployee);
+            }
         }
 
         private void ShowLoginView()
@@ -132,6 +140,14 @@ namespace ViewModel
         private void ShowManagerMainView()
         {
             ManagerViewCommand.Execute(null);
+        }
+
+        private string RetreiveEmployeeNumber(string deepLink)
+        {
+            int startIndex = deepLink.IndexOf("userId=") + "userId=".Length;
+            int endIndex = deepLink.IndexOf('&', startIndex);
+
+            return deepLink[startIndex..endIndex];
         }
     }
 }

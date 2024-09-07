@@ -2,10 +2,13 @@
 {
     public enum OccupationType
     {
-        A,
-        B,
-        C,
-        D,
+        GroceryClerk,
+        ProduceClerk,
+        Baker,
+        FrozenFoodsClerk,
+        DeliClerk,
+        DairyClerk,
+        Butcher,
         Manager
     }
 }

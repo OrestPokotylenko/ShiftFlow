@@ -1,4 +1,5 @@
 ﻿using Model;
+using Service;
 using Service.ModelServices;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -12,6 +13,8 @@ namespace ViewModel
         private readonly RequestService _requestService = new();
         private readonly EmployeeService _employeeService = new();
         private readonly AvailabilityService _availabilityService = new();
+        private readonly SettingsService _settingsService = new();
+
         private DateTime _selectedDate;
         private List<EmployeeShiftVM> _initializedEmployeeAndShift = new();
 
@@ -103,6 +106,20 @@ namespace ViewModel
             SelectedEmployees.Clear();
             await _shiftService.DeleteShiftsAsync(employeesShiftsToRemove, _selectedDate);
             await _shiftService.AddShiftsAsync(shiftsToAdd);
+            await SendAllEmails(employeesToAdd);
+        }
+
+        private async Task SendAllEmails(List<EmployeeShiftVM> employees)
+        {
+            foreach (var employee in employees)
+            {
+                Settings employeeSettings = await _settingsService.GetSettingsAsync(employee.Employee);
+
+                if (employeeSettings is null || employeeSettings.EmailNotifications)
+                {
+                    await CreateDeepLink(employee.Employee);
+                }
+            }
         }
 
         private (List<Shift>, List<Employee>) CreateShift(List<EmployeeShiftVM> employeesToAdd, List<EmployeeShiftVM> employeesToDelete)
@@ -272,6 +289,21 @@ namespace ViewModel
                 (DateTime startTime, DateTime endTime) = employee.WorkingTime.GetWorkingTime(_selectedDate);
                 TotalHours += endTime - startTime;
             }
+        }
+
+        private async Task CreateDeepLink(Employee employee)
+        {
+            DeepLink deepLink = LinkGenerator.GenerateShiftsLink(employee, out string token);
+            DeepLinkService deepLinkService = new();
+            await deepLinkService.AddDeepLinkAsync(deepLink);
+
+            await SendResetEmailAsync(employee, token);
+        }
+
+        private async Task SendResetEmailAsync(Employee employee, string token)
+        {
+            NewShiftNotificationSender emailSender = new();
+            await emailSender.SendEmailAsync(employee.Email, employee.FullName, LinkGenerator.GenerateWebLink(token));
         }
     }
 }
