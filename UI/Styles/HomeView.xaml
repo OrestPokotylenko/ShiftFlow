@@ -25,7 +25,7 @@
                 Value="Left" />
 
         <Setter Property="Margin"
-                Value="50,0,50,0" />
+                Value="50,0,50,20" />
 
     </Style>
 
@@ -63,76 +63,6 @@
 
         <Setter Property="CornerRadius"
                 Value="10" />
-
-    </Style>
-
-    <Style x:Key="SeeAllButtonStyle"
-           TargetType="Button">
-
-        <Setter Property="Content"
-                Value="See all &gt;" />
-
-        <Setter Property="HorizontalAlignment"
-                Value="Right" />
-
-        <Setter Property="Margin" 
-                Value="0,10,0,15" />
-
-        <Setter Property="Background" 
-                Value="Transparent" />
-
-        <Setter Property="BorderThickness" 
-                Value="0" />
-
-        <Setter Property="Template">
-
-            <Setter.Value>
-
-                <ControlTemplate TargetType="Button">
-
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-
-                        <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          RecognizesAccessKey="True" />
-
-                    </Border>
-
-                </ControlTemplate>
-
-            </Setter.Value>
-
-        </Setter>
-
-        <Style.Triggers>
-
-            <Trigger Property="IsMouseOver" 
-                     Value="True">
-
-                <Setter Property="Foreground" 
-                        Value="Gray" />
-            </Trigger>
-
-            <MultiTrigger>
-
-                <MultiTrigger.Conditions>
-
-                    <Condition Property="IsMouseOver"
-                               Value="True" />
-
-                    <Condition Property="IsPressed" 
-                               Value="True" />
-
-                </MultiTrigger.Conditions>
-
-                <Setter Property="Foreground"
-                        Value="{StaticResource Color7}" />
-
-            </MultiTrigger>
-
-        </Style.Triggers>
 
     </Style>
 

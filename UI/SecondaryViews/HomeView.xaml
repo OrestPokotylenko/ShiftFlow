@@ -61,8 +61,6 @@
 
                             </Grid>
 
-                            <Button Style="{StaticResource SeeAllButtonStyle}" />
-
                         </StackPanel>
 
                     </Border>
@@ -134,8 +132,6 @@
 
                             </ScrollViewer>
 
-                            <Button Style="{StaticResource SeeAllButtonStyle}" />
-
                         </StackPanel>
 
                     </Border>
@@ -163,8 +159,6 @@
                                            Text="{Binding TotalTimeWeek}" />
 
                             </Grid>
-
-                            <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                         </StackPanel>
 
@@ -218,8 +212,6 @@
                                            Text="{Binding RejectedRequests, StringFormat='({0})'}" />
 
                             </Grid>
-
-                            <Button Style="{StaticResource SeeAllButtonStyle}" />
 
                         </StackPanel>
 
