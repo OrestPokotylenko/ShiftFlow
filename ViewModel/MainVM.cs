@@ -46,7 +46,7 @@ namespace ViewModel
             Messenger.Default.Register<string>(this, CurrentDeepLink);
 
             Task.Run(_employeeService.WarmUp);
-            ProcessArgs("shiftflow://shifts/?userId=12345678&token=ciPRX1eUrkmTxjUhXKT2Hw");
+            ProcessArgs(deepLink);
         }
 
         private void ResetPasswordView(object obj)
