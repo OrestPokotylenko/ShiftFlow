@@ -119,6 +119,11 @@
 
                             <Grid Margin="0,50,0,0">
 
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
@@ -177,7 +182,10 @@
                             </Grid>
 
                             <Button Command="{Binding RequestAvailabilityCommand}" 
-                                    Style="{StaticResource CalendarPopUpButtonStyle}" />
+                                    Style="{StaticResource CalendarAvailableButtonStyle}" />
+
+                            <Button Command="{Binding RequestUnavailabilityCommand}"
+                                    Style="{StaticResource CalendarUnavailableButtonStyle}" />
 
                         </StackPanel>
 

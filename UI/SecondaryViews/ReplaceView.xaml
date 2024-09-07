@@ -73,7 +73,7 @@
                 <Border Grid.Row="1" 
                         Style="{StaticResource StandardWrapBorderStyle}">
 
-                    <ScrollViewer Width="950"
+                    <ScrollViewer Width="{Binding ScreenWith}"
                                   MinHeight="100"
                                   HorizontalScrollBarVisibility="Disabled"
                                   VerticalScrollBarVisibility="Auto">
@@ -95,7 +95,7 @@
 
                                 <DataTemplate>
 
-                                    <Grid Width="800"
+                                    <Grid Width="1000"
                                           Height="90"
                                           Margin="0,30,0,30">
 

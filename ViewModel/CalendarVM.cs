@@ -10,6 +10,7 @@ namespace ViewModel
     {
         private ShiftService _shiftService = new();
         private RequestService _requestService = new();
+        private AvailabilityService _availabilityService = new();
         private readonly Employee _employee;
 
         private ObservableCollection<Day> _daysOfMonth = new();
@@ -52,30 +53,36 @@ namespace ViewModel
         public ICommand OpenPopUpCommand { get; set; }
         public ICommand ClosePopUpCommand { get; set; }
         public ICommandAsync RequestAvailabilityCommand { get; set; }
+        public ICommandAsync RequestUnavailabilityCommand { get; set; }
 
         public CalendarVM(Employee employee)
         {
             _employee = employee;
             CurrentDate = DateOnly.FromDateTime(DateTime.Now);
             LoadCalendar(_employee);
+            LoadCommands();
+        }
 
+        private void LoadCommands()
+        {
             GetNextMonthCommand = new RelayCommand(GetMonthExecute);
             GetPreviousMonthCommand = new RelayCommand(GetMonthExecute);
             OpenPopUpCommand = new RelayCommand(OpenPopUp);
             ClosePopUpCommand = new RelayCommand(ClosePopUp);
             RequestAvailabilityCommand = new AsyncRelayCommand(RequestAvailabilityAsync);
+            RequestUnavailabilityCommand = new AsyncRelayCommand(RequestUnavailabilityAsync);
         }
 
-        private void LoadCalendar(Employee employee)
+        private async void LoadCalendar(Employee employee)
         {
             DateTime now = DateTime.Now;
             int year = now.Year;
             int month = now.Month;
 
-            SetDaysOfMonth(year, month, employee);
+            await SetDaysOfMonth(year, month, employee);
         }
 
-        private void SetDaysOfMonth(int year, int month, Employee employee)
+        private async Task SetDaysOfMonth(int year, int month, Employee employee)
         {
             int daysInMonth = DateTime.DaysInMonth(year, month);
             DateTime firstDayOfMonth = new(year, month, 1);
@@ -89,15 +96,16 @@ namespace ViewModel
             foreach (var day in Enumerable.Range(1, daysInMonth))
             {
                 DateTime date = new(year, month, day);
-                Shift? shift = _shiftService.GetShiftForToday(employee.EmployeeId, date);
+                Shift? shift = _shiftService.GetShiftForToday(employee, date);
                 Request? vacation = null;
+                bool available = await _availabilityService.IsAvailableAsync(_employee, date.DayOfWeek);
 
                 if (shift is null)
                 {
                     vacation = _requestService.GetVacationForToday(employee.EmployeeId, date);
                 }
 
-                DaysOfMonth.Add(new Day(date, shift, vacation));
+                DaysOfMonth.Add(new Day(date, available, shift, vacation));
             }
         }
 
@@ -121,9 +129,16 @@ namespace ViewModel
 
         private async Task RequestAvailabilityAsync(object parameter)
         {
-            Request changeAvailability = new(1, RequestType.ScheduleChange, DateOnly.FromDateTime(DateTime.Now), SelectedDay.DayValue, SelectedDay.DayValue);
-            _requestService.AddRequestAsync(changeAvailability);
+            Request changeAvailability = 
+                new(1, RequestType.ScheduleChange, DateOnly.FromDateTime(DateTime.Now), SelectedDay.DayValue, SelectedDay.DayValue);
+            await _requestService.AddRequestAsync(changeAvailability);
             RequestSent = true;
+        }
+
+        private async Task RequestUnavailabilityAsync(object parameter)
+        {
+            RequestSent = true;
+            await _availabilityService.DeleteAvailabilityAsync(_employee, SelectedDay.DayValue.DayOfWeek);
         }
     }
 }

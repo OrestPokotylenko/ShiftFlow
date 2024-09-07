@@ -10,6 +10,13 @@ namespace ViewModel
     {
         private readonly Employee _employee;
 
+        private double _screenWidth;
+        public double ScreenWidth
+        {
+            get { return _screenWidth; }
+            set { _screenWidth = value; OnPropertyChanged(); }
+        }
+
         private ObservableCollection<Shift>? _shiftsForWeek;
         public ObservableCollection<Shift>? ShiftsForWeek
         {
@@ -44,9 +51,10 @@ namespace ViewModel
         public ReplaceVM(Employee employee)
         {
             _employee = employee;
+            ScreenWidth = ScreenWidthCalculator.GetScreenWidth();
             ShiftService _shiftService = new();
-            DateTime startDate = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
-            ShiftsForWeek = new(_shiftService.GetShiftsForWeek(_employee, startDate));
+            DateTime today = DateTime.Now;
+            ShiftsForWeek = new(_shiftService.GetUpcomingShifts(_employee, today));
             SelectShiftCommand = new RelayCommand(SelectShiftExecute);
             ReplaceCommand = new AsyncRelayCommand(AskReplaceAsync);
         }

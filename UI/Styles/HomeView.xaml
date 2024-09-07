@@ -42,7 +42,7 @@
            TargetType="Grid">
 
         <Setter Property="Width" 
-                Value="950" />
+                Value="{Binding ScreenWidth}" />
 
         <Setter Property="Height"
                 Value="90" />

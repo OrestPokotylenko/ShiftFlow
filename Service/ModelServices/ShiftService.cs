@@ -7,14 +7,14 @@ namespace Service.ModelServices
     {
         private ShiftDao _shiftDao = new();
 
-        public Shift? GetShiftForToday(int employeeId, DateTime today)
+        public Shift? GetShiftForToday(Employee employee, DateTime today)
         {
-            return _shiftDao.GetShiftForToday(employeeId, today);
+            return _shiftDao.GetShiftForToday(employee, today);
         }
 
-        public List<Shift>? GetShiftsForWeek(Employee employee, DateTime weekStart)
+        public List<Shift>? GetUpcomingShifts(Employee employee, DateTime today)
         {
-            return _shiftDao.GetShiftsForWeek(employee, weekStart);
+            return _shiftDao.GetUpcomingShifts(employee, today);
         }
 
         public async Task UpdateShiftAsync(Shift shift)

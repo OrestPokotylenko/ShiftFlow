@@ -1,7 +1,10 @@
 ﻿using Model;
 using Service.ModelServices;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Globalization;
+using System.Windows.Forms;
+using ViewModel.Utilities;
 
 namespace ViewModel
 {
@@ -9,6 +12,13 @@ namespace ViewModel
     {
         private ShiftService _shiftService = new();
         private readonly Employee _employee;
+
+        private double _screenWidth;
+        public double ScreenWidth
+        {
+            get { return _screenWidth; }
+            set { _screenWidth = value; OnPropertyChanged(); }
+        }
 
         private Shift? _shiftForToday;
         public Shift? ShiftForToday
@@ -107,6 +117,7 @@ namespace ViewModel
 
         public HomeVM(Employee employee)
         {
+            ScreenWidth = ScreenWidthCalculator.GetScreenWidth();
             _employee = employee;
             Load();
         }
@@ -120,7 +131,7 @@ namespace ViewModel
 
         private void GetTodayShift()
         {
-            ShiftForToday = _shiftService.GetShiftForToday(1, DateTime.Now);
+            ShiftForToday = _shiftService.GetShiftForToday(_employee, DateTime.Now);
 
             if (ShiftForToday == null)
             {
@@ -130,8 +141,8 @@ namespace ViewModel
 
         private void GetWeekShifts()
         {
-            DateTime startDate = DateTime.Now.Date.AddDays(-(int)DateTime.Now.DayOfWeek + 1);
-            ShiftsForWeek = new(_shiftService.GetShiftsForWeek(_employee, startDate));
+            DateTime today = DateTime.Now;
+            ShiftsForWeek = new(_shiftService.GetUpcomingShifts(_employee, today));
 
             if (ShiftsForWeek.Count == 0)
             {
