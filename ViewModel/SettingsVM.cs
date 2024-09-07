@@ -1,33 +1,37 @@
 ﻿using Model;
-using Service;
+using Service.ModelServices;
 
 namespace ViewModel
 {
     public class SettingsVM : BaseVM
     {
-        private readonly Settings _settings;
+        private readonly Employee _employee;
+        private Settings? _settings;
         private readonly SettingsService _settingsService = new();
 
+        private bool _emailNotifications;
         public bool EmailNotifications
         {
-            get { return _settings.EmailNotifications; }
-            set { _settings.EmailNotifications = value; OnPropertyChanged();  UpdateSettings(); }
+            get { return _emailNotifications; }
+            set { _emailNotifications = value; OnPropertyChanged();  UpdateSettings(); }
         }
 
-        public bool PushNotifications
+        private async void UpdateSettings()
         {
-            get { return _settings.PushNotifications; ; }
-            set { _settings.PushNotifications = value; OnPropertyChanged(); UpdateSettings(); }
+            _settings.EmailNotifications = EmailNotifications;
+            await _settingsService.SaveSettingsAsync(_settings);
         }
 
-        private void UpdateSettings()
+        public SettingsVM(Employee employee)
         {
-            _settingsService.SaveSettings(_settings);
+            _employee = employee;
+            LoadSettings();
         }
 
-        public SettingsVM()
+        private async void LoadSettings()
         {
-            _settings = _settingsService.GetSettings();
+            _settings = await _settingsService.GetSettingsAsync(_employee);
+            EmailNotifications = _settings.EmailNotifications;
         }
     }
 }

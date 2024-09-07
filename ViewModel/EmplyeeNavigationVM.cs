@@ -44,7 +44,7 @@ namespace ViewModel
         private void Replace(object obj) => CurrentView = new ReplaceVM(_loggedInEmployee);
         private void Vacation(object obj) => CurrentView = new VacationVM(_loggedInEmployee);
         private void Profile(object obj) => CurrentView = new ProfileVM(_loggedInEmployee);
-        private void Settings(object obj) => CurrentView = new SettingsVM();
+        private void Settings(object obj) => CurrentView = new SettingsVM(_loggedInEmployee);
         private void Logout(object obj) => EventAggregator.Instance.ChangeView("Login");
         private void Notifications(object obj)
         {

@@ -4,12 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ui="clr-namespace:UI.SecondaryViews"
-             xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
              mc:Ignorable="d">
-
-    <UserControl.DataContext>
-        <vm:SettingsVM />
-    </UserControl.DataContext>
 
     <Grid Background="{StaticResource Color3}">
 
@@ -57,25 +52,6 @@
 
                                 <ToggleButton Style="{StaticResource SettingsToggleButton}"
                                               IsChecked="{Binding EmailNotifications, Mode=TwoWay}" />
-
-                            </Grid>
-
-                        </Border>
-
-                        <Border Style="{StaticResource SettingsSettingBorderStyle}">
-
-                            <Grid>
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-
-                                <TextBlock Text="Push Notifiactions" 
-                                           Style="{StaticResource SettingsLeftTextBlock}" />
-
-                                <ToggleButton Style="{StaticResource SettingsToggleButton}" 
-                                              IsChecked="{Binding PushNotifications, Mode=TwoWay}" />
 
                             </Grid>
 

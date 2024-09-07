@@ -12,6 +12,7 @@ namespace DAL
         public DbSet<Shift> Shifts { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Availability> Availabilities { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,6 +32,7 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new ShiftConfiguration());
             modelBuilder.ApplyConfiguration(new RequestConfiguration());
             modelBuilder.ApplyConfiguration(new AvailabilityConfiguration());
+            modelBuilder.ApplyConfiguration(new SettingsConfiguration());
         }
     }
 }
